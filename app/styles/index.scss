@@ -1,0 +1,50 @@
+@import '_base';
+@import '_common';
+
+body{
+	font: 14px/1.5 'Microsoft Yahei';
+}
+
+article{
+	.news{
+		width: 800px;
+		margin: 20px auto;
+		.title{
+			width: 100%;
+			font-size: 24px;
+			color: #000;
+			// @extend .eps;
+		}
+		.date{
+			font-size: 16px;
+			line-height: 2;
+			color: #666;
+			margin-top: 10px;
+			border-bottom: 1px solid #e9e9e9;
+		}
+		.content{
+			margin-top: 10px;
+			img{
+			  max-width: 100%;
+			}
+		}
+	}
+}
+
+.float-download {
+  width: 144px;
+  height: 172px;
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  top: 20px;
+  margin-left: 410px;
+  background: url(../images/float-download.jpg) no-repeat;
+  z-index: 999;
+  .title{
+    color: #eee;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 45px;
+  }
+}

@@ -1,0 +1,174 @@
+@import '_base';
+@import '_common';
+
+@mixin font-dpr($font-size){
+  font-size: $font-size * 1;
+  [data-dpr="2"] & {
+      font-size: $font-size * 2;
+  }
+  [data-dpr="3"] & {
+      font-size: $font-size * 3;
+  }
+}
+
+html{
+	background: #f4f4f4!important;
+}
+
+body{
+  font:14px/1.5 Helvetica, 'SimHei';
+  background: #f4f4f4;
+  cursor: pointer;
+  overflow-x: hidden;
+}
+
+a{
+	&:hover{
+		text-decoration: none!important;
+	}
+}
+
+header{
+	.tab-ul{
+		width: 10rem;
+		margin: 0 auto;
+		overflow: hidden;
+		li{
+			float: left;
+			width: 50%;
+			height: 1.12rem;
+			line-height: 1.12rem;
+			background: #e2e2e2;
+			border-bottom: 0.08rem solid #e2e2e2;
+			text-align: center;
+			color: #767676;
+			@include font-dpr(32px/2);
+			&.active{
+				color: #4487c2;
+				border-bottom: 0.08rem solid #4487c2;
+			}
+		}
+	}
+}
+
+.content{
+	.privilege-ul{
+		li{
+			margin-top: 0.226667rem;
+			.privilege{
+				width: 9.546667rem;
+				height: 4.186667rem;
+				position: relative;
+				margin: 0 auto;
+				.img{
+					width: 100%;
+					height: 100%;
+					display: block;
+					background-size: cover;
+				}
+				.intro{
+					position: absolute;
+					top: 1.733333rem;
+					left: 0.853333rem;
+					@include font-dpr(32px/2);
+					color: #e7e7e7;
+				}
+				.btn-buy, .btn-has{
+					@include font-dpr(32px/2);
+					width: 3.706667rem;
+					height: 0.933333rem;
+					line-height: 0.933333rem;
+					text-align: center;
+					color: #fff;
+					background: url('../images/btn-buy.png') no-repeat;
+					background-size: cover;
+					position: absolute;
+					left: 0.786667rem;
+					bottom: 0.72rem;
+				}
+				.btn-has{
+					background: none;
+					color: #59687d;
+					border: 0.04rem solid #59687d;
+					border-radius: 0.133333rem;
+				}
+			}
+		}
+	}
+	.title, .txt{
+		@include font-dpr(38px/2);
+		margin-top: 0.533333rem;
+		color: #1b1b1b;
+		width: 9.28rem;
+		margin: 0 auto;
+	}
+	.title{
+		font-weight: bold;
+		margin-top: 0.533333rem;
+	}
+	.txt{
+		color: #767676;
+		@include font-dpr(32px/2);
+		margin-bottom: 0.266667rem;
+	}
+}
+
+.masklayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  display: none;
+  background: #161921;
+  opacity: .3;
+}
+
+.dialog {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -(7.413333rem/2);
+  margin-top: -(8.8rem/2);
+  width: 7.413333rem;
+  min-height: 8.8rem;
+  z-index: 11;
+  background: #fff;
+  display: none;
+  border: 1px solid #e0e0e1;
+  border-radius: 0.2rem;
+  .modal-t, .modal-c{
+  	@include font-dpr(38px/2);
+  	color: #3e3e3e;
+  	margin: 0 auto;
+  	width: 6.533333rem;
+  }
+  .modal-t{
+  	margin-top: 0.533333rem;
+  	margin-bottom: 0.4rem;
+  	text-align: center;
+  	font-weight: bold;
+  }
+  .modal-c{
+  	@include font-dpr(28px/2);
+  	margin-bottom: 0.8rem;
+  }
+  .btn-buy, .btn-cancel{
+		@include font-dpr(32px/2);
+		width: 6.533333rem;
+		height: 1.093333rem;
+		line-height: 1.093333rem;
+		text-align: center;
+		color: #fff;
+		background: #4487c2;
+		display: block;
+		margin: 0 auto;
+		border-radius: 0.133333rem;
+		margin-bottom: 0.133333rem;
+  }
+  .btn-cancel{
+  	background: none;
+  	color: #4487c2;
+  }
+}
