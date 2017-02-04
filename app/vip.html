@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Season">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <!--允许全屏-->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <title>VIP 会员专享</title>
+    <link rel="stylesheet" type="text/css" href="styles/vip.css">
+    <script src="scripts/lib-flexible.min.js"></script>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <header>
+        <ul class="tab-ul">
+          <li class="active">VIP特权卡</li>
+          <li>VIP说明</li>
+        </ul>
+      </header>
+      <article>
+        <section class="content">
+          <ul class="privilege-ul">
+            <li>
+              <div class="privilege"><img class="img" src="images/card-week.png" alt=""><p class="intro">￥6.0（APP享9折）</p><a href="http://hao123.com" class="btn-buy">立即购买</a></div>
+            </li>
+            <li>
+              <div class="privilege"><img class="img noclick" src="images/card-month.png" alt=""><p class="intro">有效期2016-11-07 16:47:23</p><a href="#" class="btn-has">已拥有</a></div>
+            </li>
+          </ul>
+        </section>
+        <section class="content none">
+          <h3 class="title">VIP特权介绍</h3>
+          <p class="txt">·不同的VIP特权享有不同等级的强化剂礼包，购买
+   VIP特权卡后，每日登录赠送1000顺豆<br>·个人赛事免费报名(挑战赛和战队赛除外)<br>·顺豆参加挑战赛次数提升<br>·更多参与“集顺豆”预测活动次数<br>·不同的VIP特权对应的有效期不同</p>
+          <h3 class="title">VIP说明</h3>
+          <p class="txt">1.火马VIP商品为火马电竞为广大电子竞技爱好者提供的增值商品。火马用户在购买VIP商品以后，可以以较低的购买门槛享受到更高的竞技服务体验。<br>2.火马VIP用户享受在平台内免费参与个人赛,多次
+参与挑战赛等多项特权。<br>3.火马VIP用户在特权有效期内，会收到火马电竞提供的电子竞技顺豆基金，具体基金数额由用户所购买的VIP商品决定。<br>4.火马VIP商品，同类型商品，在商品有效期内不可以连续多次购买。例，周卡在首次购买后不可重复购买。<br>5、火马VIP商品，不同类型商品，可以重复购买，但重复特权不累加。<br>例，用户购买了一张畅玩周卡后，又购买了一张大
+神月卡， 每日获得的顺豆基金叠加发放（即获得月卡顺豆，也获得周卡顺豆）； 顺豆参与“集顺豆，兑点券”活动次数不叠加； 顺豆参与挑战赛次数不叠加； 有效期不叠加，以剩余最大值为准。<br>
+6、火马VIP商品最终解释权归杭州顺网宇酷科技股份有限公司所有。</p>
+        </section>  
+      </article>
+    </div>
+
+    <div class="masklayer"></div>
+
+    <div class="dialog">
+      <h4 class="modal-t">畅玩周卡专享</h4>
+      <p class="modal-c">·终极强化剂礼包(立即获得1000顺豆，每日登录赠送1000顺豆)<br>·个人赛事免费报名(挑战赛和战队赛除外)<br>·顺豆参加挑战赛次数提升<br>·更多参与“集顺豆”预测活动次数<br>·有效期7天</p>
+      <a href="###" class="btn-buy">立即购买</a><a href="###" class="btn-cancel">取消</a>
+    </div>
+
+    <div class="dialog">
+      <h4 class="modal-t">大神月卡专享</h4>
+      <p class="modal-c">·终极强化剂礼包(立即获得12000顺豆，每日登录赠送1000顺豆)<br>·个人赛事免费报名(挑战赛和战队赛除外)<br>·顺豆参加挑战赛次数提升<br>·更多参与“集顺豆”预测活动次数<br>·有效期30天</p>
+      <a href="###" class="btn-buy">立即购买</a><a href="###" class="btn-cancel">取消</a>
+    </div>
+
+  </body>
+  <script src="scripts/jquery-3.1.0.min.js"></script>
+  <script src="scripts/device.min.js"></script>
+  <script type="text/javascript">
+    // 显示、隐藏弹出层
+    var GLOBAL = {
+      show: function($obj){
+        $obj.show(200);
+        $('.masklayer').show();
+      },
+      hide: function($obj){
+        $obj.hide(200);
+        $('.masklayer').hide();
+      }
+    };
+
+    ;(function(){
+
+      $('body').on('click', '.tab-ul li', function(){
+        var index = $(this).index();
+        $(this).addClass('active').siblings().removeClass('active');
+        $('.content').eq(index).show().siblings().hide();
+      });
+
+      // 隐藏弹层
+      $('body').on('click', '.masklayer, .dialog .btn-buy, .dialog .btn-cancel', function(event){
+        event.preventDefault();
+        GLOBAL.hide($('.dialog'));
+      });
+      
+      // 弹层
+      $('body').on('click', '.img:eq(0):not(.noclick)', function(event){
+        event.preventDefault();
+        GLOBAL.show($(".dialog").eq(0));
+      });
+
+      $('body').on('click', '.img:eq(1):not(.noclick)', function(event){
+        event.preventDefault();
+        GLOBAL.show($(".dialog").eq(1));
+      });
+
+      $('body').on('click', '.btns .blue', function(){
+        window.location.href = 'http://10.128.16.107:3000/test.html';
+      });
+      
+      if(device.desktop()){
+        // 如果是 PC 端
+        $('.btns').hide();
+        $('.qrcode').show();
+      }else{
+        // Mobile 端
+        // location.href = "https://www.hao123.com";
+      }
+
+    })(jQuery);
+  </script>
+</html>
