@@ -1,8 +1,10 @@
 'use strict';
 
 var gulp = require('gulp'),
-browserSync = require('browser-sync').create(),
-$ = require('gulp-load-plugins')();
+  browserSync = require('browser-sync').create(),
+  $ = require('gulp-load-plugins')(),
+  postcss = require('gulp-postcss'),
+  px2rem = require('postcss-px2rem');
 
 
 var spriteConfig = {
@@ -15,42 +17,47 @@ var spriteConfig = {
 
 //合并sprite图片
 gulp.task('sprite', function () {
-  return gulp.src(spriteConfig.imgSrc)
-    .pipe($.spritesmith({
-        imgName: spriteConfig.imgSprite,//保存合并后图片的地址
-        cssName: spriteConfig.cssName,//保存合并后对于css样式的地址
-        padding:spriteConfig.padding,//合并时两个图片的间距
-        algorithm: 'binary-tree',//注释1
-        cssTemplate: function (data) {
-          var arr=[];
-          data.sprites.forEach(function (sprite) {
-              arr.push(".icon-"+sprite.name+
-              "{" +
-              "background-image: url('"+sprite.escaped_image+"');"+
-              "background-repeat: no-repeat;"+
-              "background-position: "+sprite.px.offset_x+" "+sprite.px.offset_y+";"+
-              "width:"+sprite.px.width+";"+
-              "height:"+sprite.px.height+";"+
-              "}\n");
-          });
-          return arr.join("");
-        }
-    }))
-    .pipe(gulp.dest(spriteConfig.desSrc));
+    return gulp.src(spriteConfig.imgSrc)
+        .pipe($.spritesmith({
+            imgName: spriteConfig.imgSprite,//保存合并后图片的地址
+            cssName: spriteConfig.cssName,//保存合并后对于css样式的地址
+            padding:spriteConfig.padding,//合并时两个图片的间距
+            algorithm: 'binary-tree',//注释1
+            cssTemplate: function (data) {
+                var arr=[];
+                data.sprites.forEach(function (sprite) {
+                    arr.push(".icon-"+sprite.name+
+                    "{" +
+                    "background-image: url('"+sprite.escaped_image+"');"+
+                    "background-repeat: no-repeat;"+
+                    "background-position: "+sprite.px.offset_x+" "+sprite.px.offset_y+";"+
+                    "width:"+sprite.px.width+";"+
+                    "height:"+sprite.px.height+";"+
+                    "}\n");
+                });
+                return arr.join("");
+            }
+
+        }))
+        .pipe(gulp.dest(spriteConfig.desSrc));
 });
 
 // Less 编译成 css
 gulp.task('less', function() {
+  var processors = [px2rem({remUnit: 75})];
   return gulp.src('app/styles/*.less')
     .pipe($.less())
+    .pipe(postcss(processors))
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream({once: true}));
 });
 
 // Sass 编译成 css
 gulp.task('sass', function() {
+  var processors = [px2rem({remUnit: 75})];
   return gulp.src('app/styles/*.scss')
     .pipe($.sass({outputStyle: 'expanded'}).on('error', $.sass.logError))
+    .pipe(postcss(processors))
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream({once: true}));
 });
@@ -70,8 +77,8 @@ gulp.task('pug', function () {
 // 图片压缩优化
 gulp.task('image', function(){
   return gulp.src('app/images/**')
-    .pipe($.imagemin())
-    .pipe(gulp.dest('app/images'));
+      .pipe($.imagemin())
+      .pipe(gulp.dest('app/images'));
 })
 
 // 拷贝所有文件
