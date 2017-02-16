@@ -113,10 +113,17 @@ gulp.task('clean', require('del').bind(null, ['dist']));
 
 // 启一个 Browser-sync 服务器并监听文件改动
 gulp.task('serve', ['sass', 'pug'], function() {
+  var port = Math.floor(Math.random()*10000) 
+  port = (port > 1024? port: Math.floor(Math.random()*10000));
+
   browserSync.init({
     server: {
       baseDir: './app',
       directory: true
+    },
+    port: port,
+    ui: {
+      port: port+1
     }
   });
   gulp.watch('app/styles/*.scss', ['sass']);

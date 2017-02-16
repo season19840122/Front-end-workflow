@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" , content="Season">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <title>2016年会火马专场</title>
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body style="cursor: pointer">
+    <div class="wrap">
+      <article>
+        <section class="part01"></section>
+        <section class="part02">
+          <!-- <p class="score">竞猜积分:200</p>--><a class="login" href="###">点击登录</a>
+        </section>
+        <section class="part03"><a class="exchange ti" href="###">兑换积分</a>
+          <ul class="game-ul">
+            <li>
+              <div class="game-wrap size">
+                <h3 class="title">4进2 A场</h3><span class="time">13:00-14:00</span>
+                <!-- <p class="result">猜对了</p>-->
+                <p class="result error">猜错了</p>
+                <div class="game-bg">
+                  <ul class="team-ul">
+                    <li>
+                      <div class="team-wrap pr">
+                        <p class="win m">负</p>
+                        <p class="team">啦啦啦看</p>
+                        <!-- <div class="check-wrap">-->
+                        <div class="check-wrap checked noclick">
+                          <input class="uncheck" type="checkbox">
+                          <label>猜他赢</label>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="team-wrap pr">
+                        <p class="win v">胜</p>
+                        <p class="team">啦啦啦看</p>
+                        <div class="check-wrap noclick">
+                          <input class="uncheck" type="checkbox">
+                          <label>猜他赢     </label>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="game-wrap size">
+                <h3 class="title">4进2 B场</h3><span class="time">13:00-14:00</span><a class="btn-submit bg ti" href="###">提交</a>
+                <!-- <a class="btn-submit" href="###">已提交</a>-->
+                <div class="game-bg">
+                  <ul class="team-ul">
+                    <li>
+                      <div class="team-wrap pr">
+                        <p class="win">:</p>
+                        <p class="team nostart">啦啦啦看</p>
+                        <div class="check-wrap">
+                          <input class="uncheck" type="checkbox">
+                          <label>猜他赢</label>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="team-wrap pr">
+                        <p class="win">:</p>
+                        <p class="team nostart">啦啦啦看</p>
+                        <div class="check-wrap">
+                          <input class="uncheck" type="checkbox">
+                          <label>猜他赢     </label>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="game-wrap size">
+                <h3 class="title">决赛</h3><span class="time">13:00-14:00</span><a class="btn-submit late" href="###">你来晚了...</a>
+                <div class="game-bg">
+                  <ul class="team-ul">
+                    <li>
+                      <div class="team-wrap pr">
+                        <p class="win">:</p>
+                        <p class="team nostart">啦啦啦看</p>
+                        <div class="check-wrap">
+                          <input class="uncheck" type="checkbox">
+                          <label>猜他赢</label>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="team-wrap pr">
+                        <p class="win">:</p>
+                        <p class="team nostart">啦啦啦看</p>
+                        <div class="check-wrap">
+                          <input class="uncheck" type="checkbox">
+                          <label>猜他赢</label>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </article>
+    </div><a class="refresh" href="###"></a>
+    <div class="masklayer"></div>
+    <div class="dialog log"><span class="btn-close ti">关闭</span>
+      <h2 class="title">欢迎小伙伴参加年会，告诉火马你是谁~</h2>
+      <input class="tel" type="text" placeholder="请输入手机号">
+      <input class="verify" type="text" placeholder="请输入验证码">
+      <div class="get countdown">59s</div><a class="btn-login" href="###">登录</a>
+    </div>
+    <div class="dialog ex"><span class="btn-close ti">关闭</span>
+      <h2 class="title mt1">当前可兑换600积分哦~</h2>
+      <p class="info">请确认已从工作人员处领取到X000积分牌。<br>(积分扣除后，不可恢复哦！)</p><a class="btn-yes" href="###">是的，已拿到积分牌</a><a class="btn-no" href="###">还没有拿到积分牌</a>
+    </div>
+    <script src="scripts/lib-flexible.min.js"></script>
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script>
+      (function($){
+        //记住密码
+        $("body").on("click", '.check-wrap:not(.noclick)', function() {
+          $(this).parents('.team-ul').find('.check-wrap').attr('class', 'check-wrap')
+          $(this).parents('.team-ul').find('.uncheck').each(function(){
+            this.checked = false;
+          })
+          if ($(this).hasClass('check-on')) {
+            $(this).removeClass("check-on");
+          } else {
+            $(this).addClass('check-on');
+            $(this).find('.uncheck')[0].checked = true;
+          }
+        });
+      
+        // 显示、隐藏弹出层
+        var GLOBAL = {
+          show: function($obj){
+            $obj.show();
+            $('.masklayer').show();
+          },
+          hide: function($obj){
+            $obj.hide();
+            $('.masklayer').hide();
+          }
+        };
+      
+        $('body').on('click', '.btn-submit', function(event){
+          alert(1);
+          //- event.preventDefault();
+          //- GLOBAL.show($('.log'));
+        });
+      
+        $('body').on('click', '.refresh', function(event){
+          window.location.reload();
+        });
+      
+        // 隐藏弹层
+        $('body').on('click', '.masklayer, .btn-close, .btn-login, .btn-yes, .btn-no', function(event){
+          event.preventDefault();
+          GLOBAL.hide($('.dialog'));
+        });
+      
+      
+        $("body").on("click", '.login', function(event) {
+          event.preventDefault();
+          GLOBAL.show($(".log"));
+        });
+      
+        $("body").on("click", '.exchange', function(event) {
+          event.preventDefault();
+          GLOBAL.show($(".ex"));
+        });
+      })(jQuery);
+        
+    </script>
+  </body>
+</html>

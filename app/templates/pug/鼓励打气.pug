@@ -1,0 +1,114 @@
+extends _layouts-mobile
+block title
+  title 鼓励打气
+block style
+  link(rel="stylesheet", href="styles/encourage.css")
+block main
+  nav
+    p.tab.select 为TA打气
+    p.tab 打气记录
+    .a-wrap
+      a(href="###").change 换一批
+      a(href="###").refresh.none 刷新
+  .content-wrap
+    .content
+      .info-wrap
+        p.info 为正在参与火马活动的玩家打气，TA的胜利也会为你带来顺豆奖励!（平台胜率仅供参考）
+      .lists-wrap
+        .list
+          .head
+            img(src="images/head.png", alt="")
+          .name-wrap
+            .layer
+              span.name 哇哈哈哈哈哈哈哈
+            .layer
+              span.zone 德玛西亚
+              span.level 青铜V
+            .layer
+              span.win 胜率：53%
+          .a-wrap
+            a(href="###").just 已打气
+        - for(var i=0; i<9; i++)
+          .list
+            .head
+              img(src="images/head.png", alt="")
+            .name-wrap
+              .layer
+              span.name 哇哈哈哈哈哈哈哈
+              .layer
+                span.zone 德玛西亚
+                span.level 青铜V
+              .layer
+                span.win 胜率：53%
+            .a-wrap
+              a(href="###").encourage
+                img(src="images/encourage.png", alt="")
+              a(href="###").just.none 已打气
+    .content.none
+      .info-wrap.records
+        p.record 仅显示近3天的记录
+        p.num 打气次数：109
+        p.win 胜率：53%
+      .lists-wrap
+        .list
+          .head
+            img(src="images/head.png", alt="")
+          .name-wrap
+            .layer
+              span.name 哇哈哈哈哈哈哈哈
+            .layer
+              span.zone 德玛西亚
+              span.level 青铜V
+            .layer
+              span.win 胜率：53%
+          .a-wrap.date-wrap
+            span.date 2017.2.10 15:34
+            a(href="###").just.fail 失败
+        .list
+          .head
+            img(src="images/head.png", alt="")
+          .name-wrap
+            .layer
+              span.name 哇哈哈哈哈哈哈哈
+            .layer
+              span.zone 德玛西亚
+              span.level 青铜V
+            .layer
+              span.win 胜率：53%
+          .a-wrap.date-wrap
+            span.date 2017.2.10 15:34
+            a(href="###").just.ing 进行中
+        .list
+          .head
+            img(src="images/head.png", alt="")
+          .name-wrap
+            .layer
+              span.name 哇哈哈哈哈哈哈哈
+            .layer
+              span.zone 德玛西亚
+              span.level 青铜V
+            .layer
+              span.win 胜率：53%
+          .a-wrap.date-wrap
+            span.date 2017.2.10 15:34
+            a(href="###").just.sd +500顺豆
+append script
+  //- script(src="scripts/_vue.js")
+  script.
+    (function($){
+      $('body').on('click', '.tab', function(event){
+        $(this).addClass('select').siblings('.tab').removeClass('select');
+        var index = $(this).index();
+        $('.a-wrap').eq(0).find('a').eq(index).show().siblings().hide();
+        $('.content').eq(index).show().siblings('.content').hide();
+      });
+
+       $('body').on('click', '.encourage', function(event){
+        $(this).hide().siblings().show();
+        alert('打气成功！胜负稍后请查看打气记录！');
+        //- alert('今天的打气次数已用完，明天继续！');
+        //- alert('玩家游戏已结束，不可打气，请刷新！');
+      });
+      
+    })(jQuery);
+      
