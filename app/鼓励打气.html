@@ -16,7 +16,7 @@
   </head>
   <body style="cursor: pointer">
     <div class="wrap">
-      <nav>
+      <nav data-pageflag="2">
         <p class="tab select">为TA打气</p>
         <p class="tab">打气记录</p>
         <div class="a-wrap"><a class="change" href="###">换一批</a><a class="refresh none" href="###">刷新</a></div>
@@ -133,7 +133,7 @@
                 <div class="layer"><span class="zone">德玛西亚</span><span class="level">青铜V</span></div>
                 <div class="layer"><span class="win">胜率：53%</span></div>
               </div>
-              <div class="a-wrap date-wrap"><span class="date">2017.2.10 15:34</span><a class="just fail" href="###">失败</a></div>
+              <div class="a-wrap date-wrap"><span class="date">2017-02-16 20:53:33</span><a class="just fail" href="###">失败</a></div>
             </div>
             <div class="list">
               <div class="head"><img src="images/head.png" alt=""></div>
@@ -142,7 +142,7 @@
                 <div class="layer"><span class="zone">德玛西亚</span><span class="level">青铜V</span></div>
                 <div class="layer"><span class="win">胜率：53%</span></div>
               </div>
-              <div class="a-wrap date-wrap"><span class="date">2017.2.10 15:34</span><a class="just ing" href="###">进行中</a></div>
+              <div class="a-wrap date-wrap"><span class="date">2017-02-16 20:53:33</span><a class="just ing" href="###">进行中</a></div>
             </div>
             <div class="list">
               <div class="head"><img src="images/head.png" alt=""></div>
@@ -151,7 +151,7 @@
                 <div class="layer"><span class="zone">德玛西亚</span><span class="level">青铜V</span></div>
                 <div class="layer"><span class="win">胜率：53%</span></div>
               </div>
-              <div class="a-wrap date-wrap"><span class="date">2017.2.10 15:34</span><a class="just sd" href="###">+500顺豆</a></div>
+              <div class="a-wrap date-wrap"><span class="date">2017-02-16 20:53:33</span><a class="just sd" href="###">+500顺豆</a></div>
             </div>
           </div>
         </div>
@@ -161,6 +161,14 @@
     <script src="scripts/jquery-3.1.1.min.js"></script>
     <script>
       (function($){
+        var load = function(){
+            var flag = $('nav').data('pageflag');
+            if(flag === 2){
+                $('.tab').eq(1).addClass('select').siblings('.tab').removeClass('select');
+                $('.content').eq(1).show().siblings('.content').hide();
+            }
+        }();
+          
         $('body').on('click', '.tab', function(event){
           $(this).addClass('select').siblings('.tab').removeClass('select');
           var index = $(this).index();
@@ -174,7 +182,12 @@
           //- alert('今天的打气次数已用完，明天继续！');
           //- alert('玩家游戏已结束，不可打气，请刷新！');
         });
-        
+      
+        $('body').on('click', '.change, .refresh', function(event){       
+          var index = $(this).index() + 1;
+          window.location.href = window.location.href.slice(0,-1) + index;
+        });
+      
       })(jQuery);
         
     </script>

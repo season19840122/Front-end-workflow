@@ -4,7 +4,7 @@ block title
 block style
   link(rel="stylesheet", href="styles/encourage.css")
 block main
-  nav
+  nav(data-pageflag='2')
     p.tab.select 为TA打气
     p.tab 打气记录
     .a-wrap
@@ -62,7 +62,7 @@ block main
             .layer
               span.win 胜率：53%
           .a-wrap.date-wrap
-            span.date 2017.2.10 15:34
+            span.date 2017-02-16 20:53:33
             a(href="###").just.fail 失败
         .list
           .head
@@ -76,7 +76,7 @@ block main
             .layer
               span.win 胜率：53%
           .a-wrap.date-wrap
-            span.date 2017.2.10 15:34
+            span.date 2017-02-16 20:53:33
             a(href="###").just.ing 进行中
         .list
           .head
@@ -90,12 +90,20 @@ block main
             .layer
               span.win 胜率：53%
           .a-wrap.date-wrap
-            span.date 2017.2.10 15:34
+            span.date 2017-02-16 20:53:33
             a(href="###").just.sd +500顺豆
 append script
   //- script(src="scripts/_vue.js")
   script.
     (function($){
+      var load = function(){
+          var flag = $('nav').data('pageflag');
+          if(flag === 2){
+              $('.tab').eq(1).addClass('select').siblings('.tab').removeClass('select');
+              $('.content').eq(1).show().siblings('.content').hide();
+          }
+      }();
+        
       $('body').on('click', '.tab', function(event){
         $(this).addClass('select').siblings('.tab').removeClass('select');
         var index = $(this).index();
@@ -109,6 +117,11 @@ append script
         //- alert('今天的打气次数已用完，明天继续！');
         //- alert('玩家游戏已结束，不可打气，请刷新！');
       });
-      
+
+      $('body').on('click', '.change, .refresh', function(event){       
+        var index = $(this).index() + 1;
+        window.location.href = window.location.href.slice(0,-1) + index;
+      });
+
     })(jQuery);
       

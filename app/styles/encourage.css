@@ -710,7 +710,7 @@ a:hover {
 
 .wrap .lists-wrap .list .name-wrap .name {
   color: #1b1b1b;
-  width: 5.333333rem;
+  width: 4.266667rem;
   display: block;
 }
 
@@ -761,9 +761,7 @@ a:hover {
 
 .wrap .lists-wrap .list .a-wrap.date-wrap {
   text-align: right;
-  -webkit-flex-basis: 2.666667rem;
-  -ms-flex-preferred-size: 2.666667rem;
-  flex-basis: 2.666667rem;
+  flex-basis: 3.066667rem;
   height: 2rem;
 }
 
