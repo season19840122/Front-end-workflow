@@ -1,14 +1,11 @@
 @charset "UTF-8";
-
 /*
  * Filename: base.css v2.0
  * Author: Season 朱迎春
  * Creattime: 2011-09-02
  * PS: 模块化 CSS 最底层 base.css
  */
-
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
-
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -19,26 +16,11 @@ body {
   margin: 0;
 }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section,
-summary {
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
-audio,
-canvas,
-progress,
-video {
+audio, canvas, progress, video {
   display: inline-block;
   vertical-align: baseline;
 }
@@ -48,8 +30,7 @@ audio:not([controls]) {
   height: 0;
 }
 
-[hidden],
-template {
+[hidden], template {
   display: none;
 }
 
@@ -58,18 +39,16 @@ a {
   text-decoration: none;
 }
 
-a:active,
-a:hover {
+a:active, a:hover {
   outline: 0;
   text-decoration: none;
 }
 
 abbr[title] {
-  border-bottom: 0.013333rem dotted;
+  border-bottom: 1px dotted;
 }
 
-b,
-strong {
+b, strong {
   font-weight: 700;
 }
 
@@ -91,8 +70,7 @@ small {
   font-size: 80%;
 }
 
-sub,
-sup {
+sub, sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -116,7 +94,7 @@ svg:not(:root) {
 }
 
 figure {
-  margin: 1em 0.533333rem;
+  margin: 1em 40px;
 }
 
 hr {
@@ -129,19 +107,12 @@ pre {
   overflow: auto;
 }
 
-code,
-kbd,
-pre,
-samp {
+code, kbd, pre, samp {
   font-family: monospace,monospace;
   font-size: 1em;
 }
 
-button,
-input,
-optgroup,
-select,
-textarea {
+button, input, optgroup, select, textarea {
   color: inherit;
   font: inherit;
   margin: 0;
@@ -151,26 +122,20 @@ button {
   overflow: visible;
 }
 
-button,
-select {
+button, select {
   text-transform: none;
 }
 
-button,
-html input[type=button],
-input[type=reset],
-input[type=submit] {
+button, html input[type=button], input[type=reset], input[type=submit] {
   -webkit-appearance: button;
   cursor: pointer;
 }
 
-button[disabled],
-html input[disabled] {
+button[disabled], html input[disabled] {
   cursor: default;
 }
 
-button::-moz-focus-inner,
-input::-moz-focus-inner {
+button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
@@ -179,14 +144,12 @@ input {
   line-height: normal;
 }
 
-input[type=checkbox],
-input[type=radio] {
+input[type=checkbox], input[type=radio] {
   box-sizing: border-box;
   padding: 0;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -197,14 +160,13 @@ input[type=search] {
   box-sizing: content-box;
 }
 
-input[type=search]::-webkit-search-cancel-button,
-input[type=search]::-webkit-search-decoration {
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
 fieldset {
-  border: 0.013333rem solid silver;
-  margin: 0 0.026667rem;
+  border: 1px solid silver;
+  margin: 0 2px;
   padding: .35em .625em .75em;
 }
 
@@ -226,8 +188,7 @@ table {
   border-spacing: 0;
 }
 
-td,
-th {
+td, th {
   padding: 0;
 }
 
@@ -236,7 +197,6 @@ li {
 }
 
 /*-- 文字排版 --*/
-
 .fb {
   font-weight: bold;
 }
@@ -254,7 +214,7 @@ li {
 }
 
 .ti {
-  text-indent: -133.32rem;
+  text-indent: -9999px;
 }
 
 .eps {
@@ -272,7 +232,6 @@ li {
 }
 
 /*-- 定位 --*/
-
 .tl {
   text-align: left;
 }
@@ -312,8 +271,7 @@ li {
   clear: right;
 }
 
-.cf:before,
-.cf:after {
+.cf:before, .cf:after {
   content: " ";
   display: table;
 }
@@ -388,21 +346,15 @@ ul {
   padding: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-.button-sure,
-.button-no {
+.button-sure, .button-no {
   padding: 0;
-  width: 2.106667rem;
-  height: 0.466667rem;
-  line-height: 0.466667rem;
+  width: 158px;
+  height: 35px;
+  line-height: 35px;
   color: #271708;
   border: 0;
   background: #c49f58;
@@ -418,7 +370,6 @@ h6 {
 }
 
 /*下拉列表*/
-
 .drop-select {
   display: inline-block;
   vertical-align: middle;
@@ -427,8 +378,8 @@ h6 {
 
 .drop-select ul {
   width: 100%;
-  margin-top: 0.026667rem;
-  border: 0.013333rem solid #212a36;
+  margin-top: 2px;
+  border: 1px solid #212a36;
   position: absolute;
   display: none;
   z-index: 10;
@@ -436,9 +387,9 @@ h6 {
 }
 
 .drop-select ul li {
-  height: 0.32rem;
-  line-height: 0.32rem;
-  text-indent: 0.133333rem;
+  height: 24px;
+  line-height: 24px;
+  text-indent: 10px;
 }
 
 .drop-select ul li a {
@@ -454,22 +405,21 @@ h6 {
 }
 
 /*容器滚动条*/
-
 .mainScroll::-webkit-scrollbar {
-  width: 0.133333rem;
-  height: 0.133333rem;
-  border-radius: 0.066667rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
 }
 
 .mainScroll::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 0.066667rem rgba(0, 0, 0, 0.1);
-  border-radius: 0.066667rem;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   background: #000;
 }
 
 .mainScroll::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: inset 0 0 0.066667rem #2d3a48;
-  border-radius: 0.066667rem;
+  -webkit-box-shadow: inset 0 0 5px #2d3a48;
+  border-radius: 5px;
   background: #33383e;
 }
 
@@ -482,49 +432,49 @@ h6 {
 }
 
 .smallScroll::-webkit-scrollbar {
-  width: 0.133333rem;
-  height: 0.133333rem;
+  width: 10px;
+  height: 10px;
 }
 
 .smallScroll::-webkit-scrollbar-track {
-  border-radius: 0.04rem;
+  border-radius: 3px;
   background: #0f1114;
 }
 
 .smallScroll::-webkit-scrollbar-thumb {
-  border-radius: 0.04rem;
+  border-radius: 3px;
   background: #2e3740;
 }
 
 .smallScroll.smallScroll2::-webkit-scrollbar {
-  width: 0.08rem;
+  width: 6px;
 }
 
 body {
-  font: 0.186667rem/1.5 'Microsoft Yahei';
+  font: 14px/1.5 'Microsoft Yahei';
 }
 
 article .news {
-  width: 10.666667rem;
-  margin: 0.266667rem auto;
+  width: 800px;
+  margin: 20px auto;
 }
 
 article .news .title {
   width: 100%;
-  font-size: 0.32rem;
+  font-size: 24px;
   color: #000;
 }
 
 article .news .date {
-  font-size: 0.213333rem;
+  font-size: 16px;
   line-height: 2;
   color: #666;
-  margin-top: 0.133333rem;
-  border-bottom: 0.013333rem solid #e9e9e9;
+  margin-top: 10px;
+  border-bottom: 1px solid #e9e9e9;
 }
 
 article .news .content {
-  margin-top: 0.133333rem;
+  margin-top: 10px;
 }
 
 article .news .content img {
@@ -532,20 +482,20 @@ article .news .content img {
 }
 
 .float-download {
-  width: 1.92rem;
-  height: 2.293333rem;
+  width: 144px;
+  height: 172px;
   text-align: center;
   position: fixed;
   left: 50%;
-  top: 0.266667rem;
-  margin-left: 5.466667rem;
+  top: 20px;
+  margin-left: 410px;
   background: url(../images/float-download.jpg) no-repeat;
   z-index: 999;
 }
 
 .float-download .title {
   color: #eee;
-  font-size: 0.186667rem;
+  font-size: 14px;
   font-weight: normal;
-  line-height: 0.6rem;
+  line-height: 45px;
 }
