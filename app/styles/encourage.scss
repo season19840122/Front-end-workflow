@@ -26,7 +26,7 @@ a{
 		position: fixed;
 		width: 10rem;
 		top: 0;
-		z-index: 999;
+		z-index: 9;
 		height: 77px;
 		line-height: 77px;
 		padding: 0 25px;
@@ -73,7 +73,7 @@ a{
 		position: fixed;
 		width: 10rem;
 		top: 76px;
-		z-index: 99;
+		z-index: 10;
 		padding: 0 25px;
 		height: 80px;
 		background: #c47f2d;
@@ -131,17 +131,11 @@ a{
 		    height: 1px; /*no*/
 		    border-bottom: 1px solid #a1a1a1; /*no*/
 		    color: #a1a1a1;
-		    -webkit-transform-origin: 0 100%;
-		    -ms-transform-origin: 0 100%;
-		        transform-origin: 0 100%;
-		    -webkit-transform: scaleY(0.5);
-		    -ms-transform: scaleY(0.5);
-		        transform: scaleY(0.5);
 			}
 			.head{
 				-ms-flex-preferred-size: 120px;
 				    -webkit-flex-basis: 120px;
-				        flex-basis: 120px; 
+				        flex-basis: 120px;
 				img{
 					width: 100px;
 					height: 100px;
@@ -159,11 +153,16 @@ a{
 					-webkit-align-items: center;
 					    -ms-flex-align: center;
 					        align-items: center;
+					 margin-bottom: 10px;
+					 &:nth-last-of-type(1){
+					 	margin-bottom: 0;
+					 }
 				}
 				span{
 					margin-right: 15px;
 					color: #a1a1a1;
 					font-size: 22px; /*px*/
+					line-height: 1;
 				}
 				.name{
 					font-size: 28px; /*px*/
@@ -231,58 +230,70 @@ a{
 }
 
 .masklayer {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 10;
   display: none;
-  background: #161921;
-  opacity: .3;
+  background: #000;
+  opacity: .6;
 }
 
 .dialog {
-  position: absolute;
+  background: #fff;
+	// background-size: cover!important;
+  position: fixed;
   left: 50%;
   top: 50%;
-  margin-left: -(7.413333rem/2);
-  margin-top: -(8.8rem/2);
-  width: 7.413333rem;
-  min-height: 8.8rem;
-  z-index: 11;
-  background: #fff;
-  display: none;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 480px;
+  min-height: 120px;
+  padding: 20px; 
+  border-radius: 20px;
   border: 1px solid #e0e0e1;
-  border-radius: 0.2rem;
-  .modal-t, .modal-c{
-  	font-size: 38px; /*px*/
-  	color: #3e3e3e;
-  	margin: 0 auto;
-  	width: 6.533333rem;
+  z-index: 11;
+  display: none;
+  &.toast{
+  	background: #000;
+  	opacity: .9;
+		width: 580px;
+  	min-height: 120px;
+  	.modal-c{
+  		color: #fff;
+  		min-height: 120px;
+  	}
   }
   .modal-t{
-  	margin-top: 0.533333rem;
-  	margin-bottom: 0.4rem;
   	text-align: center;
+  	font-size: 40px; /*px*/
   	font-weight: bold;
+  	color: #3e3e3e;
+  	margin-bottom: 25px;
   }
   .modal-c{
-  	font-size: 28px; /*px*/
-  	margin-bottom: 0.8rem;
+  	display: flex;
+	  align-items: center;
+	  justify-content: center;
+  	font-size: 30px; /*px*/
+  	color: #3e3e3e;
+  	margin-bottom: 20px;
   }
   .btn-buy, .btn-cancel{
 		font-size: 32px; /*px*/
-		width: 6.533333rem;
-		height: 1.093333rem;
-		line-height: 1.093333rem;
+		width: 420px;
+		height: 70px;
+		line-height: 70px; /*px*/
 		text-align: center;
 		color: #fff;
 		background: #4487c2;
 		display: block;
 		margin: 0 auto;
-		border-radius: 0.133333rem;
-		margin-bottom: 0.133333rem;
+		border-radius: 10px;
+		margin-bottom: 10px;
   }
   .btn-cancel{
   	background: none;

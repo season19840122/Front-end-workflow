@@ -105,7 +105,7 @@ header{
 					font-size: 32px; /*px*/
 					color: #e7e7e7;
 				}
-				.btn-buy, .btn-has{
+				.btn-buy, .btn-has, .btn-pause{
 					font-size: 32px; /*px*/
 					// @include px2rem(marigin, 278px);
 					// @include px2rem(height, 70px);
@@ -130,6 +130,12 @@ header{
 					border: 0.04rem solid #59687d;
 					border-radius: 0.133333rem;
 				}
+				.btn-pause{
+					background: none;
+					color: #fa2f00;
+					border: 0.04rem solid #ff3000;
+					border-radius: 0.133333rem;
+				}
 			}
 		}
 	}
@@ -152,23 +158,24 @@ header{
 }
 
 .masklayer {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 10;
   display: none;
-  background: #161921;
-  opacity: .3;
+  background: #000;
+  opacity: .6;
 }
 
 .dialog {
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-left: -(7.413333rem/2);
-  margin-top: -(8.8rem/2);
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   width: 7.413333rem;
   min-height: 8.8rem;
   z-index: 11;
@@ -176,6 +183,17 @@ header{
   display: none;
   border: 1px solid #e0e0e1;
   border-radius: 0.2rem;
+  &.toast{
+  	background: #000;
+  	opacity: .9;
+		width: 580px;
+  	min-height: 120px;
+  	.modal-c{
+  		color: #fff;
+  		min-height: 120px;
+  		margin-bottom: 0;
+  	}
+  }
   .modal-t, .modal-c{
   	font-size: 38px; /*px*/
   	color: #3e3e3e;
@@ -189,6 +207,9 @@ header{
   	font-weight: bold;
   }
   .modal-c{
+  	display: flex;
+	  align-items: center;
+	  justify-content: center;
   	font-size: 28px; /*px*/
   	margin-bottom: 0.8rem;
   }

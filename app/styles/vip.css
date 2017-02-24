@@ -608,7 +608,8 @@ header .tab-ul li.active {
 }
 
 .content .privilege-ul li .privilege .btn-buy,
-.content .privilege-ul li .privilege .btn-has {
+.content .privilege-ul li .privilege .btn-has,
+.content .privilege-ul li .privilege .btn-pause {
   width: 3.706667rem;
   height: 0.933333rem;
   line-height: 0.933333rem;
@@ -622,17 +623,20 @@ header .tab-ul li.active {
 }
 
 [data-dpr="1"] .content .privilege-ul li .privilege .btn-buy,
-[data-dpr="1"] .content .privilege-ul li .privilege .btn-has {
+[data-dpr="1"] .content .privilege-ul li .privilege .btn-has,
+[data-dpr="1"] .content .privilege-ul li .privilege .btn-pause {
   font-size: 16px;
 }
 
 [data-dpr="2"] .content .privilege-ul li .privilege .btn-buy,
-[data-dpr="2"] .content .privilege-ul li .privilege .btn-has {
+[data-dpr="2"] .content .privilege-ul li .privilege .btn-has,
+[data-dpr="2"] .content .privilege-ul li .privilege .btn-pause {
   font-size: 32px;
 }
 
 [data-dpr="3"] .content .privilege-ul li .privilege .btn-buy,
-[data-dpr="3"] .content .privilege-ul li .privilege .btn-has {
+[data-dpr="3"] .content .privilege-ul li .privilege .btn-has,
+[data-dpr="3"] .content .privilege-ul li .privilege .btn-pause {
   font-size: 48px;
 }
 
@@ -640,6 +644,13 @@ header .tab-ul li.active {
   background: none;
   color: #59687d;
   border: 0.04rem solid #59687d;
+  border-radius: 0.133333rem;
+}
+
+.content .privilege-ul li .privilege .btn-pause {
+  background: none;
+  color: #fa2f00;
+  border: 0.04rem solid #ff3000;
   border-radius: 0.133333rem;
 }
 
@@ -689,23 +700,24 @@ header .tab-ul li.active {
 }
 
 .masklayer {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 10;
   display: none;
-  background: #161921;
-  opacity: .3;
+  background: #000;
+  opacity: .6;
 }
 
 .dialog {
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-left: -3.70667rem;
-  margin-top: -4.4rem;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 7.413333rem;
   min-height: 8.8rem;
   z-index: 11;
@@ -713,6 +725,19 @@ header .tab-ul li.active {
   display: none;
   border: 0.013333rem solid #e0e0e1;
   border-radius: 0.2rem;
+}
+
+.dialog.toast {
+  background: #000;
+  opacity: .9;
+  width: 7.733333rem;
+  min-height: 1.6rem;
+}
+
+.dialog.toast .modal-c {
+  color: #fff;
+  min-height: 1.6rem;
+  margin-bottom: 0;
 }
 
 .dialog .modal-t,
@@ -745,6 +770,9 @@ header .tab-ul li.active {
 }
 
 .dialog .modal-c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 0.8rem;
 }
 
