@@ -526,7 +526,7 @@ a:hover {
   position: fixed;
   width: 10rem;
   top: 0;
-  z-index: 9;
+  z-index: 11;
   height: 1.026667rem;
   line-height: 1.026667rem;
   padding: 0 0.333333rem;
@@ -553,6 +553,7 @@ a:hover {
   -webkit-flex-basis: 2.666667rem;
   flex-basis: 2.666667rem;
   position: relative;
+  color: #767676;
 }
 
 .wrap nav .tab:nth-of-type(2) {
@@ -827,7 +828,7 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 10;
+  z-index: 30;
   display: none;
   background: #000;
   opacity: .6;
@@ -846,7 +847,7 @@ a:hover {
   padding: 0.266667rem;
   border-radius: 0.266667rem;
   border: 0.013333rem solid #e0e0e1;
-  z-index: 11;
+  z-index: 30;
   display: none;
 }
 

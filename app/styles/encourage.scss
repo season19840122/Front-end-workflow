@@ -26,7 +26,7 @@ a{
 		position: fixed;
 		width: 10rem;
 		top: 0;
-		z-index: 9;
+		z-index: 11;
 		height: 77px;
 		line-height: 77px;
 		padding: 0 25px;
@@ -40,6 +40,7 @@ a{
 			    -webkit-flex-basis: 200px;
 			        flex-basis: 200px;
 	    position: relative;
+	    color: #767676;
 	    &:nth-of-type(2){
 				-webkit-flex-grow: 1;
 				    -ms-flex-positive: 1;
@@ -235,7 +236,7 @@ a{
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 10;
+  z-index: 30;
   display: none;
   background: #000;
   opacity: .6;
@@ -255,7 +256,7 @@ a{
   padding: 20px; 
   border-radius: 20px;
   border: 1px solid #e0e0e1;
-  z-index: 11;
+  z-index: 30;
   display: none;
   &.toast{
   	background: #000;
