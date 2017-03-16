@@ -44,20 +44,18 @@ gulp.task('sprite', function () {
 
 // Less 编译成 css
 gulp.task('less', function() {
-  var processors = [px2rem({remUnit: 75})];
   return gulp.src([
       'app/styles/*.less',
-      '!app/styles/no-*.less'
+      '!app/styles/m-*.less'
     ])
     .pipe($.less())
-    .pipe(postcss(processors))
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream({once: true}));
 });
 
-gulp.task('no-less', function() {
+gulp.task('m-less', function() {
   var processors = [px2rem({remUnit: 75})];
-  return gulp.src('app/styles/no-*.less')
+  return gulp.src('app/styles/m-*.less')
     .pipe($.less())
     .pipe(postcss(processors))
     .pipe(gulp.dest('app/styles'))
@@ -66,22 +64,22 @@ gulp.task('no-less', function() {
 
 // Sass 编译成 css
 gulp.task('sass', function() {
-  var processors = [px2rem({remUnit: 75})];
   return gulp.src([
       'app/styles/*.scss',
-      '!app/styles/no-*.scss'
+      '!app/styles/m-*.scss'
     ])
     .pipe($.sass({outputStyle: 'expanded'}).on('error', $.sass.logError))
-    .pipe(postcss(processors))
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream({once: true}));
 });
 
-gulp.task('no-sass', function() {
+gulp.task('m-sass', function() {
+	var processors = [px2rem({remUnit: 75})];
   return gulp.src([
-      'app/styles/no-*.scss'
+      'app/styles/m-*.scss'
     ])
     .pipe($.sass({outputStyle: 'expanded'}).on('error', $.sass.logError))
+		.pipe(postcss(processors))
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream({once: true}));
 });
@@ -136,7 +134,7 @@ gulp.task('csso', ['copy'], function () {
 gulp.task('clean', require('del').bind(null, ['dist']));
 
 // 启一个 Browser-sync 服务器并监听文件改动
-gulp.task('serve', ['sass', 'no-sass', 'pug'], function() {
+gulp.task('serve', ['sass', 'm-sass', 'pug'], function() {
   var port = Math.floor(Math.random()*10000) 
   port = (port > 1024? port: Math.floor(Math.random()*10000));
 
@@ -150,7 +148,7 @@ gulp.task('serve', ['sass', 'no-sass', 'pug'], function() {
       port: port+1
     }
   });
-  gulp.watch('app/styles/*.scss', ['sass', 'no-sass']);
+  gulp.watch('app/styles/*.scss', ['sass', 'm-sass']);
   gulp.watch('app/templates/pug/*.pug', ['pug']);
   gulp.watch([
     'app/*.html',
@@ -162,7 +160,7 @@ gulp.task('serve', ['sass', 'no-sass', 'pug'], function() {
 
 // 生产环境
 gulp.task('step1', ['clean'], function() {
-  gulp.start(['sass', 'no-sass', 'pug', 'image']);
+  gulp.start(['sass', 'm-sass', 'pug', 'image']);
 });
 
 gulp.task('build', ['step1'], function(){
