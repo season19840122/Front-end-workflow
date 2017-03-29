@@ -8,11 +8,11 @@ var gulp = require('gulp'),
 
 
 var spriteConfig = {
-	imgSrc:'./app/templates/center_modal/img/needSprite/*.png',
-	desSrc:'./app/templates/center_modal/img/sprite',
-	imgSprite:'sprite_icon.png',
-	cssName:'../../sprite.css',
-	padding:3
+	imgSrc: './app/templates/center_modal/img/needSprite/*.png',
+	desSrc: './app/templates/center_modal/img/sprite',
+	imgSprite: 'sprite_icon.png',
+	cssName: '../../sprite.css',
+	padding: 3
 }
 
 //合并sprite图片

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>小面板</title>
+    <link rel="stylesheet" href="styles/index.css">
+  </head>
+  <body>
+    <div class="box">
+      <div id="app" v-cloak>
+        <little-panel>
+          <div class="challenge" slot="challenge">
+            <h2 class="title"><i></i>屠龙勇士</h2>
+            <p class="text" title="击杀一条炼狱亚龙或者山脉亚龙的玩家平分奖池">击杀一条炼狱亚龙或者山脉亚龙的玩家平分奖池</p>
+            <div class="scan">
+              <p class="charge">报名费￥0.5</p><img class="qrcode" src="images/qrcode.png" alt="">
+            </div>
+            <div class="reached none">
+              <p class="dou"> <i></i>12345646</p>
+              <p class="tips">（已达成132份）</p>
+              <div class="label"><span>匹配</span><span>排位</span><span id="check">17:00结算</span></div>
+              <button class="unreach">未达成？我不服</button>
+              <button class="unreach disabled">未达成</button>
+              <button class="reach">已达成，再来一局</button>
+              <button class="reach disabled">已达成</button>
+              <button class="success"><i></i>报名成功</button>
+              <div class="animate-wrap">
+                <div class="animate">
+                  <div class="btn-wrap">
+                    <button>
+                       奖励<span>x2</span></button>
+                  </div>
+                  <div class="btn-wrap">
+                    <button> <i></i>5000<span>x5</span></button>
+                  </div>
+                  <div class="btn-wrap">
+                    <button>奖励<span>x10</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="info" slot="info">
+            <h2 class="title"><i></i>专题页标题最多十个字</h2><a class="text" href="#" target="_blank">活动注释，宣传语，两行宣传语，两行宣传语，两行宣传语，两行宣传语。</a>
+          </div>
+          <div class="banner none" slot="banner"><a href="#" target="blank"><img src="../images/pics/img_228x108.png" alt=""></a></div>
+          <div class="game" slot="game">
+            <div class="start-wrap">
+              <!-- 玩游戏-->
+              <div class="step1">
+                <h2 class="title">LOL反应能力测试</h2>
+                <p class="text mt30">当<span class="red">红色</span>背景变成<span class="green">绿色</span>时，<span class="blue">尽可能</span>快的<br>点击鼠标左键</p>
+                <button class="start ti" id="start">开始</button>
+              </div>
+              <!-- 成功有豆-->
+              <div class="step5 none">
+                <h2 class="title">LOL反应能力测试</h2>
+                <p class="big">最终成绩：{{ average }}ms</p>
+                <p class="small">获得300顺豆</p>
+                <p class="text">恭喜你，打败了附近95%的玩家</p>
+                <button class="long">去赢豆，兑换点劵</button>
+              </div>
+              <!-- 成功无豆-->
+              <div class="step5-1 none">
+                <h2 class="title">LOL反应能力测试</h2>
+                <p class="big">最终成绩：{{ average }}ms</p>
+                <p class="text">恭喜你，打败了附近95%的玩家</p>
+                <button class="long">去赢豆，兑换点劵</button>
+              </div>
+              <!-- 失败-->
+              <div class="step5-2 none">
+                <h2 class="title">LOL反应能力测试</h2>
+                <p class="big error">最终成绩：{{ average }}ms</p>
+                <p class="text">很遗憾，300ms以内才能获得奖励</p>
+                <button class="long">再玩一次</button>
+              </div>
+              <!-- 去哪赢豆-->
+              <div class="step6 none">
+                <h2 class="title">去哪赢豆？</h2>
+                <p class="text mt30">LOL游戏加载界面参加胜场有你，获得游戏胜利就能赢豆</p>
+                <button class="long">再玩一次</button>
+              </div>
+              <div class="game-test none">
+                <h2 class="title">LOL反应能力测试</h2>
+                <!-- 等待绿色-->
+                <div class="step2 none">
+                  <p class="big">等待绿色...</p>
+                  <p class="small hidden">点击重试             </p>
+                </div>
+                <!-- 还未开始-->
+                <div class="step2-1 none">
+                  <p class="big">还未开始...</p>
+                  <p class="small">点击重试</p>
+                </div>
+                <!-- 点击左键-->
+                <div class="step3 none">
+                  <p class="big">点击左键！</p>
+                  <p class="small hidden">点击重试</p>
+                </div>
+                <!-- 结算-->
+                <div class="step4 none">
+                  <p class="big">235ms</p>
+                  <p class="small">点击继续</p>
+                </div>
+                <div class="footer"><span>平均时间 : {{ average }}ms</span><span>完成 : {{ count }}/3</span></div>
+              </div>
+            </div>
+          </div>
+        </little-panel>
+      </div>
+      <template id="tmpl-panel">
+        <div class="panel">
+          <slot name="challenge"></slot>
+          <slot name="info"></slot>
+          <slot name="banner"></slot>
+          <slot name="game"></slot>
+        </div>
+      </template>
+    </div>
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/vue.min.js"></script>
+    <script>
+      (function($){
+      
+        Vue.component('little-panel', {
+          template: '#tmpl-panel',
+          props: ['show'],
+          methods: {
+            //- close: function() {
+            //-   this.show = false
+            //- }
+          }
+        });
+      
+        var vm = new Vue({
+          el: '#app',
+          data: {
+            show: false,
+            interval: 0,
+            average: 0,
+            count: 0
+          },
+          methods: {
+            //- startGame: function() {
+            //-   console.log(this[0]);
+            //- }
+          }
+        });
+        
+        $('.btn-wrap button').hover(function(){
+          $('#check').addClass('sel');
+        }, function(){
+          $('#check').removeClass('sel');
+        });
+      
+        // 小游戏
+        var datetime1, datetime2, flag;
+      
+        function waitingTiming(){
+          var dalay = getRandomArbitrary(1, 3)*1000;
+          flag = window.setTimeout(function(){
+            $('.step2').hide();  
+            $('.game-test').attr('class', 'game-test green'); 
+            $('.step3').removeClass('none').show();
+            datetime1 = new Date().getTime();
+          }, dalay);
+        }
+      
+        function getRandomArbitrary(min, max) {
+          return Math.random() * (max - min) + min;
+        }
+      
+        $('body').on('click', '#start', function(){
+          $('.step1').hide();
+          $('.game-test, .step2').removeClass('none').show();
+          waitingTiming();
+        });
+      
+        $('body').on('click', '.step2', function(){
+            window.clearTimeout(flag);
+            $('.step2').hide();
+            $('.step2-1').removeClass('none').show();
+        });
+      
+        $('body').on('click', '.step2-1', function(){
+          $('.step2-1').hide();
+          $('.step2').show();
+          waitingTiming();
+        });
+      
+        $('body').on('click', '.step3', function(){
+          vm.count++;
+          $('.step3').hide();
+          datetime2 = new Date().getTime();
+          var now = Math.floor(datetime2 - datetime1)
+          vm.interval += Math.floor(datetime2 - datetime1);
+          vm.average = Math.floor(vm.interval / vm.count);
+          var $step4 = $('.step4');
+          $step4.find('.big').text(now + 'ms');
+          $('.game-test').removeClass('green').addClass('check');
+          $step4.removeClass('none').show();
+        });
+      
+        $('body').on('click', '.step4', function(){
+          if(vm.count < 3) {
+            $('.step4').hide();
+            $('.step2').show();
+            $('.game-test').attr('class', 'game-test'); 
+            waitingTiming();
+          } else {
+            $('.game-test, .step4').hide();
+            $('.start-wrap').show();
+            if(vm.average > 300) {
+              $('.step5-2').removeClass('none').show();
+            } else {
+              $('.step5-1').removeClass('none').show();
+            }
+          }
+        });
+      
+        $('body').on('click', '.step5-2 .long, .step6 .long', function(){
+          $('.step5-2, .step6').hide();
+          $('.step1').show();
+          $('.game-test').attr('class', 'game-test'); 
+          vm.interval = vm.average = vm.count = 0;
+        });
+      
+        $('body').on('click', '.step5 .long, .step5-1 .long', function(){
+          $('.step5, .step5-1').hide();
+          $('.step6').removeClass('none').show();
+        });
+      
+      })(jQuery);
+    </script>
+  </body>
+</html>
