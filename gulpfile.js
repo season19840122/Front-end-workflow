@@ -50,7 +50,7 @@ gulp.task('less', function() {
     ])
     .pipe($.less())
     .pipe(gulp.dest('app/styles'))
-    .pipe(browserSync.stream({once: true}));
+    .pipe(browserSync.stream());
 });
 
 gulp.task('m-less', function() {
@@ -59,7 +59,7 @@ gulp.task('m-less', function() {
     .pipe($.less())
     .pipe(postcss(processors))
     .pipe(gulp.dest('app/styles'))
-    .pipe(browserSync.stream({once: true}));
+    .pipe(browserSync.stream());
 });
 
 // Sass 编译成 css
@@ -70,7 +70,7 @@ gulp.task('sass', function() {
     ])
     .pipe($.sass({outputStyle: 'expanded'}).on('error', $.sass.logError))
     .pipe(gulp.dest('app/styles'))
-    .pipe(browserSync.stream({once: true}));
+    .pipe(browserSync.stream());
 });
 
 gulp.task('m-sass', function() {
@@ -81,7 +81,7 @@ gulp.task('m-sass', function() {
     .pipe($.sass({outputStyle: 'expanded'}).on('error', $.sass.logError))
 		.pipe(postcss(processors))
     .pipe(gulp.dest('app/styles'))
-    .pipe(browserSync.stream({once: true}));
+    .pipe(browserSync.stream());
 });
 
 // Pug 编译成 html
@@ -93,7 +93,7 @@ gulp.task('pug', function () {
       pretty: true
     }))
     .pipe(gulp.dest('app'))
-    .pipe(browserSync.stream({once: true}));;
+    .pipe(browserSync.stream());;
 });
 
 // 图片压缩优化
@@ -135,7 +135,7 @@ gulp.task('clean', require('del').bind(null, ['dist']));
 
 // 启一个 Browser-sync 服务器并监听文件改动
 gulp.task('serve', ['sass', 'm-sass', 'pug'], function() {
-  var port = Math.floor(Math.random()*10000) 
+  var port = Math.floor( Math.random() * 10000 ) 
   port = (port > 1024? port: Math.floor(Math.random()*10000));
 
   browserSync.init({
@@ -145,7 +145,7 @@ gulp.task('serve', ['sass', 'm-sass', 'pug'], function() {
     },
     port: port,
     ui: {
-      port: port+1
+      port: port + 1
     }
   });
   gulp.watch('app/styles/*.scss', ['sass', 'm-sass']);
