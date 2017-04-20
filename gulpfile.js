@@ -126,7 +126,7 @@ gulp.task('copy', function () {
 // Build 压缩 css
 gulp.task('csso', ['copy'], function () {
   return gulp.src('dist/styles/*.css')
-    .pipe($.csso())
+    // .pipe($.csso())
     .pipe(gulp.dest('dist/styles'));
 });
 
@@ -152,9 +152,9 @@ gulp.task('serve', ['sass', 'm-sass', 'pug'], function() {
   gulp.watch('app/templates/pug/*.pug', ['pug']);
   gulp.watch([
     'app/*.html',
-    'app/styles/*.css',
     'app/scripts/*.js',
-    'app/images/**'
+    'app/images/**',
+    'app/mock/**'
   ]).on('change', browserSync.reload);
 });
 
