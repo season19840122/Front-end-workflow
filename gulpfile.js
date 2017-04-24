@@ -134,10 +134,9 @@ gulp.task('csso', ['copy'], function () {
 gulp.task('clean', require('del').bind(null, ['dist']));
 
 // 启一个 Browser-sync 服务器并监听文件改动
-gulp.task('serve', ['sass', 'm-sass', 'pug'], function() {
-  var port = Math.floor( Math.random() * 10000 ) 
-  port = (port > 1024? port: Math.floor(Math.random()*10000));
-
+gulp.task('serve', ['sass', 'm-sass', 'pug'], function(){
+  var port = Math.floor(Math.random()*10000) 
+  port = (port>1024? port: Math.floor(Math.random()*10000));
   browserSync.init({
     server: {
       baseDir: './app',
@@ -148,6 +147,7 @@ gulp.task('serve', ['sass', 'm-sass', 'pug'], function() {
       port: port + 1
     }
   });
+
   gulp.watch('app/styles/*.scss', ['sass', 'm-sass']);
   gulp.watch('app/templates/pug/*.pug', ['pug']);
   gulp.watch([
@@ -159,13 +159,31 @@ gulp.task('serve', ['sass', 'm-sass', 'pug'], function() {
 });
 
 // 生产环境
-gulp.task('step1', ['clean'], function() {
-  gulp.start(['sass', 'm-sass', 'pug', 'image']);
+gulp.task('pre', ['clean'], function(){
+  gulp.start('step1');
 });
 
-gulp.task('build', ['step1'], function(){
-  gulp.start('csso');
+gulp.task('step1', ['sass', 'm-sass', 'pug', 'image'], function() {
+  gulp.start('step2');
 });
+
+gulp.task('step2', ['csso'], function(){
+  var port = Math.floor(Math.random()*10000) 
+  port = (port>1024? port: Math.floor(Math.random()*10000));
+  browserSync.init({
+    server: {
+      baseDir: './dist',
+      directory: true
+    },
+    port: port,
+    ui: {
+      port: port + 1
+    }
+  });
+  
+});
+
+gulp.task('build', ['pre']);
 
 // 开发环境
 gulp.task('default', ['serve']);

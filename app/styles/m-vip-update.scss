@@ -1,0 +1,254 @@
+@import '_base';
+@import '_common';
+
+html{
+	background: #f4f4f4!important;
+}
+
+body{
+  font:14px/1.5 Helvetica, 'SimHei'; /*no*/
+  background: #f4f4f6;
+  cursor: pointer;
+  overflow-x: hidden;
+}
+
+a{
+	&:hover{
+		text-decoration: none!important;
+	}
+}
+
+.wrap{
+  position: relative;
+  width: 750px;
+  margin: 0 auto;
+	.content-wrap {
+		div {
+			img {
+				width: 750px;
+				display: block;
+			}
+		}
+		.bg01 {
+			position: relative;
+			img {
+				height: 346px;
+			}
+			.date {
+				position: absolute;
+				left: 437px;
+				top: 74px;
+				font-size: 24px;
+				color: #fff;
+			}			
+		}
+		.bg02 img{
+			height: 211px;
+		}
+		.bg03 {
+			position: relative;
+			img {
+				height: 418px;
+			}
+			.btn-wrap {
+				position: absolute;
+				left: 0;
+				bottom: 16px;
+				width: 750px;
+				text-align: center;
+				a.btn {
+					background: url(../images/vip/btn.png) no-repeat;
+					width: 292px;
+					height: 92px;
+					line-height: 75px;
+					display: inline-block;
+					background-size: cover;
+					margin: 0 26px;
+					color: #fff;
+					font-size: 30px; /*px*/
+					font-weight: bold;
+					
+				}
+			}
+		}
+		.bg04 {
+			img {
+				height: 232px;
+			}
+			&.pc {
+				margin-bottom: 210px;
+			}
+		}
+		.bg05 img{
+			height: 346px;
+		}
+		.bg06 {
+			position: relative;
+			img {
+				height: 608px;
+			}
+			.p1, .p2 {
+				position: absolute;
+				left: 0;
+				top: 300px;
+				width: 750px;
+				font-weight: bold;
+				font-size: 48px; /*px*/
+				color: #ffd34e;
+				text-align: center;
+				line-height: 1;
+			}
+			.p2 {
+				top: 490px;
+			}
+		}
+		.bg07 {
+			position: relative;
+			img {
+				height: 253px;
+			}
+			.btn-wrap {
+				position: absolute;
+				left: 0;
+				top: 22px;
+				width: 750px;
+				text-align: center;
+				a.btn {
+					background: #d65600;
+					width: 600px;
+					height: 90px;
+					line-height: 90px;
+					display: inline-block;
+					color: #fff;
+					font-size: 36px; /*px*/
+					text-align: center;
+					border-radius: 8px; /*no*/
+				}
+			}
+		}
+		.footer {
+			position: fixed;
+			bottom: 0;
+			.qrcode-wrap{
+	      width: 750px;
+	      height: 210px;
+	      background: #021e20;
+	      display: flex;
+	      .qrcode{
+	        margin: 20px 20px 20px 60px;
+	        width: 170px;
+	        height: 170px;
+	        display: inline-block;
+	      }
+	      .slogan{
+	      	display: inline-block;
+	        margin-top: 20px;
+	        color: #2d6061;
+	        font-size: 30px; /*px*/
+	        .b{
+	          color: #58a9af;
+	          font-size: 36px; /*px*/
+	        }
+	      }
+    	}
+		}
+	}
+}
+
+.masklayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: none;
+  background: #000;
+  opacity: .6;
+}
+
+.dialog {
+  background: #fff;
+	// background-size: cover!important;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 480px;
+  min-height: 120px;
+  padding: 20px; 
+  border-radius: 20px;
+  border: 1px solid #e0e0e1;
+  z-index: 30;
+  display: none;
+  &.toast{
+  	background: #000;
+  	opacity: .9;
+		width: 580px;
+  	min-height: 120px;
+  	.modal-c{
+  		color: #fff;
+  		min-height: 120px;
+  	}
+  }
+  .modal-t{
+  	text-align: center;
+  	font-size: 40px; /*px*/
+  	font-weight: bold;
+  	color: #3e3e3e;
+  	margin-bottom: 25px;
+  }
+  .modal-c{
+  	display: -webkit-flex;
+  	display: -ms-flexbox;
+  	display: flex;
+	  -webkit-align-items: center;
+	      -ms-flex-align: center;
+	          align-items: center;
+	  -webkit-justify-content: center;
+	      -ms-flex-pack: center;
+	          justify-content: center;
+  	font-size: 30px; /*px*/
+  	color: #3e3e3e;
+  	margin-bottom: 20px;
+  }
+  .btn-buy, .btn-cancel{
+		font-size: 32px; /*px*/
+		width: 420px;
+		height: 70px;
+		line-height: 70px; 
+		text-align: center;
+		color: #fff;
+		background: #4487c2;
+		display: block;
+		margin: 0 auto;
+		border-radius: 10px;
+		margin-bottom: 10px;
+  }
+  .btn-cancel{
+  	background: none;
+  	color: #4487c2;
+  }
+}
+
+.no-records {
+	position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #b1b1b1;
+  .p1{
+		font-size: 32px; /*px*/
+  }
+  .p2{
+		font-size: 28px; /*px*/
+  }
+}
