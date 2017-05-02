@@ -48,6 +48,7 @@ gulp.task('less', function() {
       'app/styles/*.less',
       '!app/styles/m-*.less'
     ])
+    .pipe($.plumber())
     .pipe($.less())
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream());
@@ -56,6 +57,7 @@ gulp.task('less', function() {
 gulp.task('m-less', function() {
   var processors = [px2rem({remUnit: 75})];
   return gulp.src('app/styles/m-*.less')
+    .pipe($.plumber())
     .pipe($.less())
     .pipe(postcss(processors))
     .pipe(gulp.dest('app/styles'))
