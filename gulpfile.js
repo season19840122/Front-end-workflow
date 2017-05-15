@@ -15,31 +15,30 @@ var spriteConfig = {
 	padding: 3
 }
 
-//合并sprite图片
+//合并 sprite 图片
 gulp.task('sprite', function () {
-    return gulp.src(spriteConfig.imgSrc)
-        .pipe($.spritesmith({
-            imgName: spriteConfig.imgSprite,//保存合并后图片的地址
-            cssName: spriteConfig.cssName,//保存合并后对于css样式的地址
-            padding:spriteConfig.padding,//合并时两个图片的间距
-            algorithm: 'binary-tree',//注释1
-            cssTemplate: function (data) {
-                var arr=[];
-                data.sprites.forEach(function (sprite) {
-                    arr.push(".icon-"+sprite.name+
-                    "{" +
-                    "background-image: url('"+sprite.escaped_image+"');"+
-                    "background-repeat: no-repeat;"+
-                    "background-position: "+sprite.px.offset_x+" "+sprite.px.offset_y+";"+
-                    "width:"+sprite.px.width+";"+
-                    "height:"+sprite.px.height+";"+
-                    "}\n");
-                });
-                return arr.join("");
-            }
-
-        }))
-        .pipe(gulp.dest(spriteConfig.desSrc));
+  return gulp.src(spriteConfig.imgSrc)
+    .pipe($.spritesmith({
+      imgName: spriteConfig.imgSprite,//保存合并后图片的地址
+      cssName: spriteConfig.cssName,//保存合并后对于css样式的地址
+      padding:spriteConfig.padding,//合并时两个图片的间距
+      algorithm: 'binary-tree',//注释1
+      cssTemplate: function (data) {
+        var arr=[];
+        data.sprites.forEach(function (sprite) {
+          arr.push(".icon-"+sprite.name+
+          "{" +
+          "background-image: url('"+sprite.escaped_image+"');"+
+          "background-repeat: no-repeat;"+
+          "background-position: "+sprite.px.offset_x+" "+sprite.px.offset_y+";"+
+          "width:"+sprite.px.width+";"+
+          "height:"+sprite.px.height+";"+
+          "}\n");
+        });
+        return arr.join("");
+      }
+    }))
+    .pipe(gulp.dest(spriteConfig.desSrc));
 });
 
 // Less 编译成 css
@@ -69,7 +68,8 @@ gulp.task('sass', function() {
   return gulp.src([
       'app/styles/*.scss',
       '!app/styles/m-*.scss'
-    ])
+    ])  
+    .pipe($.plumber())
     .pipe($.sass({outputStyle: 'expanded'}).on('error', $.sass.logError))
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream());
@@ -80,10 +80,37 @@ gulp.task('m-sass', function() {
   return gulp.src([
       'app/styles/m-*.scss'
     ])
+    .pipe($.plumber())
     .pipe($.sass({outputStyle: 'expanded'}).on('error', $.sass.logError))
 		.pipe(postcss(processors))
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream());
+});
+
+// es6+ 转为 es5
+gulp.task('scripts', function() {
+  return gulp.src([
+    'app/scripts/**/*.js',
+    '!app/scripts/**/_*.*',
+    '!app/scripts/**/!*.*'
+    ])
+    .pipe($.plumber())
+    .pipe($.babel())
+    .pipe(gulp.dest('.tmp/scripts'))
+    .pipe(browserSync.stream());
+});
+
+// eslint 检验 js
+function lint(files) {
+  return gulp.src(files)
+    .pipe($.eslint({ fix: true }))
+    .pipe(browserSync.stream())
+    .pipe($.eslint.format())
+}
+
+gulp.task('lint', () => {
+  return lint('app/scripts/**/*.js')
+    .pipe(gulp.dest('app/scripts'));
 });
 
 // Pug 编译成 html
@@ -101,8 +128,8 @@ gulp.task('pug', function () {
 // 图片压缩优化
 gulp.task('image', function(){
   return gulp.src('app/images/**')
-      .pipe($.imagemin())
-      .pipe(gulp.dest('app/images'));
+    .pipe($.imagemin())
+    .pipe(gulp.dest('app/images'));
 })
 
 // 拷贝所有文件
@@ -110,14 +137,14 @@ gulp.task('copy', function () {
   return gulp.src([
     'app/*.*',
     'app/images/**',
-    'app/scripts/**',
+    '!app/images/**/*bak*.*',
+    'app/scripts/**/_*.js',
+    '!app/scripts/**/!*.*',
     'app/styles/*.css',
+    '!app/styles/_*.css',
     'app/module/*/*',
     '!app/module/**/*.scss',
     '!app/_*.*',
-    '!app/styles/_*.*',
-    '!app/scripts/_*.*',
-    '!app/images/**/*bak*.*',
     '!app/mock/**'
   ], {
     base: 'app',
@@ -125,18 +152,24 @@ gulp.task('copy', function () {
   }).pipe(gulp.dest('dist'));
 });
 
+gulp.task('extra', ['lint'], function () {
+  return gulp.src([
+    '.tmp/**'
+  ]).pipe(gulp.dest('dist'));
+});
+
 // Build 压缩 css
-gulp.task('csso', ['copy'], function () {
+gulp.task('csso', ['copy', 'extra'], function () {
   return gulp.src('dist/styles/*.css')
     // .pipe($.csso())
     .pipe(gulp.dest('dist/styles'));
 });
 
 // 优先清理 dist 目录，保证生产环境清洁
-gulp.task('clean', require('del').bind(null, ['dist']));
+gulp.task('clean', require('del').bind(null, ['app/.tmp', 'dist']));
 
 // 启一个 Browser-sync 服务器并监听文件改动
-gulp.task('serve', ['sass', 'm-sass', 'pug'], function(){
+gulp.task('serve', ['sass', 'm-sass', 'scripts', 'pug'], function(){
   var port = Math.floor(Math.random()*10000) 
   port = (port>1024? port: Math.floor(Math.random()*10000));
   browserSync.init({
@@ -151,10 +184,10 @@ gulp.task('serve', ['sass', 'm-sass', 'pug'], function(){
   });
 
   gulp.watch('app/styles/*.scss', ['sass', 'm-sass']);
+  gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch('app/templates/pug/*.pug', ['pug']);
   gulp.watch([
     'app/*.html',
-    'app/scripts/*.js',
     'app/images/**',
     'app/mock/**'
   ]).on('change', browserSync.reload);
@@ -165,12 +198,12 @@ gulp.task('pre', ['clean'], function(){
   gulp.start('step1');
 });
 
-gulp.task('step1', ['sass', 'm-sass', 'pug', 'image'], function() {
+gulp.task('step1', ['sass', 'm-sass', 'scripts', 'pug', 'image'], function() {
   gulp.start('step2');
 });
 
 gulp.task('step2', ['csso'], function(){
-  var port = Math.floor(Math.random()*10000) 
+  var port = Math.floor(Math.random()*10000),
   port = (port>1024? port: Math.floor(Math.random()*10000));
   browserSync.init({
     server: {

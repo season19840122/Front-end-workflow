@@ -112,19 +112,19 @@ block main
       slot(name="banner")
       slot(name="game")
 block script
-  script(src="scripts/jquery-3.1.1.min.js")
-  //- script(src="scripts/_vue.js")
-  script(src="scripts/vue.min.js")
+  script(src="scripts/_jquery-3.1.1.min.js")
+  //- script(src="scripts/!vue.js")
+  script(src="scripts/_vue.min.js")
   script.
-    (function($){
+    ;(function($){
 
       Vue.component('little-panel', {
         template: '#tmpl-panel',
         props: ['show'],
         methods: {
-          //- close: function() {
-          //-   this.show = false
-          //- }
+          // close: function() {
+          //   this.show = false
+          // }
         }
       });
 
@@ -137,9 +137,9 @@ block script
           count: 0
         },
         methods: {
-          //- startGame: function() {
-          //-   console.log(this[0]);
-          //- }
+          // startGame: function() {
+          //   console.log(this[0]);
+          // }
         }
       });
       
