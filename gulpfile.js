@@ -88,16 +88,31 @@ gulp.task('m-sass', function() {
 });
 
 // es6+ 转为 es5
-gulp.task('scripts', function() {
-  return gulp.src([
-    'app/scripts/**/*.js',
-    '!app/scripts/**/_*.*',
-    '!app/scripts/**/!*.*'
-    ])
-    .pipe($.plumber())
-    .pipe($.babel())
-    .pipe(gulp.dest('.tmp/scripts'))
-    .pipe(browserSync.stream());
+gulp.task('scripts', ['cleantmp'], function() {
+  gulp.src([
+    'app/scripts/u/**/*.js'
+  ])
+  .pipe($.plumber())
+  .pipe($.babel())
+  .pipe($.uglify({
+    mangle: false // 类型：Boolean 默认：true 是否修改变量名
+    ,compress: false // 类型：Boolean 默认：true 是否完全压缩
+    ,output: {
+      beautify: true
+      ,comments: /^!|@preserve|@license|@cc_on/i 
+    } // 保留指定的注释信息
+  }))
+  .pipe(gulp.dest('.tmp/scripts'))
+  .pipe(browserSync.stream());
+
+  gulp.src([
+    'app/scripts/**/*.js'
+    ,'!app/scripts/**/_*.*'
+    ,'!app/scripts/u/**/*.js'
+  ])
+  .pipe($.plumber())
+  .pipe(gulp.dest('.tmp/scripts'))
+  .pipe(browserSync.stream());
 });
 
 // eslint 检验 js
@@ -118,6 +133,7 @@ gulp.task('pug', function () {
   return gulp.src([
       'app/templates/pug/*.pug'
     ])
+    .pipe($.plumber())
     .pipe($.pug({
       pretty: true
     }))
@@ -128,27 +144,36 @@ gulp.task('pug', function () {
 // 图片压缩优化
 gulp.task('image', function(){
   return gulp.src('app/images/**')
-    .pipe($.imagemin())
+    .pipe(
+      $.cache(
+        $.imagemin([
+          $.imagemin.gifsicle({ interlaced: true }) // 隔行扫描 gif 进行渲染，默认为：false 
+          ,$.imagemin.jpegtran({ progressive: true }) // 无损压缩 jpg 图片，默认为：false 
+          ,$.imagemin.optipng({ optimizationLevel: 6 }) // png 优化等级，（取值范围：0-7）默认为：3
+          ,$.imagemin.svgo({ plugins: [{ removeViewBox: true }] }) // 多次优化 svg 直到完全优化，默认为：false 
+        ], {
+          verbose: true
+        })
+      )
+    )
     .pipe(gulp.dest('app/images'));
 })
 
 // 拷贝所有文件
 gulp.task('copy', function () {
   return gulp.src([
-    'app/*.*',
-    'app/images/**',
-    '!app/images/**/*bak*.*',
-    'app/scripts/**/_*.js',
-    '!app/scripts/**/!*.*',
-    'app/styles/*.css',
-    '!app/styles/_*.css',
-    'app/module/*/*',
-    '!app/module/**/*.scss',
-    '!app/_*.*',
-    '!app/mock/**'
+    'app/*.*'
+    ,'app/images/**'
+    ,'!app/images/**/*bak*.*'
+    ,'app/styles/*.css'
+    ,'!app/styles/_*.css'
+    ,'app/mock/**'
+    ,'app/module/*/*'
+    ,'!app/module/**/*.scss'
+    ,'!app/_*.*'
   ], {
-    base: 'app',
-    dot: true
+    base: 'app'
+    ,dot: true
   }).pipe(gulp.dest('dist'));
 });
 
@@ -166,16 +191,17 @@ gulp.task('csso', ['copy', 'extra'], function () {
 });
 
 // 优先清理 dist 目录，保证生产环境清洁
-gulp.task('clean', require('del').bind(null, ['app/.tmp', 'dist']));
+gulp.task('cleantmp', require('del').bind(null, ['.tmp']));
+gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
 // 启一个 Browser-sync 服务器并监听文件改动
 gulp.task('serve', ['sass', 'm-sass', 'scripts', 'pug'], function(){
-  var port = Math.floor(Math.random()*10000) 
+  var port = Math.floor(Math.random()*10000);
   port = (port>1024? port: Math.floor(Math.random()*10000));
   browserSync.init({
     server: {
-      baseDir: './app',
-      directory: true
+      baseDir: ['app', '.tmp']
+      ,directory: true
     },
     port: port,
     ui: {

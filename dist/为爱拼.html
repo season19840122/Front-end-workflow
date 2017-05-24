@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no, email=no">
     <title>为爱拼代言</title>
     <link rel="stylesheet" href="styles/m-vip-update.css">
-    <script src="scripts/_lib-flexible.min.js"></script>
+    <script src="scripts/lib-flexible.min.js"></script>
   </head>
   <body style="cursor: pointer;">
     <div class="wrap">
@@ -42,8 +42,36 @@
       <h4 class="modal-t">大神月卡专享</h4>
       <p class="modal-c">·立刻获赠“VIP代言人”鼓励金8000顺豆<br>·终极强化剂礼包(立即获得12000顺豆，每日登录赠送1000顺豆)<br>·个人赛事免费报名(挑战赛和战队赛除外)<br>·顺豆参加挑战赛次数提升<br>·更多参与“集顺豆”预测活动次数<br>·有效期30天</p><a class="btn-buy" href="###">代言VIP月卡</a><a class="btn-cancel" href="###">取消</a>
     </div>
-    <script src="scripts/_jquery-3.1.1.min.js"></script>
-    <script src="scripts/_device.min.js"></script>
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/device.min.js"></script>
+    <script>"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+console.log("Hello World !!!");
+
+var Person = function () {
+  function Person(name) {
+    _classCallCheck(this, Person);
+
+    this.name = name;
+  }
+
+  _createClass(Person, [{
+    key: "sayName",
+    value: function sayName() {
+      console.log("Hello, my name is " + this.name);
+    }
+  }]);
+
+  return Person;
+}();
+
+var person = new Person("Apoxx");
+person.sayName();
+    </script>
     <script>
       // 显示、隐藏弹出层
       var GLOBAL = {

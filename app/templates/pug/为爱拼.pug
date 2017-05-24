@@ -43,7 +43,20 @@ block dialog
   //-   a(href="javascript:void(0);", class="btn-buy") 确定
   //-   a(href="javascript:void(0);", class="btn-cancel") 取消
 append script
-  script(src="scripts/_device.min.js")
+  script(src="scripts/device.min.js")
+  script
+    :babel
+      console.log("Hello World !!!");
+      class Person {
+        constructor(name) {
+          this.name = name;
+        }
+        sayName(){
+          console.log(`Hello, my name is ${this.name}`);
+        }
+      }
+      var person = new Person("Apoxx");
+      person.sayName();
   script.
     // 显示、隐藏弹出层
     var GLOBAL = {
