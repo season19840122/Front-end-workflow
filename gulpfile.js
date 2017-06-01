@@ -19,20 +19,20 @@ var spriteConfig = {
 gulp.task('sprite', function () {
   return gulp.src(spriteConfig.imgSrc)
     .pipe($.spritesmith({
-      imgName: spriteConfig.imgSprite,//保存合并后图片的地址
-      cssName: spriteConfig.cssName,//保存合并后对于css样式的地址
-      padding:spriteConfig.padding,//合并时两个图片的间距
-      algorithm: 'binary-tree',//注释1
+      imgName: spriteConfig.imgSprite, // 保存合并后图片的地址
+      cssName: spriteConfig.cssName, // 保存合并后对于 css 样式的地址
+      padding: spriteConfig.padding, // 合并时两个图片的间距
+      algorithm: 'binary-tree', // 注释1
       cssTemplate: function (data) {
-        var arr=[];
+        var arr = [];
         data.sprites.forEach(function (sprite) {
-          arr.push(".icon-"+sprite.name+
+          arr.push(".icon-" + sprite.name+
           "{" +
-          "background-image: url('"+sprite.escaped_image+"');"+
-          "background-repeat: no-repeat;"+
-          "background-position: "+sprite.px.offset_x+" "+sprite.px.offset_y+";"+
-          "width:"+sprite.px.width+";"+
-          "height:"+sprite.px.height+";"+
+          "background-image: url('" + sprite.escaped_image + "');"+
+          "background-repeat: no-repeat;" +
+          "background-position: " + sprite.px.offset_x + " " + sprite.px.offset_y + ";" +
+          "width:" + sprite.px.width + ";" +
+          "height:" + sprite.px.height + ";" +
           "}\n");
         });
         return arr.join("");
@@ -99,6 +99,8 @@ gulp.task('scripts', ['cleantmp'], function() {
     ,compress: false // 类型：Boolean 默认：true 是否完全压缩
     ,output: {
       beautify: true
+      ,indent_level: 2
+      ,indent_start: 4
       ,comments: /^!|@preserve|@license|@cc_on/i 
     } // 保留指定的注释信息
   }))
@@ -130,15 +132,69 @@ gulp.task('lint', () => {
 
 // Pug 编译成 html
 gulp.task('pug', function () {
-  return gulp.src([
-      'app/templates/pug/*.pug'
-    ])
-    .pipe($.plumber())
-    .pipe($.pug({
-      pretty: true
-    }))
-    .pipe(gulp.dest('app'))
-    .pipe(browserSync.stream());;
+  gulp.src([
+    'app/templates/pug/*.pug'
+  ])
+  .pipe($.plumber())
+  .pipe($.pug({
+    pretty: true
+  }))
+  .pipe($.htmlmin({
+    removeComments: false, // 清除 HTML 注释，规则跟 uglify 类似，<!--! 开头的保留注释
+    collapseWhitespace: false, // 压缩 HTML
+    collapseBooleanAttributes: true, // 省略布尔属性的值 <input checked="true"/> ==> <input />
+    removeEmptyAttributes: true, // 删除所有空格作属性值 <input id="" /> ==> <input />
+    removeScriptTypeAttributes: true, // 删除 <script> 的 type="text/javascript"
+    removeStyleLinkTypeAttributes: true, // 删除 <style> 和 <link> 的 type="text/css"
+    minifyJS: {
+      mangle: false // 类型：Boolean 默认：true 是否修改变量名
+      ,compress: false // 类型：Boolean 默认：true 是否完全压缩
+      ,output: {
+        beautify: true
+        ,indent_level: 2
+        ,indent_start: 4
+        ,comments: /^!|@preserve|@license|@cc_on/i
+      } 
+    } // 压缩页面 JS
+    ,minifyCSS: {
+      compatibility: 'ie9' // 兼容 IE9
+      ,format: 'keep-breaks' // 不压缩成 1 行，输出非常好的代码
+    } // 压缩页面 CSS
+  }))
+  .pipe(gulp.dest('app'))
+  .pipe(browserSync.stream());
+});
+
+// html 压缩优化
+gulp.task('html', function () {
+  gulp.src([
+    'app/templates/*.html'
+  ])
+  .pipe($.plumber())
+  .pipe($.htmlmin({
+    removeComments: false, // 清除 HTML 注释，规则跟 uglify 类似，<!--! 开头的保留注释
+    collapseWhitespace: false, // 压缩 HTML
+    collapseBooleanAttributes: true, // 省略布尔属性的值 <input checked="true"/> ==> <input />
+    removeEmptyAttributes: true, // 删除所有空格作属性值 <input id="" /> ==> <input />
+    removeScriptTypeAttributes: true, // 删除 <script> 的 type="text/javascript"
+    removeStyleLinkTypeAttributes: true, // 删除 <style> 和 <link> 的 type="text/css"
+    minifyJS: {
+      mangle: false // 类型：Boolean 默认：true 是否修改变量名
+      ,compress: false // 类型：Boolean 默认：true 是否完全压缩
+      ,output: {
+        beautify: true
+        ,indent_level: 2
+        ,indent_start: 4
+        ,comments: /^!|@preserve|@license|@cc_on/i 
+      } 
+    } // 压缩页面 JS
+    ,minifyCSS: {
+      compatibility: 'ie9' // 兼容 IE9
+      ,format: 'keep-breaks' // 不压缩成 1 行，输出非常好的代码
+    } // 压缩页面 CSS
+  }))
+  .pipe(gulp.dest('app'))
+  .pipe(browserSync.stream());
 });
 
 // 图片压缩优化
@@ -192,12 +248,14 @@ gulp.task('csso', ['copy', 'extra'], function () {
 
 // 优先清理 dist 目录，保证生产环境清洁
 gulp.task('cleantmp', require('del').bind(null, ['.tmp']));
-gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
+gulp.task('clean', require('del').bind(null, ['dist']));
 
 // 启一个 Browser-sync 服务器并监听文件改动
-gulp.task('serve', ['sass', 'm-sass', 'scripts', 'pug'], function(){
+gulp.task('serve', ['sass', 'm-sass', 'scripts', 'pug', 'html'], function(){
   var port = Math.floor(Math.random()*10000);
   port = (port>1024? port: Math.floor(Math.random()*10000));
+  // 固定端口 3000
+  // port = 3000;
   browserSync.init({
     server: {
       baseDir: ['app', '.tmp']
@@ -212,8 +270,8 @@ gulp.task('serve', ['sass', 'm-sass', 'scripts', 'pug'], function(){
   gulp.watch('app/styles/*.scss', ['sass', 'm-sass']);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
   gulp.watch('app/templates/pug/*.pug', ['pug']);
+  gulp.watch('app/templates/*.html', ['html']);
   gulp.watch([
-    'app/*.html',
     'app/images/**',
     'app/mock/**'
   ]).on('change', browserSync.reload);
@@ -224,13 +282,15 @@ gulp.task('pre', ['clean'], function(){
   gulp.start('step1');
 });
 
-gulp.task('step1', ['sass', 'm-sass', 'scripts', 'pug', 'image'], function() {
+gulp.task('step1', ['sass', 'm-sass', 'scripts', 'pug', 'html', 'image'], function() {
   gulp.start('step2');
 });
 
 gulp.task('step2', ['csso'], function(){
   var port = Math.floor(Math.random()*10000),
   port = (port>1024? port: Math.floor(Math.random()*10000));
+  // 固定端口 3000
+  // port = 3000;
   browserSync.init({
     server: {
       baseDir: './dist',
@@ -246,5 +306,7 @@ gulp.task('step2', ['csso'], function(){
 
 gulp.task('build', ['pre']);
 
-// 开发环境
-gulp.task('default', ['serve']);
+// 产品环境
+gulp.task('default', ['cleantmp'], function(){
+  gulp.start('serve');
+});

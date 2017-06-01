@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>小面板</title>
+    <link rel="stylesheet" href="styles/tooltip.css">
     <link rel="stylesheet" href="styles/index.css">
   </head>
   <body>
@@ -11,40 +12,73 @@
         <little-panel>
           <div class="challenge" slot="challenge">
             <h2 class="title"><i></i>屠龙勇士</h2>
-            <p class="text" title="击杀一条炼狱亚龙或者山脉亚龙的玩家平分奖池">击杀一条炼狱亚龙或者山脉亚龙的玩家平分奖池</p>
-            <div class="scan">
+            <p class="text" data-toggle="tooltip" data-original-title="本人击杀和助攻中有两个及以上的“零”（0,6,9=1个“零”；8=2个“零”）">本人击杀和助攻中有两个及以上的“零”（0,6,9=1个“零”；8=2个“零”）</p>
+            <div class="scan none">
               <p class="charge">报名费￥0.5</p><img class="qrcode" src="images/qrcode.png" alt="">
             </div>
-            <div class="reached none">
+            <div class="reached">
               <p class="dou"> <i></i>12345646</p>
-              <p class="tips">（已达成132份）</p>
+              <p class="tips">（当前奖池：已达成<a href="#" target="_blank">132份</a>）</p>
               <div class="label"><span>匹配</span><span>排位</span><span id="check">17:00结算</span></div>
-              <button class="unreach">未达成？我不服</button>
-              <button class="unreach disabled">未达成</button>
-              <button class="reach">已达成，再来一局</button>
-              <button class="reach disabled">已达成</button>
-              <button class="success"><i></i>报名成功</button>
+              <button class="unreach none">未达成？我不服</button>
+              <button class="unreach disabled none">未达成</button>
+              <button class="reach none">已达成，再来一局</button>
+              <button class="reach disabled none">已达成</button>
+              <button class="success none"><i></i>报名成功</button>
               <div class="animate-wrap">
                 <div class="animate">
                   <div class="btn-wrap">
                     <button>
                        奖励<span>x2</span></button>
+                    <button class="none1"><i></i>5000<span>x2</span></button>
                   </div>
                   <div class="btn-wrap">
-                    <button> <i></i>5000<span>x5</span></button>
+                    <button>
+                       奖励<span>x5</span></button>
+                    <button class="none1"><i></i>5000<span>x5</span></button>
                   </div>
                   <div class="btn-wrap">
-                    <button>奖励<span>x10</span></button>
+                    <button>
+                       奖励<span>x10</span></button>
+                    <button class="none1"><i></i>5000<span>x10</span></button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="info" slot="info">
-            <h2 class="title"><i></i>专题页标题最多十个字</h2><a class="text" href="#" target="_blank">活动注释，宣传语，两行宣传语，两行宣传语，两行宣传语，两行宣传语。</a>
+            <div class="title-wrap"><img class="logo" src="images/logo.png" alt="">
+              <div class="content">
+                <p class="title" title="标题最多八个字字标题最多八个字字">标题最多八个字字</p>
+                <p class="date">活动时间：05.27-06.12</p>
+              </div><a class="ti" href="#" target="_blank">></a>
+            </div><a class="text" href="#" target="_blank">活动注释，宣传语，两行宣传语，两行宣传语，两行宣传语，两行宣传语。</a>
           </div>
-          <div class="banner none" slot="banner"><a href="#" target="blank"><img src="../images/pics/img_228x108.png" alt=""></a></div>
-          <div class="game" slot="game">
+          <div class="ad" slot="ad">
+            <div class="title-wrap"><img class="logo" src="images/logo.png" alt="">
+              <div class="content">
+                <p class="title" title="标题最多八个字字标题最多八个字字">标题最多八个字字</p>
+                <p class="date">活动时间：05.27-06.12</p>
+              </div><a class="ti" href="#" target="_blank">></a>
+            </div>
+            <div class="title-wrap"><img class="logo" src="images/logo.png" alt="">
+              <div class="content">
+                <p class="title" title="标题最多八个字字标题最多八个字字">标题最多八个字字标题最多八个字字</p>
+                <p class="date">活动时间：05.27-06.12</p>
+              </div><a class="ti" href="#" target="_blank">></a>
+            </div>
+          </div>
+          <div class="banner" slot="banner">
+            <div class="slide-box">
+              <div class="ad-sheet-wrap" id="slide">
+                <ul class="ad-sheet-con">
+                  <li><a href="#" target="_blank"><img src="images/pics/img_230x110.jpg" alt=""></a></li>
+                  <li><a href="#" target="_blank"><img src="images/pics/img2_230x110.jpg" alt=""></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="game none" slot="game">
             <div class="start-wrap">
               <!-- 玩游戏-->
               <div class="step1">
@@ -85,7 +119,7 @@
                 <!-- 等待绿色-->
                 <div class="step2 none">
                   <p class="big">等待绿色...</p>
-                  <p class="small hidden">点击重试             </p>
+                  <p class="small hidden">点击重试</p>
                 </div>
                 <!-- 还未开始-->
                 <div class="step2-1 none">
@@ -110,127 +144,124 @@
       </div>
       <template id="tmpl-panel">
         <div class="panel">
+          <div class="top-banner"></div>
           <slot name="challenge"></slot>
           <slot name="info"></slot>
+          <slot name="ad"></slot>
           <slot name="banner"></slot>
           <slot name="game"></slot>
         </div>
       </template>
     </div>
     <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/bootstrap-tooltip.js"></script>
     <script src="scripts/vue.min.js"></script>
-    <script>
-      ;(function($){
-      
-        Vue.component('little-panel', {
-          template: '#tmpl-panel',
-          props: ['show'],
-          methods: {
-            // close: function() {
-            //   this.show = false
-            // }
-          }
-        });
-      
-        var vm = new Vue({
-          el: '#app',
-          data: {
+    <script src="scripts/switchable.js"></script>
+    <script>(function($) {
+    Vue.component("little-panel", {
+        template: "#tmpl-panel",
+        props: [ "show" ],
+        methods: {}
+    });
+    var vm = new Vue({
+        el: "#app",
+        data: {
             show: false,
             interval: 0,
             average: 0,
             count: 0
-          },
-          methods: {
-            // startGame: function() {
-            //   console.log(this[0]);
-            // }
-          }
-        });
-        
-        $('.btn-wrap button').hover(function(){
-          $('#check').addClass('sel');
-        }, function(){
-          $('#check').removeClass('sel');
-        });
-      
-        // 小游戏
-        var datetime1, datetime2, flag;
-      
-        function waitingTiming(){
-          var dalay = getRandomArbitrary(1, 3)*1000;
-          flag = window.setTimeout(function(){
-            $('.step2').hide();  
-            $('.game-test').attr('class', 'game-test green'); 
-            $('.step3').removeClass('none').show();
-            datetime1 = new Date().getTime();
-          }, dalay);
-        }
-      
-        function getRandomArbitrary(min, max) {
-          return Math.random() * (max - min) + min;
-        }
-      
-        $('body').on('click', '#start', function(){
-          $('.step1').hide();
-          $('.game-test, .step2').removeClass('none').show();
-          waitingTiming();
-        });
-      
-        $('body').on('click', '.step2', function(){
-            window.clearTimeout(flag);
-            $('.step2').hide();
-            $('.step2-1').removeClass('none').show();
-        });
-      
-        $('body').on('click', '.step2-1', function(){
-          $('.step2-1').hide();
-          $('.step2').show();
-          waitingTiming();
-        });
-      
-        $('body').on('click', '.step3', function(){
-          vm.count++;
-          $('.step3').hide();
-          datetime2 = new Date().getTime();
-          var now = Math.floor(datetime2 - datetime1)
-          vm.interval += Math.floor(datetime2 - datetime1);
-          vm.average = Math.floor(vm.interval / vm.count);
-          var $step4 = $('.step4');
-          $step4.find('.big').text(now + 'ms');
-          $('.game-test').removeClass('green').addClass('check');
-          $step4.removeClass('none').show();
-        });
-      
-        $('body').on('click', '.step4', function(){
-          if(vm.count < 3) {
-            $('.step4').hide();
-            $('.step2').show();
-            $('.game-test').attr('class', 'game-test'); 
-            waitingTiming();
-          } else {
-            $('.game-test, .step4').hide();
-            $('.start-wrap').show();
-            if(vm.average > 300) {
-              $('.step5-2').removeClass('none').show();
-            } else {
-              $('.step5-1').removeClass('none').show();
+        },
+        mounted: function() {
+            this.init();
+        },
+        methods: {
+            init: function() {
+                $('[data-toggle="tooltip"]').tooltip();
             }
-          }
-        });
-      
-        $('body').on('click', '.step5-2 .long, .step6 .long', function(){
-          $('.step5-2, .step6').hide();
-          $('.step1').show();
-          $('.game-test').attr('class', 'game-test'); 
-          vm.interval = vm.average = vm.count = 0;
-        });
-      
-        $('body').on('click', '.step5 .long, .step5-1 .long', function(){
-          $('.step5, .step5-1').hide();
-          $('.step6').removeClass('none').show();
-        });
-      
-      })(jQuery);
-    </script>
+        }
+    });
+    $(".btn-wrap").hover(function() {
+        $(this).find(".none1").show().siblings().hide();
+        $("#check").addClass("sel");
+    }, function() {
+        $(this).find(".none1").hide().siblings().show();
+        $("#check").removeClass("sel");
+    });
+    var datetime1, datetime2, flag;
+    function waitingTiming() {
+        var dalay = getRandomArbitrary(1, 3) * 1e3;
+        flag = window.setTimeout(function() {
+            $(".step2").hide();
+            $(".game-test").attr("class", "game-test green");
+            $(".step3").removeClass("none").show();
+            datetime1 = new Date().getTime();
+        }, dalay);
+    }
+    function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+    $("body").on("click", "#start", function() {
+        $(".step1").hide();
+        $(".game-test, .step2").removeClass("none").show();
+        waitingTiming();
+    });
+    $("body").on("click", ".step2", function() {
+        window.clearTimeout(flag);
+        $(".step2").hide();
+        $(".step2-1").removeClass("none").show();
+    });
+    $("body").on("click", ".step2-1", function() {
+        $(".step2-1").hide();
+        $(".step2").show();
+        waitingTiming();
+    });
+    $("body").on("click", ".step3", function() {
+        vm.count++;
+        $(".step3").hide();
+        datetime2 = new Date().getTime();
+        var now = Math.floor(datetime2 - datetime1);
+        vm.interval += Math.floor(datetime2 - datetime1);
+        vm.average = Math.floor(vm.interval / vm.count);
+        var $step4 = $(".step4");
+        $step4.find(".big").text(now + "ms");
+        $(".game-test").removeClass("green").addClass("check");
+        $step4.removeClass("none").show();
+    });
+    $("body").on("click", ".step4", function() {
+        if (vm.count < 3) {
+            $(".step4").hide();
+            $(".step2").show();
+            $(".game-test").attr("class", "game-test");
+            waitingTiming();
+        } else {
+            $(".game-test, .step4").hide();
+            $(".start-wrap").show();
+            if (vm.average > 300) {
+                $(".step5-2").removeClass("none").show();
+            } else {
+                $(".step5-1").removeClass("none").show();
+            }
+        }
+    });
+    $("body").on("click", ".step5-2 .long, .step6 .long", function() {
+        $(".step5-2, .step6").hide();
+        $(".step1").show();
+        $(".game-test").attr("class", "game-test");
+        vm.interval = vm.average = vm.count = 0;
+    });
+    $("body").on("click", ".step5 .long, .step5-1 .long", function() {
+        $(".step5, .step5-1").hide();
+        $(".step6").removeClass("none").show();
+    });
+    $("#slide").switchable({
+        triggers: "&bull;",
+        putTriggers: "insertBefore",
+        effect: "fade",
+        easing: "ease-in-out",
+        loop: true,
+        panels: "li",
+        autoplay: true
+    });
+})(jQuery)</script>
   </body>
 </html>

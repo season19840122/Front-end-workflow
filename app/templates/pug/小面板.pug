@@ -2,6 +2,7 @@ extends _layouts
 block title
   title 小面板
 block style
+  link(rel="stylesheet", href="styles/tooltip.css")
   link(rel="stylesheet", href="styles/index.css")
 block main
   #app(v-cloak)
@@ -10,24 +11,24 @@ block main
         h2.title
          i
          | 屠龙勇士
-        p.text(title="击杀一条炼狱亚龙或者山脉亚龙的玩家平分奖池") 击杀一条炼狱亚龙或者山脉亚龙的玩家平分奖池
-        .scan
+        p.text(data-toggle="tooltip", title="", data-original-title="本人击杀和助攻中有两个及以上的“零”（0,6,9=1个“零”；8=2个“零”）") 本人击杀和助攻中有两个及以上的“零”（0,6,9=1个“零”；8=2个“零”）
+        .scan.none
           p.charge 报名费￥0.5
           img(src="images/qrcode.png", alt="").qrcode
-        .reached.none
+        .reached
           p.dou 
            i
            | 12345646
-          p.tips （已达成132份）
+          p.tips （当前奖池：已达成<a href="#" target="_blank">132份</a>）
           .label
             span 匹配
             span 排位
             span#check 17:00结算
-          button.unreach 未达成？我不服
-          button.unreach.disabled 未达成
-          button.reach 已达成，再来一局
-          button.reach.disabled 已达成
-          button.success
+          button.unreach.none 未达成？我不服
+          button.unreach.disabled.none 未达成
+          button.reach.none 已达成，再来一局
+          button.reach.disabled.none 已达成
+          button.success.none
            i
            | 报名成功
           .animate-wrap
@@ -36,24 +37,63 @@ block main
                 button 
                  | 奖励
                  span x2
+                button.none1
+                 i
+                 | 5000
+                 span x2
               .btn-wrap
                 button 
+                 | 奖励
+                 span x5
+                button.none1
                  i
                  | 5000
                  span x5
               .btn-wrap
-                button
+                button 
                  | 奖励
                  span x10
+                button.none1
+                 i
+                 | 5000
+                 span x10
       .info(slot="info")
-        h2.title
-         i
-         | 专题页标题最多十个字
+        //- h2.title
+        //-  i
+        //-  | 专题页标题最多十个字
+        .title-wrap
+          img.logo(src="images/logo.png", alt="")
+          .content
+            p.title(title="标题最多八个字字标题最多八个字字") 标题最多八个字字
+            p.date 活动时间：05.27-06.12
+          a(href="#", target="_blank").ti >
         a(href="#", target="_blank").text 活动注释，宣传语，两行宣传语，两行宣传语，两行宣传语，两行宣传语。
-      .banner(slot="banner").none
-        a(href="#", target="blank")
-          img(src="../images/pics/img_228x108.png", alt="")
-      .game(slot="game")
+      .ad(slot="ad")
+        .title-wrap
+          img.logo(src="images/logo.png", alt="")
+          .content
+            p.title(title="标题最多八个字字标题最多八个字字") 标题最多八个字字
+            p.date 活动时间：05.27-06.12
+          a(href="#", target="_blank").ti >
+        .title-wrap
+          img.logo(src="images/logo.png", alt="")
+          .content
+            p.title(title="标题最多八个字字标题最多八个字字") 标题最多八个字字标题最多八个字字
+            p.date 活动时间：05.27-06.12
+          a(href="#", target="_blank").ti >
+      .banner(slot="banner")
+        //- a(href="#", target="blank")
+        //-   img(src="images/pics/img_228x108.png", alt="")
+        .slide-box
+          .ad-sheet-wrap#slide
+            ul.ad-sheet-con
+              li
+                a(href="#", target="_blank")
+                  img(src="images/pics/img_230x110.jpg", alt="")
+              li
+                a(href="#", target="_blank")
+                  img(src="images/pics/img2_230x110.jpg", alt="")
+      .game(slot="game").none
         .start-wrap
           // 玩游戏
           .step1
@@ -89,7 +129,7 @@ block main
             // 等待绿色
             .step2.none
               p.big 等待绿色...
-              p.small.hidden 点击重试             
+              p.small.hidden 点击重试
             // 还未开始
             .step2-1.none
               p.big 还未开始...
@@ -107,24 +147,28 @@ block main
               span 完成 : {{ count }}/3
   template#tmpl-panel
     .panel
+      .top-banner
       slot(name="challenge")
       slot(name="info")
+      slot(name="ad")
       slot(name="banner")
       slot(name="game")
 block script
   script(src="scripts/jquery-3.1.1.min.js")
-  //- script(src="scripts/vue.js")
+  script(src="scripts/bootstrap-tooltip.js")
+  //- script(src="scripts/_vue.js")
   script(src="scripts/vue.min.js")
+  script(src="scripts/switchable.js")
   script.
-    ;(function($){
+    (function($){
 
       Vue.component('little-panel', {
         template: '#tmpl-panel',
         props: ['show'],
         methods: {
-          // close: function() {
-          //   this.show = false
-          // }
+          /*close: function() {
+            this.show = false
+          }*/
         }
       });
 
@@ -136,16 +180,21 @@ block script
           average: 0,
           count: 0
         },
+        mounted: function(){
+          this.init();
+        },
         methods: {
-          // startGame: function() {
-          //   console.log(this[0]);
-          // }
+          init: function(){
+            $('[data-toggle="tooltip"]').tooltip();
+          }
         }
       });
       
-      $('.btn-wrap button').hover(function(){
+      $('.btn-wrap').hover(function(){
+        $(this).find('.none1').show().siblings().hide();
         $('#check').addClass('sel');
       }, function(){
+        $(this).find('.none1').hide().siblings().show();
         $('#check').removeClass('sel');
       });
 
@@ -224,6 +273,17 @@ block script
       $('body').on('click', '.step5 .long, .step5-1 .long', function(){
         $('.step5, .step5-1').hide();
         $('.step6').removeClass('none').show();
+      });
+
+      // 轮播
+      $('#slide').switchable({
+          triggers: '&bull;',
+          putTriggers: 'insertBefore',
+          effect: 'fade',
+          easing: 'ease-in-out',
+          loop: true,
+          panels: "li",
+          autoplay: true
       });
 
     })(jQuery);

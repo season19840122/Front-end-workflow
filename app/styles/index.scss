@@ -26,11 +26,16 @@ body {
 	.panel {
 		width: 265px;
 		overflow: hidden;
+		.top-banner {
+	    width: 265px;
+	    height: 9px;
+	    background: url(../images/top-banner.jpg) no-repeat;
+		}
 		.challenge {
 			width: 265px;
-			height: 247px;
+			height: 245px;
 			background: url('../images/bg-challenge.jpg') no-repeat;
-			padding-top: 31px;
+			padding-top: 21px;
 			.title {
 				height: 18px;
 				line-height: 18px;
@@ -148,6 +153,10 @@ body {
 					color: #326e7a;
 					font-size: 12px;
 					text-align: center;
+					a {
+				    color: #00d1fb;
+    				text-decoration: underline;
+					}
 				}
 				.label {
 					margin-top: 10px;
@@ -334,34 +343,83 @@ body {
 		}
 		.info {
 			width: 265px;
-			height: 124px;
-			background: url('../images/bg-info.jpg') no-repeat;
-			padding-top: 26px;
-			.title {
-				height: 23px;
-				line-height: 23px;
-				font-size: 14px;
-				font-weight: bold;
-				text-align: center;
-				color: #f1f9fb;
+			height: 137px;
+			background: #000;
+			// background: url('../images/bg-info.jpg') no-repeat;
+			padding-top: 10px;
+			// .title {
+			// 	height: 23px;
+			// 	line-height: 23px;
+			// 	font-size: 14px;
+			// 	font-weight: bold;
+			// 	text-align: center;
+			// 	color: #f1f9fb;
+			// 	display: -webkit-flex;
+			// 	display: -ms-flexbox;
+			// 	display: -moz-box;
+			// 	display: flex;
+			// 	-webkit-align-items: center;
+			// 	    -ms-flex-align: center;
+			// 	        -moz-box-align: center;
+			// 	     align-items: center;
+   //  		-webkit-justify-content: center;
+   //  		    -ms-flex-pack: center;
+   //  		        -moz-box-pack: center;
+   //  		     justify-content: center;
+			// 	i {
+			// 		display: inline-block;
+			// 		width: 23px;
+			// 		height: 23px;
+			// 		margin-right: 5px;
+			// 		background: url('../images/sprite.png') no-repeat 0 -199px;
+			// 	}
+			// }
+			.title-wrap {
+				margin: 0 auto;
+				width: 230px;
+				height: 54px;
+				padding: 0 10px;
+				border: 1px solid #0d1c1f;
 				display: -webkit-flex;
-				display: -ms-flexbox;
 				display: -moz-box;
+				display: -ms-flexbox;
 				display: flex;
 				-webkit-align-items: center;
+				   -moz-box-align: center;
 				    -ms-flex-align: center;
-				        -moz-box-align: center;
-				     align-items: center;
-    		-webkit-justify-content: center;
-    		    -ms-flex-pack: center;
-    		        -moz-box-pack: center;
-    		     justify-content: center;
-				i {
-					display: inline-block;
-					width: 23px;
-					height: 23px;
-					margin-right: 5px;
-					background: url('../images/sprite.png') no-repeat 0 -199px;
+				        align-items: center;
+				-webkit-justify-content: space-between;
+				   -moz-box-pack: justify;
+				    -ms-flex-pack: justify;
+				        justify-content: space-between;
+				&:hover {
+					border-color: #0c505f;
+				}
+				&:active {
+					border-color: #0d323b;
+				}
+				img {
+					width: 36px;
+					height: 36px;
+					display: block;
+				}
+				.content {
+					width: 140px;
+					.title {
+						font-size: 16px;
+						color: #ae8b51;
+						@extend .eps;
+					}
+					.date {
+						font-size: 12px;
+						color: #454f56;
+					}
+				}
+				.ti {
+					background: url(../images/arrow.png) no-repeat;
+					width: 13px;
+					height: 22px;
+					display: block;
 				}
 			}
 			.text {
@@ -369,29 +427,146 @@ body {
 				font-size: 12px;
 				text-align: center;
 				display: block;
-		    width: 208px;
-    		margin: 15px auto 0;
+		    width: 230px;
+		    height: 66px;
+		    padding: 10px;
+    		margin: 0 auto;
+    		border: 1px solid  #0d1c1f;
+    		border-top: none;
 				&:hover {
 					text-decoration: underline;
 				}
 			}
 		}
+		.ad {
+			width: 265px;
+			max-height: 120px;
+			padding: 5px;
+			background: #000;
+			.title-wrap {
+				margin: 0 auto 5px;
+				width: 230px;
+				height: 54px;
+				padding: 5px 10px;
+				border: 1px solid #0d1c1f;
+				display: -webkit-flex;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: flex;
+				-webkit-align-items: center;
+				   -moz-box-align: center;
+				    -ms-flex-align: center;
+				        align-items: center;
+				-webkit-justify-content: space-between;
+				   -moz-box-pack: justify;
+				    -ms-flex-pack: justify;
+				        justify-content: space-between;
+				&:hover {
+					border-color: #0c505f;
+				}
+				&:active {
+					border-color: #0d323b;
+				}
+				img {
+					width: 36px;
+					height: 36px;
+					display: block;
+				}
+				.content {
+					width: 140px;
+					.title {
+						font-size: 16px;
+						color: #ae8b51;
+						@extend .eps;
+					}
+					.date {
+						font-size: 12px;
+						color: #454f56;
+					}
+				}
+				.ti {
+					background: url(../images/arrow.png) no-repeat;
+					width: 13px;
+					height: 22px;
+					display: block;
+				}
+			}
+		}
 		.banner {
 			width: 265px;
-			height: 143px;
-			background: url('../images/bg-banner.jpg') no-repeat;
+			height: 140px;
+			margin: 0 auto;
+			background: #000;
 			display: -webkit-flex;
-			display: -ms-flexbox;
 			display: -moz-box;
+			display: -ms-flexbox;
 			display: flex;
 			-webkit-align-items: center;
+			   -moz-box-align: center;
 			    -ms-flex-align: center;
-			        -moz-box-align: center;
-			     align-items: center;
+			        align-items: center;
 			-webkit-justify-content: center;
+			   -moz-box-pack: center;
 			    -ms-flex-pack: center;
-			        -moz-box-pack: center;
-			     justify-content: center;
+			        justify-content: center;
+			// background: url('../images/bg-banner.jpg') no-repeat;
+			// display: -webkit-flex;
+			// display: -ms-flexbox;
+			// display: -moz-box;
+			// display: flex;
+			// -webkit-align-items: center;
+			//     -ms-flex-align: center;
+			//         -moz-box-align: center;
+			//      align-items: center;
+			// -webkit-justify-content: center;
+			//     -ms-flex-pack: center;
+			//         -moz-box-pack: center;
+			//      justify-content: center;
+			/*轮播*/
+			.slide-box {
+			  width: 230px;
+			  height: 110px;
+			  position: relative;
+			  overflow: hidden;
+			  zoom: 1;
+			  img{
+			    width: 230px;
+			    height: 110px;
+			    display: block;
+			  }
+			}
+			.ad-sheet-wrap ul {
+			  position: absolute;
+			}
+			.ad-sheet-con li {
+			  width: 230px;
+			  height: 110px;
+			  position: absolute;
+			  left: 0;
+			  top: 0;
+			}
+			.switchable-triggers {
+			  width: 100%;
+			  height: 20px;
+			  overflow-y: hidden;
+			  line-height: 20px;
+			  text-align: right;
+			  position: absolute;
+			  bottom: 5px;
+			  z-index: 100;
+			}
+			.switchable-triggers li {
+			  display: inline-block;
+			  zoom: 1;
+			  width: 11px;
+			  height: 11px;
+			  cursor: pointer;
+			  margin: 0 3px;
+			  background: url('../images/square.png') no-repeat;
+			}
+			.switchable-triggers li.current {
+			  background: url('../images/active.png') no-repeat;
+			}
 		}
 		.game {
 			width: 265px;

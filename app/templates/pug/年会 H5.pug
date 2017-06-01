@@ -102,7 +102,7 @@ append script
   //- script(src="scripts/vue.js")
   script.
     (function($){
-      //记住密码
+      //! 记住密码
       $("body").on("click", '.check-wrap:not(.noclick)', function() {
         $(this).parents('.team-ul').find('.check-wrap').attr('class', 'check-wrap')
         $(this).parents('.team-ul').find('.uncheck').each(function(){
@@ -116,7 +116,7 @@ append script
         }
       });
 
-      // 显示、隐藏弹出层
+      //! 显示、隐藏弹出层
       var GLOBAL = {
         show: function($obj){
           $obj.show();
@@ -130,15 +130,15 @@ append script
 
       $('body').on('click', '.btn-submit', function(event){
         alert(1);
-        //- event.preventDefault();
-        //- GLOBAL.show($('.log'));
+        // event.preventDefault();
+        // GLOBAL.show($('.log'));
       });
 
       $('body').on('click', '.refresh', function(event){
         window.location.reload();
       });
 
-      // 隐藏弹层
+      //! 隐藏弹层
       $('body').on('click', '.masklayer, .btn-close, .btn-login, .btn-yes, .btn-no', function(event){
         event.preventDefault();
         GLOBAL.hide($('.dialog'));

@@ -223,7 +223,7 @@ li {
   text-indent: -9999px;
 }
 
-.eps, .box .panel .challenge .text {
+.eps, .box .panel .challenge .text, .box .panel .info .title-wrap .content .title, .box .panel .ad .title-wrap .content .title {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -485,11 +485,17 @@ body {
   overflow: hidden;
 }
 
+.box .panel .top-banner {
+  width: 265px;
+  height: 9px;
+  background: url(../images/top-banner.jpg) no-repeat;
+}
+
 .box .panel .challenge {
   width: 265px;
-  height: 247px;
+  height: 245px;
   background: url("../images/bg-challenge.jpg") no-repeat;
-  padding-top: 31px;
+  padding-top: 21px;
 }
 
 .box .panel .challenge .title {
@@ -618,6 +624,11 @@ body {
   color: #326e7a;
   font-size: 12px;
   text-align: center;
+}
+
+.box .panel .challenge .reached .tips a {
+  color: #00d1fb;
+  text-decoration: underline;
 }
 
 .box .panel .challenge .reached .label {
@@ -831,38 +842,64 @@ body {
 
 .box .panel .info {
   width: 265px;
-  height: 124px;
-  background: url("../images/bg-info.jpg") no-repeat;
-  padding-top: 26px;
+  height: 137px;
+  background: #000;
+  padding-top: 10px;
 }
 
-.box .panel .info .title {
-  height: 23px;
-  line-height: 23px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  color: #f1f9fb;
+.box .panel .info .title-wrap {
+  margin: 0 auto;
+  width: 230px;
+  height: 54px;
+  padding: 0 10px;
+  border: 1px solid #0d1c1f;
   display: -webkit-flex;
-  display: -ms-flexbox;
   display: -moz-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
-  -ms-flex-align: center;
   -moz-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  -moz-box-pack: center;
-  justify-content: center;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
-.box .panel .info .title i {
-  display: inline-block;
-  width: 23px;
-  height: 23px;
-  margin-right: 5px;
-  background: url("../images/sprite.png") no-repeat 0 -199px;
+.box .panel .info .title-wrap:hover {
+  border-color: #0c505f;
+}
+
+.box .panel .info .title-wrap:active {
+  border-color: #0d323b;
+}
+
+.box .panel .info .title-wrap img {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.box .panel .info .title-wrap .content {
+  width: 140px;
+}
+
+.box .panel .info .title-wrap .content .title {
+  font-size: 16px;
+  color: #ae8b51;
+}
+
+.box .panel .info .title-wrap .content .date {
+  font-size: 12px;
+  color: #454f56;
+}
+
+.box .panel .info .title-wrap .ti {
+  background: url(../images/arrow.png) no-repeat;
+  width: 13px;
+  height: 22px;
+  display: block;
 }
 
 .box .panel .info .text {
@@ -870,30 +907,149 @@ body {
   font-size: 12px;
   text-align: center;
   display: block;
-  width: 208px;
-  margin: 15px auto 0;
+  width: 230px;
+  height: 66px;
+  padding: 10px;
+  margin: 0 auto;
+  border: 1px solid  #0d1c1f;
+  border-top: none;
 }
 
 .box .panel .info .text:hover {
   text-decoration: underline;
 }
 
-.box .panel .banner {
+.box .panel .ad {
   width: 265px;
-  height: 143px;
-  background: url("../images/bg-banner.jpg") no-repeat;
+  max-height: 120px;
+  padding: 5px;
+  background: #000;
+}
+
+.box .panel .ad .title-wrap {
+  margin: 0 auto 5px;
+  width: 230px;
+  height: 54px;
+  padding: 5px 10px;
+  border: 1px solid #0d1c1f;
   display: -webkit-flex;
-  display: -ms-flexbox;
   display: -moz-box;
+  display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
-  -ms-flex-align: center;
   -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.box .panel .ad .title-wrap:hover {
+  border-color: #0c505f;
+}
+
+.box .panel .ad .title-wrap:active {
+  border-color: #0d323b;
+}
+
+.box .panel .ad .title-wrap img {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+
+.box .panel .ad .title-wrap .content {
+  width: 140px;
+}
+
+.box .panel .ad .title-wrap .content .title {
+  font-size: 16px;
+  color: #ae8b51;
+}
+
+.box .panel .ad .title-wrap .content .date {
+  font-size: 12px;
+  color: #454f56;
+}
+
+.box .panel .ad .title-wrap .ti {
+  background: url(../images/arrow.png) no-repeat;
+  width: 13px;
+  height: 22px;
+  display: block;
+}
+
+.box .panel .banner {
+  width: 265px;
+  height: 140px;
+  margin: 0 auto;
+  background: #000;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   -webkit-justify-content: center;
-  -ms-flex-pack: center;
   -moz-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  /*轮播*/
+}
+
+.box .panel .banner .slide-box {
+  width: 230px;
+  height: 110px;
+  position: relative;
+  overflow: hidden;
+  zoom: 1;
+}
+
+.box .panel .banner .slide-box img {
+  width: 230px;
+  height: 110px;
+  display: block;
+}
+
+.box .panel .banner .ad-sheet-wrap ul {
+  position: absolute;
+}
+
+.box .panel .banner .ad-sheet-con li {
+  width: 230px;
+  height: 110px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.box .panel .banner .switchable-triggers {
+  width: 100%;
+  height: 20px;
+  overflow-y: hidden;
+  line-height: 20px;
+  text-align: right;
+  position: absolute;
+  bottom: 5px;
+  z-index: 100;
+}
+
+.box .panel .banner .switchable-triggers li {
+  display: inline-block;
+  zoom: 1;
+  width: 11px;
+  height: 11px;
+  cursor: pointer;
+  margin: 0 3px;
+  background: url("../images/square.png") no-repeat;
+}
+
+.box .panel .banner .switchable-triggers li.current {
+  background: url("../images/active.png") no-repeat;
 }
 
 .box .panel .game {
