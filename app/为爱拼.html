@@ -48,61 +48,61 @@
     </div>
     <script src="scripts/jquery-3.1.1.min.js"></script>
     <script src="scripts/device.min.js"></script>
-    <script>"use strict";
+    <script>    "use strict";
 
-var _createClass = function() {
-    function defineProperties(target, props) {
+    var _createClass = function() {
+      function defineProperties(target, props) {
         for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            descriptor.enumerable = descriptor.enumerable || false;
-            descriptor.configurable = true;
-            if ("value" in descriptor) descriptor.writable = true;
-            Object.defineProperty(target, descriptor.key, descriptor);
+          var descriptor = props[i];
+          descriptor.enumerable = descriptor.enumerable || false;
+          descriptor.configurable = true;
+          if ("value" in descriptor) descriptor.writable = true;
+          Object.defineProperty(target, descriptor.key, descriptor);
         }
-    }
-    return function(Constructor, protoProps, staticProps) {
+      }
+      return function(Constructor, protoProps, staticProps) {
         if (protoProps) defineProperties(Constructor.prototype, protoProps);
         if (staticProps) defineProperties(Constructor, staticProps);
         return Constructor;
-    };
-}();
+      };
+    }();
 
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
+    function _classCallCheck(instance, Constructor) {
+      if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
+      }
     }
-}
 
-console.log("Hello World !!!");
+    console.log("Hello World !!!");
 
-var Person = function() {
-    function Person(name) {
+    var Person = function() {
+      function Person(name) {
         _classCallCheck(this, Person);
         this.name = name;
-    }
-    _createClass(Person, [ {
+      }
+      _createClass(Person, [ {
         key: "sayName",
         value: function sayName() {
-            console.log("Hello, my name is " + this.name);
+          console.log("Hello, my name is " + this.name);
         }
-    } ]);
-    return Person;
-}();
+      } ]);
+      return Person;
+    }();
 
-var person = new Person("Apoxx");
+    var person = new Person("Apoxx");
 
-person.sayName()</script>
+    person.sayName()</script>
     <script>//! 显示、隐藏弹出层
-var GLOBAL = {
-    show: function($obj) {
+        var GLOBAL = {
+      show: function($obj) {
         $obj.fadeIn(200);
         $(".masklayer").show();
-    },
-    hide: function($obj) {
+      },
+      hide: function($obj) {
         $obj.fadeOut(200);
         $(".masklayer").hide();
-    },
-    isWeiXinOrQQ: function() {
+      },
+      isWeiXinOrQQ: function() {
         var ua = navigator.userAgent.toLowerCase();
         /*! 
           userAgent：
@@ -111,32 +111,32 @@ var GLOBAL = {
           */
         //! alert(/micromessenger/i.test(ua) || /qq/i.test(ua));
         return /micromessenger/i.test(ua) || /qq/i.test(ua);
-    }
-};
+      }
+    };
 
-(function($) {
-    if (device.desktop() || GLOBAL.isWeiXinOrQQ()) {
+    (function($) {
+      if (device.desktop() || GLOBAL.isWeiXinOrQQ()) {
         //! 如果是 PC 端
         $(".bg04").addClass("pc");
         $(".footer").show();
-    }
-    if (!GLOBAL.isWeiXinOrQQ()) {
+      }
+      if (!GLOBAL.isWeiXinOrQQ()) {
         //! 隐藏弹层
         $("body").on("click", ".masklayer, .dialog .btn-buy, .dialog .btn-cancel", function(event) {
-            event.preventDefault();
-            GLOBAL.hide($(".dialog"));
+          event.preventDefault();
+          GLOBAL.hide($(".dialog"));
         });
         //! 代言VIP周卡
         $("body").on("click", ".btn-wrap .btn:eq(0)", function(event) {
-            event.preventDefault();
-            GLOBAL.show($(".dialog").eq(0));
+          event.preventDefault();
+          GLOBAL.show($(".dialog").eq(0));
         });
         //! 代言VIP月卡
         $("body").on("click", ".btn-wrap .btn:eq(1)", function(event) {
-            event.preventDefault();
-            GLOBAL.show($(".dialog").eq(1));
+          event.preventDefault();
+          GLOBAL.show($(".dialog").eq(1));
         });
-    }
-})(jQuery)</script>
+      }
+    })(jQuery)</script>
   </body>
 </html>

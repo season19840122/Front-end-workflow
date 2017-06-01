@@ -1,0 +1,39 @@
+extends _layouts-mobile
+block title
+  title 以5为荣，1战到底
+block style
+  link(rel="stylesheet", href="styles/m-labor.css")
+block main
+  .content-wrap
+    .bg01
+      img(src="images/labor/labor01.jpg", alt="")
+    .bg02
+      img(src="images/labor/labor02.jpg", alt="")
+      .btn-wrap
+        a.btn(href="###").ti 我要参战
+        // <a class="btn already ti" href="###">已参战</a>
+    .bg03
+      img(src="images/labor/labor03.jpg", alt="")
+block dialog
+  .masklayer
+  .dialog.toast
+    p.modal-c 打气成功！
+append script
+  script.
+    (function($){
+      var GLOBAL = {
+        show: function($obj){
+          $obj.fadeIn(200);
+          $('.masklayer').show();
+        },
+        hide: function($obj){
+          $obj.fadeOut(200);
+          $('.masklayer').hide();
+        }
+      };
+
+      $('body').on('click', '.btn', function(event){
+        $('.toast').fadeIn(800).delay(1000).fadeOut(800);
+      });
+
+    })(jQuery);

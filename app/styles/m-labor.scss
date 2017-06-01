@@ -1,0 +1,133 @@
+@import '_base';
+@import '_common';
+
+html{
+	background: #f4f4f4!important;
+}
+
+body{
+  font:14px/1.5 Helvetica, 'SimHei'; /*no*/
+  background: #f4f4f6;
+  cursor: pointer;
+  overflow-x: hidden;
+}
+
+a{
+	&:hover{
+		text-decoration: none!important;
+	}
+}
+
+.wrap{
+  position: relative;
+  width: 750px;
+  margin: 0 auto;
+	.content-wrap {
+		div {
+			img {
+				width: 750px;
+				display: block;
+			}
+		}
+		.bg01 {
+			position: relative;
+			img {
+				height: 571px;
+			}		
+		}
+		.bg02 {
+			position: relative;
+			img {
+				height: 383px;
+			}
+			.btn-wrap {
+				position: absolute;
+				left: 0;
+				bottom: 0px;
+				width: 750px;
+				text-align: center;
+				a.btn {
+					background: url(../images/labor/btn01.png) no-repeat;
+					width: 655px;
+					height: 153px;
+					line-height: 75px;
+					display: inline-block;
+					-moz-background-size: cover;
+					     background-size: cover;
+					margin: 0 26px;
+					color: #fff;
+					font-size: 30px; /*px*/
+					font-weight: bold;
+					&.already {
+						background: url(../images/labor/btn02.png) no-repeat;
+						-moz-background-size: cover;
+						     background-size: cover;
+					}
+				}
+			}
+		}
+		.bg03 {
+			img {
+				height: 253px;
+			}
+		}
+	}
+}
+
+.masklayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: none;
+  background: #000;
+  opacity: .6;
+}
+
+.dialog {
+  background: #fff;
+	// background-size: cover!important;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          -moz-transform: translate(-50%, -50%);
+       transform: translate(-50%, -50%);
+  width: 480px;
+  min-height: 120px;
+  padding: 20px; 
+  -moz-border-radius: 20px; 
+       border-radius: 20px;
+  border: 1px solid #e0e0e1;
+  z-index: 30;
+  display: none;
+  &.toast{
+  	background: #000;
+  	opacity: .9;
+		width: 580px;
+  	min-height: 120px;
+  	.modal-c{
+  		color: #fff;
+  		min-height: 120px;
+  	}
+  }
+  .modal-c{
+  	display: -webkit-flex;
+  	display: -ms-flexbox;
+  	display: -moz-box;
+  	display: flex;
+	  -webkit-align-items: center;
+	      -ms-flex-align: center;
+	          -moz-box-align: center;
+	       align-items: center;
+	  -webkit-justify-content: center;
+	      -ms-flex-pack: center;
+	          -moz-box-pack: center;
+	       justify-content: center;
+  	font-size: 38px; /*px*/
+  	color: #3e3e3e;
+  }
+}
