@@ -88,7 +88,7 @@ gulp.task('m-sass', function() {
 });
 
 // es6+ 转为 es5
-gulp.task('scripts', ['cleantmp'], function() {
+gulp.task('script', ['cleantmp'], function() {
   gulp.src([
     'app/scripts/u/**/*.js'
   ])
@@ -251,7 +251,7 @@ gulp.task('cleantmp', require('del').bind(null, ['.tmp']));
 gulp.task('clean', require('del').bind(null, ['dist']));
 
 // 启一个 Browser-sync 服务器并监听文件改动
-gulp.task('serve', ['sass', 'm-sass', 'scripts', 'pug', 'html'], function(){
+gulp.task('serve', ['sass', 'm-sass', 'script', 'pug', 'html'], function(){
   var port = Math.floor(Math.random()*10000);
   port = (port>1024? port: Math.floor(Math.random()*10000));
   // 固定端口 3000
@@ -268,7 +268,7 @@ gulp.task('serve', ['sass', 'm-sass', 'scripts', 'pug', 'html'], function(){
   });
 
   gulp.watch('app/styles/*.scss', ['sass', 'm-sass']);
-  gulp.watch('app/scripts/**/*.js', ['scripts']);
+  gulp.watch('app/scripts/**/*.js', ['']);
   gulp.watch('app/templates/pug/*.pug', ['pug']);
   gulp.watch('app/templates/*.html', ['html']);
   gulp.watch([
@@ -282,7 +282,7 @@ gulp.task('pre', ['clean'], function(){
   gulp.start('step1');
 });
 
-gulp.task('step1', ['sass', 'm-sass', 'scripts', 'pug', 'html', 'image'], function() {
+gulp.task('step1', ['sass', 'm-sass', '', 'pug', 'html', 'image'], function() {
   gulp.start('step2');
 });
 
