@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" , content="Season">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <title>以5为荣，1战到底</title>
+    <link rel="stylesheet" href="styles/m-labor.css">
+    <script src="scripts/lib-flexible.min.js"></script>
+  </head>
+  <body style="cursor:pointer">
+    <div class="wrap">
+      <div class="content-wrap">
+        <div class="bg01"><img src="images/labor/labor01.jpg" alt=""></div>
+        <div class="bg02"><img src="images/labor/labor02.jpg" alt="">
+          <div class="btn-wrap"><a class="btn ti" href="###">我要参战</a>
+            <!-- <a class="btn already ti" href="###">已参战</a>-->
+          </div>
+        </div>
+        <div class="bg03"><img src="images/labor/labor03.jpg" alt=""></div>
+      </div>
+    </div>
+    <div class="masklayer"></div>
+    <div class="dialog toast">
+      <p class="modal-c">打气成功！</p>
+    </div>
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script>    (function($) {
+      var GLOBAL = {
+        show: function($obj) {
+          $obj.fadeIn(200);
+          $(".masklayer").show();
+        },
+        hide: function($obj) {
+          $obj.fadeOut(200);
+          $(".masklayer").hide();
+        }
+      };
+      $("body").on("click", ".btn", function(event) {
+        $(".toast").fadeIn(800).delay(1e3).fadeOut(800);
+      });
+    })(jQuery)</script>
+  </body>
+</html>

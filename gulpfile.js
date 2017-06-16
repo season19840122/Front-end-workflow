@@ -4,7 +4,8 @@ var gulp = require('gulp'),
   browserSync = require('browser-sync').create(),
   $ = require('gulp-load-plugins')(),
   postcss = require('gulp-postcss'),
-  px2rem = require('postcss-px2rem');
+  px2rem = require('postcss-px2rem'),
+  imageResize = require('gulp-image-resize');
 
 
 var spriteConfig = {
@@ -199,7 +200,10 @@ gulp.task('html', function () {
 
 // 图片压缩优化
 gulp.task('image', function(){
-  return gulp.src('app/images/**')
+  return gulp.src([
+    'app/images/**'
+    ,'!app/images/r/**'
+    ])
     .pipe(
       $.cache(
         $.imagemin([
@@ -215,16 +219,30 @@ gulp.task('image', function(){
     .pipe(gulp.dest('app/images'));
 })
 
+// 图片裁切任务
+gulp.task('image-resize', function () {
+  return gulp.src('app/images/r/**/*.+(jpeg|jpg|png|gif)')
+    .pipe(imageResize({
+      width: 200
+      ,height: 50
+      ,crop: true
+      // ,upscale: true
+    }))
+    .pipe(gulp.dest('app/images'));
+});
+
 // 拷贝所有文件
 gulp.task('copy', function () {
   return gulp.src([
     'app/*.*'
     ,'app/images/**'
     ,'!app/images/**/*bak*.*'
+    ,'!app/images/r'
+    ,'!app/images/r/**'
     ,'app/styles/*.css'
     ,'!app/styles/_*.css'
     ,'app/mock/**'
-    ,'app/module/*/*'
+    ,'app/module/**'
     ,'!app/module/**/*.scss'
     ,'!app/_*.*'
   ], {
@@ -268,7 +286,7 @@ gulp.task('serve', ['sass', 'm-sass', 'script', 'pug', 'html'], function(){
   });
 
   gulp.watch('app/styles/*.scss', ['sass', 'm-sass']);
-  gulp.watch('app/scripts/**/*.js', ['']);
+  gulp.watch('app/scripts/**/*.js', ['script']);
   gulp.watch('app/templates/pug/*.pug', ['pug']);
   gulp.watch('app/templates/*.html', ['html']);
   gulp.watch([
@@ -282,7 +300,7 @@ gulp.task('pre', ['clean'], function(){
   gulp.start('step1');
 });
 
-gulp.task('step1', ['sass', 'm-sass', '', 'pug', 'html', 'image'], function() {
+gulp.task('step1', ['sass', 'm-sass', 'script', 'pug', 'html', 'image'], function() {
   gulp.start('step2');
 });
 
