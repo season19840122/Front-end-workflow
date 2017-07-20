@@ -89,7 +89,7 @@ gulp.task('m-sass', function() {
 });
 
 // es6+ 转为 es5
-gulp.task('script', ['cleantmp'], function() {
+gulp.task('script', function() {
   gulp.src([
     'app/scripts/u/**/*.js'
   ])
