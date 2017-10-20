@@ -52,16 +52,17 @@ gulp.task('less', function() {
     ])
     .pipe($.plumber())
     .pipe($.less())
+    .pipe(postcss([ autoprefixer() ]))
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream());
 });
 
 gulp.task('m-less', function() {
-  var processors = [px2rem({remUnit: 75})];
+  var processors = px2rem({ remUnit: 75 });
   return gulp.src('app/styles/m-*.less')
     .pipe($.plumber())
     .pipe($.less())
-    .pipe(postcss(processors))
+    .pipe(postcss([ processors, autoprefixer() ]))
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream());
 });
@@ -88,8 +89,8 @@ gulp.task('m-sass', function() {
     ])
     .pipe($.plumber())
     .pipe($.sass({outputStyle: 'expanded'}).on('error', $.sass.logError))
-    .pipe(postcss([ processors ]))
-    .pipe(postcss([ autoprefixer() ]))
+    .pipe(postcss([ processors, autoprefixer() ]))
+    // .pipe(postcss([ ]))
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream());
 });
