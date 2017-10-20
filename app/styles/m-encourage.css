@@ -388,8 +388,26 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: none !important;
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  outline: 0;
+}
+
+*:focus,
+*:active,
+a:active,
+a:focus,
+input:focus,
+input:active {
+  -moz-outline-style: none;
+  outline: none;
+  outline: 0;
+  text-decoration: none;
 }
 
 p {
@@ -408,6 +426,16 @@ h4,
 h5,
 h6 {
   margin: 0;
+  font-weight: normal;
+  line-height: 1.1;
+}
+
+.box {
+  overflow: hidden;
+}
+
+body {
+  font: 0.16rem/1.5 'microsoft yahei';
 }
 
 .button-sure,
@@ -420,16 +448,20 @@ h6 {
   border: 0;
   background: #c49f58;
   background: -webkit-gradient(linear, left top, left bottom, from(#c49f58), to(#c49f58));
-  background: linear-gradient(#c49f58, #c49f58);
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorStr=$startColor, endColorStr=$endColor);
+  background: linear-gradient(to bottom, #c49f58, #c49f58);
+  /* Standard syntax */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
+  /* IE6-9 */
 }
 
 .button-no {
   color: #271708;
   background: #c49f58;
   background: -webkit-gradient(linear, left top, left bottom, from(#c49f58), to(#c49f58));
-  background: linear-gradient(#c49f58, #c49f58);
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorStr=$startColor, endColorStr=$endColor);
+  background: linear-gradient(to bottom, #c49f58, #c49f58);
+  /* Standard syntax */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 );
+  /* IE6-9 */
 }
 
 /*下拉列表*/
@@ -496,24 +528,33 @@ h6 {
   background: #4d525a;
 }
 
+/* 列表自定义 webkit 滚动条 */
+
 .smallScroll::-webkit-scrollbar {
-  width: 0.133333rem;
-  height: 0.133333rem;
+  width: 0.08rem;
+  height: 0.88rem;
+  border-radius: 0.066667rem;
 }
 
 .smallScroll::-webkit-scrollbar-track {
-  border-radius: 0.04rem;
-  background: #0f1114;
+  border-radius: 0.066667rem;
+  background: none;
 }
 
 .smallScroll::-webkit-scrollbar-thumb {
-  border-radius: 0.04rem;
-  background: #2e3740;
+  border-radius: 0.066667rem;
+  background: #785a28;
 }
 
-.smallScroll.smallScroll2::-webkit-scrollbar {
-  width: 0.08rem;
+.smallScroll::-webkit-scrollbar-thumb:hover {
+  background: #c8aa6e;
 }
+
+.smallScroll::-webkit-scrollbar-thumb:active {
+  background: #463714;
+}
+
+/** 线性渐变 **/
 
 html {
   background: #f4f4f4 !important;
