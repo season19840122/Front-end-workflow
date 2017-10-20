@@ -1,19 +1,19 @@
 extends _layouts-mobile
 block title
-  title 鼓励打气
+  title 猜 TA 赢
 block style
-  link(rel="stylesheet", href="styles/m-encourage.css")
+  link(rel="stylesheet", href="styles/_m-encourage.css")
 block main
-  nav(data-pageflag='2')
-    p.tab.select 为TA打气
-    p.tab 打气记录
-    .a-wrap
-      a(href="###").change 换一批
-      a(href="###").refresh.none 刷新
+  //- nav(data-pageflag='1')
+  //-   p.tab.select 为TA打气
+  //-   p.tab 打气记录
+  //-   .a-wrap
+  //-     a(href="###").change 换一批
+  //-     a(href="###").refresh.none 刷新
   .content-wrap
     .content
       .info-wrap
-        p.info 为正在参与火马活动的玩家打气，TA的胜利也会为你带来顺豆奖励!（平台胜率仅供参考）
+        p.info 为正在参与火马电竞活动的玩家打气，Ta的胜利也会为你带来顺豆奖励！（平台胜率仅供参考）
       .lists-wrap
         .list
           .head
@@ -21,40 +21,31 @@ block main
           .name-wrap
             .layer
               span.name 哇哈哈哈哈哈哈哈
-               img(src="images/ico-lol.png", alt="")
+                img(src="images/ico-lol.png", alt="").lol
             .layer
               span.win 胜率：53%
-              span.zone 德玛西亚
               span.level 青铜V
+              span.zone 德玛西亚
             .layer
-              span
-                i
-                i
-                i
-                i
-                i
-                i.mark
+              .progress-bar
+                .progress(style="width:20%")
           .a-wrap
             a(href="###").just 已打气
-        .list
+        .list.sj
           .head
             img(src="images/head.png", alt="")
+            i.medal
           .name-wrap
             .layer
               span.name 哇哈哈哈哈哈哈哈
-               img(src="images/ico-lol.png", alt="")
+                img(src="images/ico-lol.png", alt="").lol
             .layer
               span.win 胜率：53%
-              span.zone 德玛西亚
               span.level 青铜V
+              span.zone 德玛西亚
             .layer
-              span
-                i
-                i
-                i
-                i
-                i
-                i.mark
+              .progress-bar
+                .progress(style="width:20%")
           .a-wrap
             a(href="###").encourage
               img(src="images/encourage-sj.png", alt="")
@@ -64,44 +55,43 @@ block main
               img(src="images/head.png", alt="")
             .name-wrap
               .layer
-              span.name 哇哈哈哈哈哈哈哈
-               img(src="images/ico-m3.png", alt="")
+                span.name 哇哈哈哈哈哈哈哈
+                  img(src="images/ico-m3.png", alt="")
               .layer
                 span.win 胜率：53%
-                span.zone 德玛西亚
                 span.level 青铜V
+                span.zone 德玛西亚
+              .layer
+                .progress-bar
+                  .progress(style="width:20%")
             .a-wrap
               a(href="###").encourage
                 img(src="images/encourage.png", alt="")
               a(href="###").just.none 已打气
-    .content.none
+    .content.histroy.none
       .no-records.hidden
         p.p1 快来参与吧~
         p.p2 (每场竞技结束后，顺豆自动结算)
-      .info-wrap.records
-        p.record 仅显示近3天的记录
-        p.num 打气次数：109
-        p.win 胜率：53%
+      .info-wrap
+        p.record 共打气48次
+          span.num 今日免费机会已用完
+        p.win 打气胜率：66%
       .lists-wrap
-        .list
+        .list.sj
           .head
             img(src="images/head.png", alt="")
+            i.medal
           .name-wrap
             .layer
               span.name 哇哈哈哈哈哈哈哈
-               img(src="images/ico-lol.png", alt="")
+                img(src="images/ico-lol.png", alt="").lol
             .layer
               span.win 胜率：53%
-              span.zone 德玛西亚
               span.level 青铜V
+              span.zone 德玛西亚
             .layer
-              span
-                i
-                i
-                i
-                i
-                i
-                i.mark
+              .progress-bar
+                .progress(style="width:20%")
           .a-wrap.date-wrap
             span.date 02-16 20:53:33
             a(href="###").just.fail 失败
@@ -112,11 +102,14 @@ block main
           .name-wrap
             .layer
               span.name 哇哈哈哈哈哈哈哈
-               img(src="images/ico-m3.png", alt="")
+                img(src="images/ico-lol.png", alt="").lol
             .layer
               span.win 胜率：53%
-              span.zone 德玛西亚
               span.level 青铜V
+              span.zone 德玛西亚
+            .layer
+              .progress-bar
+                .progress(style="width:20%")
           .a-wrap.date-wrap
             span.date 02-16 20:53:33
             a(href="###").just.ing 进行中
@@ -127,11 +120,14 @@ block main
           .name-wrap
             .layer
               span.name 哇哈哈哈哈哈哈哈
-               img(src="images/ico-m3.png", alt="")
+                img(src="images/ico-lol.png", alt="").lol
             .layer
               span.win 胜率：53%
-              span.zone 德玛西亚
               span.level 青铜V
+              span.zone 德玛西亚
+            .layer
+              .progress-bar
+                .progress(style="width:20%")
           .a-wrap.date-wrap
             span.date 02-16 20:53:33
             a(href="###").just.sd +500顺豆
@@ -185,39 +181,29 @@ block dialog
       a(href="###").sure 确认
 append script
   //- script(src="scripts/_vue.js")
+  script(src="scripts/global.js")
   script.
     (function($){
-      var GLOBAL = {
-        show: function($obj){
-          $obj.fadeIn(200);
-          $('.masklayer').fadeIn(200);
-        },
-        hide: function($obj){
-          $obj.fadeOut(200);
-          $('.masklayer').fadeOut(200);
-        }
-      };
-
       var load = function(){
           var flag = $('nav').data('pageflag');
           if(flag === 2){
-              $('.tab').eq(1).addClass('select').siblings('.tab').removeClass('select');
-              $('.content').eq(1).show().siblings('.content').hide();
+            $('.tab').eq(1).addClass('select').siblings('.tab').removeClass('select');
+            $('.content').eq(1).show().siblings('.content').hide();
           }
       }();
         
-      $('body').on('click', '.tab', function(event){
-        $(this).addClass('select').siblings('.tab').removeClass('select');
-        var index = $(this).index();
-        $('.a-wrap').eq(0).find('a').eq(index).show().siblings().hide();
-        $('.content').eq(index).show().siblings('.content').hide();
-      });
+      //- $('body').on('click', '.tab', function(event){
+      //-   $(this).addClass('select').siblings('.tab').removeClass('select');
+      //-   var index = $(this).index();
+      //-   $('.a-wrap').eq(0).find('a').eq(index).show().siblings().hide();
+      //-   $('.content').eq(index).show().siblings('.content').hide();
+      //- });
 
       $('body').on('click', '.encourage1', function(event){
         $(this).hide().siblings().show();
         $('.toast').fadeIn(800).delay(1000).fadeOut(800);
-        // alert('今天的打气次数已用完，明天继续！');
-        // alert('玩家游戏已结束，不可打气，请刷新！');
+        //! alert('今天的打气次数已用完，明天继续！');
+        //! alert('玩家游戏已结束，不可打气，请刷新！');
       });
 
       // 隐藏弹层

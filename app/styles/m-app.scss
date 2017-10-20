@@ -1,0 +1,41 @@
+@import '_base';
+@import '_common';
+
+html {
+	background: #f4f4f4!important;
+}
+
+body {
+  font: 14px/1.5 Helvetica, 'SimHei'; /*no*/
+  background: #f4f4f6;
+  cursor: pointer;
+  overflow-x: hidden;
+}
+
+.content-wrap {
+  width: 750px;
+  margin: 0 auto;
+	overflow: hidden;
+  .bg01 {
+    height: 863px;
+  }
+  .bg02 {
+    height: 587px;
+  }
+  .bg03 {
+    height: 701px;
+  }
+  .bg04 {
+    height: 615px;
+  }
+  .bg05 {
+    height: 534px;
+  }
+  .bg01, .bg02, .bg03, .bg04, .bg05 {
+  	position: relative;
+  }
+  img{
+    width: 750px;
+    display: block;
+  }
+}

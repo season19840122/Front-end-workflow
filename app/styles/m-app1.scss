@@ -1,0 +1,44 @@
+@import '_base';
+@import '_common';
+
+html {
+	background: #f4f4f4!important;
+}
+
+body {
+  font: 14px/1.5 Helvetica, 'SimHei'; /*no*/
+  background: #f4f4f6;
+  cursor: pointer;
+  overflow-x: hidden;
+}
+
+.content-wrap {
+  width: 750px;
+  margin: 0 auto;
+	overflow: hidden;
+  .bg01 {
+    background: url(../images/active/bg-01.jpg) no-repeat center top;
+    height: 863px;
+  }
+  .bg02 {
+    background: url(../images/active/bg-02.jpg) no-repeat center top;
+    height: 587px;
+  }
+  .bg03 {
+    background: url(../images/active/bg-03.jpg) no-repeat center top;
+    height: 701px;
+  }
+  .bg04 {
+    background: url(../images/active/bg-04.jpg) no-repeat center top;
+    height: 615px;
+  }
+  .bg05 {
+    background: url(../images/active/bg-05.jpg) no-repeat center top;
+    height: 534px;
+  }
+  .bg01, .bg02, .bg03, .bg04, .bg05 {
+  	position: relative;
+    width: 750px;
+    background-size: cover;
+  }
+}

@@ -121,7 +121,8 @@ figure {
 
 hr {
   -moz-box-sizing: content-box;
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   height: 0;
 }
 
@@ -181,7 +182,9 @@ input {
 
 input[type=checkbox],
 input[type=radio] {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0;
 }
 
@@ -233,17 +236,6 @@ th {
 
 li {
   list-style: none;
-}
-
-*:focus,
-*:active,
-a:active,
-a:focus,
-input:focus,
-input:active {
-  -moz-outline-style: none;
-  outline: none;
-  outline: 0;
 }
 
 /*-- 文字排版 --*/
@@ -376,7 +368,9 @@ input:active {
 }
 
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 img {
@@ -418,6 +412,9 @@ h6 {
   color: #271708;
   border: 0;
   background: #c49f58;
+  background: -webkit-gradient(linear, left top, left bottom, from(#c49f58), to(#c49f58));
+  background: -webkit-linear-gradient(#c49f58, #c49f58);
+  background: -moz-linear-gradient(#c49f58, #c49f58);
   background: linear-gradient(#c49f58, #c49f58);
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorStr=$startColor, endColorStr=$endColor);
 }
@@ -425,6 +422,9 @@ h6 {
 .button-no {
   color: #271708;
   background: #c49f58;
+  background: -webkit-gradient(linear, left top, left bottom, from(#c49f58), to(#c49f58));
+  background: -webkit-linear-gradient(#c49f58, #c49f58);
+  background: -moz-linear-gradient(#c49f58, #c49f58);
   background: linear-gradient(#c49f58, #c49f58);
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorStr=$startColor, endColorStr=$endColor);
 }
@@ -470,18 +470,21 @@ h6 {
 .mainScroll::-webkit-scrollbar {
   width: 0.133333rem;
   height: 0.133333rem;
-  border-radius: 0.066667rem;
+  -webkit-border-radius: 0.066667rem;
+          border-radius: 0.066667rem;
 }
 
 .mainScroll::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 0.066667rem rgba(0, 0, 0, 0.1);
-  border-radius: 0.066667rem;
+  -webkit-border-radius: 0.066667rem;
+          border-radius: 0.066667rem;
   background: #000;
 }
 
 .mainScroll::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 0.066667rem #2d3a48;
-  border-radius: 0.066667rem;
+  -webkit-border-radius: 0.066667rem;
+          border-radius: 0.066667rem;
   background: #33383e;
 }
 
@@ -499,12 +502,14 @@ h6 {
 }
 
 .smallScroll::-webkit-scrollbar-track {
-  border-radius: 0.04rem;
+  -webkit-border-radius: 0.04rem;
+          border-radius: 0.04rem;
   background: #0f1114;
 }
 
 .smallScroll::-webkit-scrollbar-thumb {
-  border-radius: 0.04rem;
+  -webkit-border-radius: 0.04rem;
+          border-radius: 0.04rem;
   background: #2e3740;
 }
 
@@ -540,13 +545,15 @@ article section {
 
 .part01 {
   background: url("../images/bg01.jpg") no-repeat center top;
-  background-size: cover;
+  -moz-background-size: cover;
+       background-size: cover;
   height: 4.733333rem;
 }
 
 .part02 {
   background: url("../images/bg02.jpg") no-repeat center top;
-  background-size: cover;
+  -moz-background-size: cover;
+       background-size: cover;
   height: 5.76rem;
   text-align: center;
 }
@@ -588,13 +595,15 @@ article section {
 
 .part03 {
   background: url("../images/bg03.jpg") no-repeat center top;
-  background-size: cover;
+  -moz-background-size: cover;
+       background-size: cover;
   height: 21.506667rem;
 }
 
 .part03 .exchange {
   background: url("../images/exchange.png") no-repeat;
-  background-size: cover;
+  -moz-background-size: cover;
+       background-size: cover;
   width: 4.32rem;
   height: 1.64rem;
   display: block;
@@ -608,7 +617,8 @@ article section {
 
 .part03 .game-ul li .game-wrap {
   background: url("../images/stage.png") no-repeat;
-  background-size: cover;
+  -moz-background-size: cover;
+       background-size: cover;
   width: 9.8rem;
   height: 5.106667rem;
   margin-top: 1.16rem;
@@ -622,7 +632,8 @@ article section {
   position: relative;
   top: -0.8rem;
   background: url("../images/light.png") no-repeat -0.88rem -0.15rem;
-  background-size: cover;
+  -moz-background-size: cover;
+       background-size: cover;
   width: 7.666667rem;
   height: 1.4rem;
   line-height: 1.4rem;
@@ -659,7 +670,8 @@ article section {
   color: #00d61e;
   -webkit-transform: rotate(-15deg);
   -ms-transform: rotate(-15deg);
-  transform: rotate(-15deg);
+  -moz-transform: rotate(-15deg);
+       transform: rotate(-15deg);
   text-align: center;
   text-indent: 0.266667rem;
   margin-top: 0.066667rem;
@@ -687,7 +699,8 @@ article section {
   left: 50%;
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+       transform: translateX(-50%);
   z-index: 9;
   color: #fbd90c;
   font-size: 0.24rem;
@@ -705,7 +718,8 @@ article section {
 
 .part03 .game-ul li .game-wrap .btn-submit.bg {
   background: url("../images/btn-submit.png") no-repeat;
-  background-size: cover;
+  -moz-background-size: cover;
+       background-size: cover;
 }
 
 .part03 .game-ul li .game-wrap .btn-submit.no-open {
@@ -781,7 +795,8 @@ article section {
 
 .part03 .game-ul li .game-wrap .team-ul li .team-wrap .check-wrap {
   background: url("../images/uncheck.png") no-repeat;
-  background-size: contain;
+  -moz-background-size: contain;
+       background-size: contain;
   width: 2rem;
   height: 0.68rem;
   line-height: 0.68rem;
@@ -791,12 +806,14 @@ article section {
 
 .part03 .game-ul li .game-wrap .team-ul li .team-wrap .check-wrap.check-on {
   background: url("../images/check.png") no-repeat;
-  background-size: contain;
+  -moz-background-size: contain;
+       background-size: contain;
 }
 
 .part03 .game-ul li .game-wrap .team-ul li .team-wrap .check-wrap.checked {
   background: url("../images/checked.png") no-repeat;
-  background-size: contain;
+  -moz-background-size: contain;
+       background-size: contain;
 }
 
 .part03 .game-ul li .game-wrap .team-ul li .team-wrap .check-wrap .uncheck {
@@ -821,18 +838,21 @@ article section {
 
 .part03 .game-ul li .game-wrap .team-ul li .team-wrap .check-wrap .uncheck:checked + span {
   background: url("../images/uncheck.png") no-repeat;
-  background-size: cover;
+  -moz-background-size: cover;
+       background-size: cover;
 }
 
 .part01,
 .part02,
 .part03 {
-  background-size: cover;
+  -moz-background-size: cover;
+       background-size: cover;
 }
 
 .refresh {
   background: url("../images/refresh.png") no-repeat center;
-  background-size: cover;
+  -moz-background-size: cover;
+       background-size: cover;
   width: 0.7rem;
   height: 0.7rem;
   position: fixed;
@@ -856,13 +876,15 @@ article section {
 
 .dialog {
   background: url("../images/login-bg.png") no-repeat;
-  background-size: cover !important;
+  -moz-background-size: cover !important;
+       background-size: cover !important;
   position: fixed;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+       transform: translate(-50%, -50%);
   width: 9.173333rem;
   min-height: 7.16rem;
   z-index: 11;
@@ -871,7 +893,8 @@ article section {
 
 .dialog.ex {
   background: url("../images/exchange-bg.png") no-repeat;
-  background-size: cover !important;
+  -moz-background-size: cover !important;
+       background-size: cover !important;
 }
 
 .dialog .btn-close {
@@ -969,7 +992,8 @@ article section {
 
 .dialog .get.countdown {
   background: url("../images/countdown.png") no-repeat;
-  background-size: cover;
+  -moz-background-size: cover;
+       background-size: cover;
   color: #6f66a1;
 }
 

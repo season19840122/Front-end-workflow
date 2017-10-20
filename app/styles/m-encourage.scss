@@ -19,7 +19,12 @@ a{
 }
 
 .wrap{
-  position: relative;
+	// position: absolute;
+	// left: 0;
+	// top: 0;
+	// bottom: 0;
+	position: relative;
+	overflow: hidden;
   width: 10rem;
   margin: 0 auto;
 	nav{
@@ -50,16 +55,16 @@ a{
     	}
     	&.select{
 				color: #4487c2;
-				&:after {
-	        content: " ";
-	        width: 0; 
-					height: 0; 
-					border: 19px solid #e2e2e2;
-					border-color: #e2e2e2 transparent transparent;
-	        position: absolute;
-	        top: 70px; 
-	        left: 50px;
-		    }
+				// &:after {
+	   //      content: " ";
+	   //      width: 0; 
+				// 	height: 0; 
+				// 	border: 19px solid #e2e2e2;
+				// 	border-color: #e2e2e2 transparent transparent;
+	   //      position: absolute;
+	   //      top: 70px; 
+	   //      left: 50px;
+		  //   }
     	}
     }
     .a-wrap{
@@ -72,14 +77,21 @@ a{
 	    }
     }
 	}
+	// .content-wrap {
+	// 	position: fixed;
+	// 	top: 104px;
+	// 	bottom: 50px;
+	// 	overflow: hidden;
+	// }
 	.info-wrap{
 		position: fixed;
 		width: 10rem;
-		top: 76px;
+		top: 0;
 		z-index: 10;
 		padding: 0 25px;
-		height: 80px;
-		background: #c47f2d;
+		height: 104px;
+		background: url(../images/bg-info.jpg) no-repeat;
+		background-size: cover;
 		display: -webkit-flex;
     display: -ms-flexbox;
     display: -moz-box;
@@ -88,33 +100,28 @@ a{
     -ms-flex-align: center;
     -moz-box-align: center;
          align-items: center;
+    -webkit-justify-content: space-between;
+       -moz-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    color: #fff;
+    // display: none;
 		.info{
 			color: #e2e2e2;
-			font-size: 22px;
+			font-size: 25px;
 		}
-		&.records{
-			background: #4487c2;
-			color: #e2e2e2;
-			display: -webkit-flex;
-			display: -ms-flexbox;
-			display: -moz-box;
-			display: flex;
-			-webkit-justify-content: space-between;
-			    -ms-flex-pack: justify;
-			        -moz-box-pack: justify;
-			     justify-content: space-between;
-			-webkit-align-items: center;
-			    -ms-flex-align: center;
-			        -moz-box-align: center;
-			     align-items: center;
-			font-size: 28px;
-			.record{
-				font-size: 22px;
+		.record, .win {
+			font-size: 33px;
+			.num {
+				margin-left: 10px;
+				font-size: 20px;
 			}
 		}
 	}
 	.lists-wrap{
-		margin-top: 77px + 80;
+		overflow: hidden;
+		margin-top: 104px;
+		padding-bottom: 150px;
 		// transform: translateY(20px);
 		padding-left: 25px;
 		.list{
@@ -133,7 +140,7 @@ a{
 			     justify-content: space-between;
 	    overflow: hidden;
     	position: relative;
-			&:after{
+			&::after{
 		    content: " ";
 		    position: absolute;
 		    left: 0;
@@ -144,9 +151,10 @@ a{
 		    color: #a1a1a1;
 			}
 			.head{
-				-ms-flex-preferred-size: 120px;
-				        -webkit-flex-basis: 120px;
-				        flex-basis: 120px;
+				width: 100px;
+				height: 100px;
+				margin-right: 20px;
+        position: relative;
 				img{
 					width: 100px;
 					height: 100px;
@@ -172,10 +180,19 @@ a{
 					 &:nth-last-of-type(1){
 					 	margin-bottom: 0;
 					 }
+					.progress-bar {
+					 	width: 420px;
+						height: 7px;
+						background: #e6e6e6;
+					 	.progress {
+					 		height: 100%;
+							background: #6ea6d8;
+					 	}
+					}
 				}
 				span{
 					margin-right: 15px;
-					color: #a1a1a1;
+					color: #a9a9a9;
 					font-size: 22px; /*px*/
 					line-height: 1;
 					display: -webkit-flex;
@@ -186,28 +203,28 @@ a{
 					   -moz-box-align: center;
 					    -ms-flex-align: center;
 					        align-items: center;
-					i {
-						background: url('../images/medal.png') no-repeat;
-						-moz-background-size: cover;
-						     background-size: cover;
-						width: 22px;
-						height: 33px;
-						margin-right: 2px;
-						&.mark {
-							margin-left: 8px;
-							background: url('../images/mark.png') no-repeat;
-							-moz-background-size: cover;
-							     background-size: cover;
-							width: 104px;
-							height: 31px;
-						}
-					}
+					// i {
+					// 	background: url('../images/medal.png') no-repeat;
+					// 	-moz-background-size: cover;
+					// 	     background-size: cover;
+					// 	width: 22px;
+					// 	height: 33px;
+					// 	margin-right: 2px;
+						// &.mark {
+						// 	margin-left: 8px;
+						// 	background: url('../images/mark.png') no-repeat;
+						// 	-moz-background-size: cover;
+						// 	     background-size: cover;
+						// 	width: 104px;
+						// 	height: 31px;
+						// }
+					// }
 				}
 				.name{
 					font-size: 28px; /*px*/
 					height: 30px;
 					line-height: 30px;
-					color: #1b1b1b;
+					color: #232323;
 					width: 320px;
 					display: -webkit-inline-flex;
 					display: -moz-inline-box;
@@ -219,16 +236,21 @@ a{
 					        align-items: center;
 					@extend .eps;
 					img{
-						width: 38px;
-						height: 30px;
-						line-height: 30px;
+						width: 44px;
+						height: 36px;
+						line-height: 36px;
 						display: inline-block;
 						margin-left: 10px;
+						&.lol {
+							width: 31px;
+							height: 33px;
+							line-height: 33px;
+						}
 					}
 				}
 				.win{
 					font-size: 24px; /*px*/
-					color: #4487c2;
+					color: #2d9fd6;
 				}
 			}
 			.a-wrap{
@@ -253,12 +275,12 @@ a{
 				&.date-wrap{
 					text-align: right;
 					-ms-flex-preferred-size: 180px;
-					    -webkit-flex-basis: 180px;
+					        -webkit-flex-basis: 180px;
 					        flex-basis: 180px;
 					height: 130px;
 				}
 				.date{
-					color: #b1b1b1;
+					color: #a9a9a9;
 					font-size: 20px; /*px*/
 					-ms-flex-item-align: end;
 					        -webkit-align-self: flex-end;
@@ -274,23 +296,69 @@ a{
 				}
 				.encourage{
 					img{
-						width: 100px;
-						height: 100px;
+						width: 104px;
+						height: 104px;
 					}
 				}
 				.just{
 					color: #a1a1a1;
-					font-size: 30px; /*px*/
+					font-size: 33px; /*px*/
 					&.fail, &.ing, &.sd{
 						-ms-flex-preferred-size: 50px;
-						    -webkit-flex-basis: 50px;
+						        -webkit-flex-basis: 50px;
 						        flex-basis: 50px;
 					}
 					&.ing{
 						color: #4487c2;
 					}
 					&.sd{
-						color: #009f3c;
+						color: #1eb700;
+					}
+				}
+			}
+			&.sj {
+				.head {
+					.medal {
+						background: url(../images/sj.png) no-repeat;
+						-moz-background-size: cover;
+						     background-size: cover;
+						width: 33px;
+						height: 33px;
+						position: absolute;
+						bottom: -4px;
+						right: 0;
+					}
+				}
+				.name-wrap {
+					.layer {
+						.win {
+							color: #d39504;
+						}
+						.progress-bar {
+							.progress {
+								background: #e7b747;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.histroy {
+		.lists-wrap {
+			// overflow-x: hidden;
+			.name-wrap {
+				.layer {
+					.win {
+						color: #a9a9a9 !important;
+					}
+					.progress-bar {
+						.progress {
+							background: #a9a9a9 !important;
+							&.ing {
+								background: #e7b747 !important;
+							}
+						}
 					}
 				}
 			}
@@ -326,7 +394,7 @@ a{
   -moz-border-radius: 20px; 
        border-radius: 20px;
   border: 1px solid #e0e0e1;
-  z-index: 30;
+  z-index: 100;
   display: none;
   &.toast{
   	background: #000;
@@ -501,14 +569,16 @@ a{
 					width: 95px;
 					height: 52px;
 					text-align: center;
-					line-height: 50px;
-					background: #f5f4f4;
+					line-height: 44px;
+					padding: 2px;
+					// background: #f5f4f4;
 					display: inline-block;
 					color: #b3b3b3;
 					font-size: 24px; /*px*/
-					border: 1px solid  #d4d4d4;
+					border: 2px solid  #359be0;
 					position: relative;
 					&.sel {
+						padding: 0;
 						background: #fefefe;
 						color: #359be0;
 						border: 4px solid  #359be0; 
@@ -517,13 +587,15 @@ a{
 							position: absolute;
 							right: 0;
 							bottom: 0;
-							width: 18px;
-							height: 18px;
+							width: 33px;
+							height: 33px;
 							background: url('../images/sel.png') no-repeat;
-							background-size: cover;
+							-moz-background-size: cover;
+							     background-size: cover;
 						}
 					}
 					&.lock {
+						padding: 0;
 						background: #fefefe;
 						color: #dedcdc;
 						border: 4px solid  #d4d4d4; 
@@ -532,10 +604,11 @@ a{
 							position: absolute;
 							right: 0;
 							bottom: 0;
-							width: 18px;
-							height: 18px;
+							width: 33px;
+							height: 33px;
 							background: url('../images/lock.png') no-repeat;
-							background-size: cover;
+							-moz-background-size: cover;
+							     background-size: cover;
 						}
 					}
 				}
@@ -629,3 +702,4 @@ a{
 		font-size: 28px; /*px*/
   }
 }
+

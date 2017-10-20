@@ -10,20 +10,21 @@
     <div class="box">
       <div id="app" v-cloak>
         <little-panel>
-          <div class="challenge" slot="challenge">
-            <h2 class="title"><i></i>屠龙勇士</h2>
-            <p class="text" data-toggle="tooltip" data-original-title="本人击杀和助攻中有两个及以上的“零”（0,6,9=1个“零”；8=2个“零”）">本人击杀和助攻中有两个及以上的“零”（0,6,9=1个“零”；8=2个“零”）</p>
+          <div class="challenge" slot="challenge"><i></i>
+            <h2 class="title"><span class="logo"></span><a class="more" href="#" target="_blank"></a>专属乱斗—完成目标瓜分奖池</h2>
+            <p class="text" data-toggle="tooltip" data-original-title="本人击杀和助攻中有两个及以上的“零”（0,6,9=1个“零”；8=2个“零”）"> <span>屠龙勇士：</span>本人击杀和助攻中有两个及以上的“零”（0,6,9=1个“零”；8=2个“零”）</p>
             <div class="scan none">
               <p class="charge">报名费￥0.5</p><img class="qrcode" src="images/qrcode.png" alt="">
             </div>
             <div class="reached">
               <p class="dou"> <i></i>12345646</p>
-              <p class="tips">（当前奖池：已达成<a href="#" target="_blank">132份</a>）</p>
               <div class="label"><span>匹配</span><span>排位</span><span id="check">17:00结算</span></div>
+              <button class="apply none">立即报名</button>
               <button class="unreach none">未达成？我不服</button>
               <button class="unreach disabled none">未达成</button>
               <button class="reach none">已达成，再来一局</button>
               <button class="reach disabled none">已达成</button>
+              <button class="warn none" disabled>请在游戏开始前报名</button>
               <button class="success none"><i></i>报名成功</button>
               <div class="animate-wrap">
                 <div class="animate">
@@ -40,7 +41,7 @@
                   <div class="btn-wrap">
                     <button>
                        奖励<span>x10</span></button>
-                    <button class="none1"><i></i>5000<span>x10</span></button>
+                    <button class="none1"><i></i>50000<span>x10</span></button>
                   </div>
                 </div>
               </div>
@@ -78,7 +79,7 @@
               </div>
             </div>
           </div>
-          <div class="game none" slot="game">
+          <div class="game" slot="game">
             <div class="start-wrap">
               <!-- 玩游戏-->
               <div class="step1">
@@ -140,20 +141,127 @@
               </div>
             </div>
           </div>
+          <div class="guess" slot="guess">
+            <h2 class="title">LOL反应能力测试</h2>
+            <div class="guess-wrap">
+              <!-- 1-->
+              <div class="st1 none1">
+                <p class="p1 pt1">竞猜本局游戏自己在<span class="c1">蓝色</span>还是<span class="c2">红色</span>方<br>（左下为蓝色方）</p>
+                <p class="p2">猜对可得1500奖励</p>
+                <div class="btn-wrap">
+                  <button class="btn-guess free" id="left">我在蓝方</button>
+                  <div id="left_btn">
+                    <button class="btn-guess one_left"> 
+                      <p>5000顺豆</p><span></span>
+                    </button>
+                    <button class="btn-guess two_left"> 
+                      <p>3000顺豆</p><span></span>
+                    </button>
+                  </div>
+                  <button class="btn-guess" id="right">我在红方</button>
+                  <div id="right_btn">
+                    <button class="btn-guess one_right"> 
+                      <p>5000顺豆</p><span></span>
+                    </button>
+                    <button class="btn-guess two_right"> 
+                      <p>3000顺豆</p><span></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- 2-->
+              <div class="st2 none">
+                <div class="back">返回</div>
+                <div class="qrcode"></div>
+                <p class="p1"><span class="c3">获胜可得1500奖励/</span>支付金额：￥6</p>
+              </div>
+              <!-- 3-->
+              <div class="st3 none">
+                <h2 class="result"><i></i>报名成功</h2>
+                <p class="p1">
+                   本局在<span class="c1">蓝色</span>方即可获得20倍奖励</p>
+              </div>
+              <!-- 3-2-->
+              <div class="st3-2 none">
+                <h2 class="result"><i class="fail"></i>付费失败</h2>
+                <div class="btn-wrap">
+                  <button class="btn-try">点击重试</button>
+                </div>
+              </div>
+              <!-- 4-->
+              <div class="st4 none">
+                <p class="p3">恭喜你获得了1500顺豆</p>
+                <div class="btn-wrap">
+                  <button class="btn">一库！</button>
+                </div><a class="a-exchange" href="#" target="_blank">去兑换点券</a>
+              </div>
+              <!-- 4-2-->
+              <div class="st4-2 none">
+                <p class="p3 c4">很遗憾，猜错了</p>
+                <div class="btn-wrap">
+                  <button class="btn">我命由我不由天</button>
+                </div><a class="a-exchange" href="#" target="_blank">去兑换点券</a>
+              </div>
+              <!-- 5-->
+              <div class="st5">
+                <div class="btn-wrap">
+                  <button class="warn1" disabled>请在游戏开始前报名</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="steal" slot="steal">
+            <div class="tip1 none">
+              <h1>今日已经投过豆了哦~</h1>
+              <h2>别太贪心明天再来吧</h2>
+            </div>
+            <div class="tip2 none">
+              <h1>偷得<span>5000顺豆</span></h1>
+              <h2>记得明天再来哦</h2><img src="images/dou2.png" alt="">
+            </div>
+            <div class="tip3">
+              <div id="head1"><img src="images/test.png" alt="">
+                <p>波爷波爷波爷</p>
+              </div>
+              <div id="head2"><img src="images/test.png" alt="">
+                <p>辰辰</p>
+              </div>
+              <div id="head3"><img src="images/test.png" alt="">
+                <p>秋翔</p>
+              </div>
+            </div>
+            <div id="scroll">
+              <ul class="scroll">
+                <li>金毛加油**哒！超好运，刚刚偷走<span>3000</span>颗顺豆</li>
+                <li>22加油**哒！超好运，刚刚偷走3000顺豆！</li>
+                <li>33加油**哒！超好运，刚刚偷走3000顺豆！</li>
+                <li>44加油**哒！超好运，刚刚偷走3000顺豆！</li>
+                <li>55加油**哒！超好运，刚刚偷走3000顺豆！</li>
+                <li>66加油**哒！超好运，刚刚偷走3000顺豆！</li>
+                <li>77加油**哒！超好运，刚刚偷走3000顺豆！</li>
+                <li>88加油**哒！超好运，刚刚偷走3000顺豆！</li>
+                <li>99加油**哒！超好运，刚刚偷走3000顺豆！</li>
+                <li>dfdf加油**哒！超好运，刚刚偷走3000顺豆！</li>
+              </ul>
+            </div>
+          </div>
         </little-panel>
       </div>
       <template id="tmpl-panel">
         <div class="panel">
-          <div class="top-banner"></div>
-          <slot name="challenge"></slot>
-          <slot name="info"></slot>
-          <slot name="ad"></slot>
+          <!--.top-banner-->
           <slot name="banner"></slot>
+          <slot name="challenge"></slot>
+          <!--slot(name="info")-->
+          <slot name="ad"></slot>
           <slot name="game"></slot>
+          <slot name="guess"></slot>
+          <slot name="steal"></slot>
         </div>
       </template>
     </div>
     <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/jquery.qrcode.min.js"></script>
     <script src="scripts/bootstrap-tooltip.js"></script>
     <script src="scripts/vue.min.js"></script>
     <script src="scripts/switchable.js"></script>
@@ -180,7 +288,7 @@
           }
         }
       });
-      $(".btn-wrap").hover(function() {
+      $(".animate .btn-wrap").hover(function() {
         $(this).find(".none1").show().siblings().hide();
         $("#check").addClass("sel");
       }, function() {
@@ -260,8 +368,99 @@
         easing: "ease-in-out",
         loop: true,
         panels: "li",
-        autoplay: true
+        autoplay: true,
+        duration: 2,
+        delay: 1
       });
+      $(".switchable-triggers li").text("");
+      $("body").on("click", ".apply", function() {
+        $(this).hide();
+        $(".animate-wrap").removeClass("none");
+      });
+      $("#left,#right").on("mouseenter", function(e) {
+        var idName = e.target.id;
+        var className = e.target.className;
+        if (className.indexOf("free") != -1) {
+          $(this).html("本次免费");
+          return;
+        }
+        $(this).hide();
+        $("#" + idName + "_btn").show();
+        $("#" + idName + "_btn .one_" + idName).show();
+      });
+      $("#left,#right").on("mouseleave", function(e) {
+        var id = e.target.id;
+        $(this).html(id == "left" ? "我在蓝方" : "我在红方");
+      });
+      $("#left,#right").on("click", function(e) {
+        var id = e.target.id;
+        if (id == "left") {
+          console.log("blue");
+        } else if (id == "right") {
+          console.log("red");
+        }
+      });
+      $("#left_btn,#right_btn").on("mouseleave", function() {
+        $(this).hide();
+        $("#left,#right").show();
+      });
+      $(".one_left span,.one_right span").on("mouseenter", function(e) {
+        var idName = e.target.parentNode.parentNode.id.split("_")[0];
+        $(".one_" + idName).hide();
+        $(".two_" + idName).show();
+      });
+      $(".two_left span,.two_right span").on("mouseenter", function(e) {
+        var idName = e.target.parentNode.parentNode.id.split("_")[0];
+        $(".two_" + idName).hide();
+        $(".one_" + idName).show();
+      });
+      $("#left_btn p,#right_btn p").on("click", function(e) {
+        var className = e.target.parentNode.className;
+        if (className.indexOf("one_left") != -1) {
+          console.log("blue" + 5e3);
+        } else if (className.indexOf("two_left") != -1) {
+          console.log("blue" + 3e3);
+        } else if (className.indexOf("one_right") != -1) {
+          console.log("red" + 5e3);
+        } else if (className.indexOf("two_right") != -1) {
+          console.log("red" + 3e3);
+        }
+      });
+      $(".steal .tip3>div").on("mouseenter", function(e) {
+        $(this).siblings("div").removeClass("hand");
+        $(this).addClass("hand");
+      });
+      $(".steal .tip3>div").on("mouseleave", function(e) {
+        $(this).removeClass("hand");
+      });
+      $("#head1").on("click", function() {
+        console.log(1);
+      });
+      $("#head2").on("click", function() {
+        console.log(2);
+      });
+      $("#head3").on("click", function() {
+        console.log(3);
+      });
+      (function scroll(width) {
+        this.num = 0;
+        function goLeft() {
+          if (this.num == -width) {
+            this.num = 0;
+          }
+          this.num -= 1;
+          $(".scroll").css({
+            left: this.num + "px",
+            width: width + "px"
+          });
+        }
+        var timer = setInterval(goLeft, 25);
+        $("#scroll").hover(function() {
+          clearInterval(timer);
+        }, function() {
+          timer = setInterval(goLeft, 25);
+        });
+      })(2650);
     })(jQuery)</script>
   </body>
 </html>

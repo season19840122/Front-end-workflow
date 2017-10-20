@@ -121,7 +121,8 @@ figure {
 
 hr {
   -moz-box-sizing: content-box;
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   height: 0;
 }
 
@@ -181,7 +182,9 @@ input {
 
 input[type=checkbox],
 input[type=radio] {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0;
 }
 
@@ -233,17 +236,6 @@ th {
 
 li {
   list-style: none;
-}
-
-*:focus,
-*:active,
-a:active,
-a:focus,
-input:focus,
-input:active {
-  -moz-outline-style: none;
-  outline: none;
-  outline: 0;
 }
 
 /*-- 文字排版 --*/
@@ -375,7 +367,9 @@ input:active {
 }
 
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 img {
@@ -417,6 +411,9 @@ h6 {
   color: #271708;
   border: 0;
   background: #c49f58;
+  background: -webkit-gradient(linear, left top, left bottom, from(#c49f58), to(#c49f58));
+  background: -webkit-linear-gradient(#c49f58, #c49f58);
+  background: -moz-linear-gradient(#c49f58, #c49f58);
   background: linear-gradient(#c49f58, #c49f58);
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorStr=$startColor, endColorStr=$endColor);
 }
@@ -424,6 +421,9 @@ h6 {
 .button-no {
   color: #271708;
   background: #c49f58;
+  background: -webkit-gradient(linear, left top, left bottom, from(#c49f58), to(#c49f58));
+  background: -webkit-linear-gradient(#c49f58, #c49f58);
+  background: -moz-linear-gradient(#c49f58, #c49f58);
   background: linear-gradient(#c49f58, #c49f58);
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorStr=$startColor, endColorStr=$endColor);
 }
@@ -469,18 +469,21 @@ h6 {
 .mainScroll::-webkit-scrollbar {
   width: 0.133333rem;
   height: 0.133333rem;
-  border-radius: 0.066667rem;
+  -webkit-border-radius: 0.066667rem;
+          border-radius: 0.066667rem;
 }
 
 .mainScroll::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 0.066667rem rgba(0, 0, 0, 0.1);
-  border-radius: 0.066667rem;
+  -webkit-border-radius: 0.066667rem;
+          border-radius: 0.066667rem;
   background: #000;
 }
 
 .mainScroll::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 0.066667rem #2d3a48;
-  border-radius: 0.066667rem;
+  -webkit-border-radius: 0.066667rem;
+          border-radius: 0.066667rem;
   background: #33383e;
 }
 
@@ -498,12 +501,14 @@ h6 {
 }
 
 .smallScroll::-webkit-scrollbar-track {
-  border-radius: 0.04rem;
+  -webkit-border-radius: 0.04rem;
+          border-radius: 0.04rem;
   background: #0f1114;
 }
 
 .smallScroll::-webkit-scrollbar-thumb {
-  border-radius: 0.04rem;
+  -webkit-border-radius: 0.04rem;
+          border-radius: 0.04rem;
   background: #2e3740;
 }
 
@@ -621,7 +626,8 @@ a:hover {
   min-height: 1.6rem;
   padding: 0.266667rem;
   -moz-border-radius: 0.266667rem;
-  border-radius: 0.266667rem;
+  -webkit-border-radius: 0.266667rem;
+          border-radius: 0.266667rem;
   border: 0.013333rem solid #e0e0e1;
   z-index: 30;
   display: none;
@@ -640,18 +646,18 @@ a:hover {
 }
 
 .dialog .modal-c {
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: -moz-box;
+  display: -webkit-box;
   display: flex;
-  -webkit-align-items: center;
   -ms-flex-align: center;
   -moz-box-align: center;
-  align-items: center;
-  -webkit-justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
   -ms-flex-pack: center;
   -moz-box-pack: center;
-  justify-content: center;
+  -webkit-box-pack: center;
+          justify-content: center;
   color: #3e3e3e;
 }
 

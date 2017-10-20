@@ -4,6 +4,8 @@ var gulp = require('gulp'),
   browserSync = require('browser-sync').create(),
   $ = require('gulp-load-plugins')(),
   postcss = require('gulp-postcss'),
+  sourcemaps = require('gulp-sourcemaps'),
+  autoprefixer = require('autoprefixer'),
   px2rem = require('postcss-px2rem'),
   imageResize = require('gulp-image-resize');
 
@@ -67,23 +69,27 @@ gulp.task('m-less', function() {
 // Sass 编译成 css
 gulp.task('sass', function() {
   return gulp.src([
-      'app/styles/*.scss',
-      '!app/styles/m-*.scss'
+      'app/styles/*.scss'
+      ,'!app/styles/m-*.scss'
     ])  
     .pipe($.plumber())
     .pipe($.sass({outputStyle: 'expanded'}).on('error', $.sass.logError))
+    // .pipe(sourcemaps.init())
+    .pipe(postcss([ autoprefixer() ]))
+    // .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream());
 });
 
 gulp.task('m-sass', function() {
-	var processors = [px2rem({remUnit: 75})];
+	var processors = px2rem({ remUnit: 75 });
   return gulp.src([
       'app/styles/m-*.scss'
     ])
     .pipe($.plumber())
     .pipe($.sass({outputStyle: 'expanded'}).on('error', $.sass.logError))
-		.pipe(postcss(processors))
+    .pipe(postcss([ processors ]))
+    .pipe(postcss([ autoprefixer() ]))
     .pipe(gulp.dest('app/styles'))
     .pipe(browserSync.stream());
 });
@@ -92,6 +98,7 @@ gulp.task('m-sass', function() {
 gulp.task('script', function() {
   gulp.src([
     'app/scripts/u/**/*.js'
+    // ,'app/scripts/global.js'
   ])
   .pipe($.plumber())
   .pipe($.babel())
@@ -241,6 +248,7 @@ gulp.task('copy', function () {
     ,'!app/images/r/**'
     ,'app/styles/**'
     ,'!app/styles/_*.css'
+    ,'!app/styles/-*.css'
     ,'!app/styles/*.scss'
     ,'app/mock/**'
     ,'app/module/**'

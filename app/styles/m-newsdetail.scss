@@ -1,0 +1,227 @@
+@import '_base';
+@import '_common';
+
+html{
+	background: #f4f4f4!important;
+}
+
+body{
+  font: 14px/1.5 PingFangSC, STHeiti, Microsoft YaHei, Helvetica, Arial, sans-serif; /*no*/
+  background: #f4f4f4;
+  cursor: pointer;
+  overflow-x: hidden;
+}
+
+a{
+	&:hover{
+		text-decoration: none!important;
+	}
+}
+
+button {
+	border: 0;
+	outline: 0;
+	background: none;
+}
+
+.wrap{
+  position: relative;
+  width: 10rem;
+  margin: 0 auto;
+  .article-main {
+  	padding: 0 25px;
+  	margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+    &.pc {
+    	margin-bottom: 210px;
+    }
+  	.article-title {
+	  	font-size: 38px; /*px*/
+		  font-weight: 700;
+		  color: #555;
+	  }
+	  .articleInfo {
+	    margin-top: 12px;
+	    margin-bottom: 20px;
+	    font-size: 28px; /*px*/
+	    border-bottom: 1px solid  #c3c1c1;
+	    span {
+  	    color: #767676;
+    		margin-right: 10px;
+    		&.time {
+    			font-size: 22px; /*px*/
+    			color: #b1b1b1;
+    		}
+	    }
+	  }
+	  .article-content {
+	  	font-size: 32px; /*px*/
+	    color: #555;
+	    word-wrap: break-word;
+	    p {
+  	    margin: 30px 0;
+  	    &.img-wrapper-embedded {
+    	    font-size: 0;
+			    margin-right: auto;
+			    margin-left: auto;
+  	    }
+  	    &.pgc-img-caption {
+			    text-align: center;
+			    font-size: 24px; /*px*/
+			    color: #777;
+			    margin-top: 0;
+  	    }
+	    }
+	    img {
+	    	width: 100%;
+		    display: block;
+		    margin: 10px auto;
+	    }
+	  }
+	  .article-actions {
+	  	.btn-wrap {
+	  		margin-top: 50px;
+	  		text-align: center;
+	  		.btn-zan {
+	  			text-align: center;
+	  			width: 250px;
+	  			height: 70px;
+	  			line-height: 70px - 6;
+	  			background: #00a3e7;
+	  			color: #f4f4f4;
+	  			font-size: 32px;
+	  			border: 3px solid  #00a3e7;
+	  			-moz-border-radius: 35px;
+	  			     border-radius: 35px;
+					i {
+						display: inline-block;
+						background: url(../images/btn-zan.png) no-repeat;
+						-moz-background-size: cover;
+						     background-size: cover;
+						width: 31px;
+						height: 32px;
+						line-height: 32px;
+						margin-right: 10px;
+					}
+					&.sel {
+						color: #00a3e7;
+						background: none;
+						i {
+							background: url(../images/btn-unzan.png) no-repeat;
+							-moz-background-size: cover;
+							     background-size: cover;
+						}
+					}
+	  		}
+	  	}
+	  	.more-wrap {
+	  		margin-top: 100px;
+	  		.more-title {
+	  			color: #1c1c1c;
+	  			font-size: 32px;
+	  		}
+	  		.more-content {
+	  			margin-bottom: 30px;
+					p {
+						&::before {
+							content: '· ';
+							font-weight: bold;
+							color: #0090cc;
+						}
+						margin: 10px 0;
+						font-size: 28px;
+						a {
+							color: #0090cc;
+						}
+					}
+	  		}
+	  	}
+	  }
+  }
+}
+
+// @keyframes rotate {
+// 	0% { -webkit-transform: rotate(0); -moz-transform: rotate(0); -ms-transform: rotate(0); transform: rotate(0);}
+// 	100% { -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); transform: rotate(360deg); }
+// }
+
+.load {
+	margin-top: 340px;
+	text-align: center;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: column;
+	   -moz-box-orient: vertical;
+	   -moz-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-align-items: center;
+	   -moz-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	font-size: 32px;
+	color: #767676;
+	&.none {
+		@extend .none;
+	}
+	i {
+		background: url(../images/loading.gif) no-repeat;
+		-moz-background-size: cover;
+		     background-size: cover;
+		width: 60px;
+		height: 60px;
+		display: block;
+		margin-bottom: 10px;
+	}
+}
+
+.fail {
+	margin: 340px auto 0;
+	text-align: center;
+	font-size: 32px;
+	color: #767676;
+	border: 1px solid  #a0a0a0;
+	-moz-border-radius: 10px;
+	     border-radius: 10px;
+	width: 375px;
+	height: 83px;
+	line-height: 83px - 2;
+	&.none {
+		@extend .none;
+	}
+}
+
+.footer {
+	position: fixed;
+	bottom: 0;
+	img {
+		width: 750px;
+		height: 210px;
+		display: block;
+	}
+	// .qrcode-wrap{
+	//     width: 750px;
+	//     height: 210px;
+	//     background: #021e20;
+	//     display: flex;
+	//     .qrcode{
+	//       margin: 20px 20px 20px 60px;
+	//       width: 170px;
+	//       height: 170px;
+	//       display: inline-block;
+	//     }
+	//     .slogan{
+	//     	display: inline-block;
+	//       margin-top: 20px;
+	//       color: #2d6061;
+	//       font-size: 30px; /*px*/
+	//       .b{
+	//         color: #58a9af;
+	//         font-size: 36px; /*px*/
+	//       }
+	//     }
+	//  	}
+}
