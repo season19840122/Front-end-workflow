@@ -120,7 +120,6 @@ figure {
 }
 
 hr {
-  -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
   height: 0;
@@ -183,7 +182,6 @@ input {
 input[type=checkbox],
 input[type=radio] {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
 }
@@ -195,7 +193,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=search] {
   -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
@@ -236,6 +233,17 @@ th {
 
 li {
   list-style: none;
+}
+
+*:focus,
+*:active,
+a:active,
+a:focus,
+input:focus,
+input:active {
+  -moz-outline-style: none;
+  outline: none;
+  outline: 0;
 }
 
 /*-- 文字排版 --*/
@@ -369,7 +377,6 @@ li {
 
 * {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 
@@ -382,7 +389,7 @@ a {
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 p {
@@ -413,8 +420,6 @@ h6 {
   border: 0;
   background: #c49f58;
   background: -webkit-gradient(linear, left top, left bottom, from(#c49f58), to(#c49f58));
-  background: -webkit-linear-gradient(#c49f58, #c49f58);
-  background: -moz-linear-gradient(#c49f58, #c49f58);
   background: linear-gradient(#c49f58, #c49f58);
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorStr=$startColor, endColorStr=$endColor);
 }
@@ -423,8 +428,6 @@ h6 {
   color: #271708;
   background: #c49f58;
   background: -webkit-gradient(linear, left top, left bottom, from(#c49f58), to(#c49f58));
-  background: -webkit-linear-gradient(#c49f58, #c49f58);
-  background: -moz-linear-gradient(#c49f58, #c49f58);
   background: linear-gradient(#c49f58, #c49f58);
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorStr=$startColor, endColorStr=$endColor);
 }
@@ -470,21 +473,18 @@ h6 {
 .mainScroll::-webkit-scrollbar {
   width: 0.133333rem;
   height: 0.133333rem;
-  -webkit-border-radius: 0.066667rem;
-          border-radius: 0.066667rem;
+  border-radius: 0.066667rem;
 }
 
 .mainScroll::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 0.066667rem rgba(0, 0, 0, 0.1);
-  -webkit-border-radius: 0.066667rem;
-          border-radius: 0.066667rem;
+  border-radius: 0.066667rem;
   background: #000;
 }
 
 .mainScroll::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 0.066667rem #2d3a48;
-  -webkit-border-radius: 0.066667rem;
-          border-radius: 0.066667rem;
+  border-radius: 0.066667rem;
   background: #33383e;
 }
 
@@ -502,14 +502,12 @@ h6 {
 }
 
 .smallScroll::-webkit-scrollbar-track {
-  -webkit-border-radius: 0.04rem;
-          border-radius: 0.04rem;
+  border-radius: 0.04rem;
   background: #0f1114;
 }
 
 .smallScroll::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 0.04rem;
-          border-radius: 0.04rem;
+  border-radius: 0.04rem;
   background: #2e3740;
 }
 
@@ -549,7 +547,6 @@ a:hover {
   padding: 0 0.333333rem;
   background: #e2e2e2;
   display: -ms-flexbox;
-  display: -moz-box;
   display: -webkit-box;
   display: flex;
 }
@@ -575,7 +572,6 @@ a:hover {
 
 .wrap nav .tab:nth-of-type(2) {
   -ms-flex-positive: 1;
-  -moz-box-flex: 1;
   -webkit-box-flex: 1;
           flex-grow: 1;
 }
@@ -602,17 +598,13 @@ a:hover {
   padding: 0 0.333333rem;
   height: 1.386667rem;
   background: url(../images/bg-info.jpg) no-repeat;
-  -moz-background-size: cover;
-       background-size: cover;
+  background-size: cover;
   display: -ms-flexbox;
-  display: -moz-box;
   display: -webkit-box;
   display: flex;
   -ms-flex-align: center;
-  -moz-box-align: center;
   -webkit-box-align: center;
           align-items: center;
-  -moz-box-pack: justify;
   -ms-flex-pack: justify;
   -webkit-box-pack: justify;
           justify-content: space-between;
@@ -645,15 +637,12 @@ a:hover {
 .wrap .lists-wrap .list {
   height: 2rem;
   display: -ms-flexbox;
-  display: -moz-box;
   display: -webkit-box;
   display: flex;
   -ms-flex-align: center;
-  -moz-box-align: center;
   -webkit-box-align: center;
           align-items: center;
   -ms-flex-pack: justify;
-  -moz-box-pack: justify;
   -webkit-box-pack: justify;
           justify-content: space-between;
   overflow: hidden;
@@ -681,25 +670,20 @@ a:hover {
 .wrap .lists-wrap .list .head img {
   width: 1.333333rem;
   height: 1.333333rem;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
 }
 
 .wrap .lists-wrap .list .name-wrap {
   -ms-flex-positive: 1;
-  -moz-box-flex: 1;
   -webkit-box-flex: 1;
           flex-grow: 1;
 }
 
 .wrap .lists-wrap .list .name-wrap .layer {
   display: -ms-flexbox;
-  display: -moz-box;
   display: -webkit-box;
   display: flex;
   -ms-flex-align: center;
-  -moz-box-align: center;
   -webkit-box-align: center;
           align-items: center;
   margin-bottom: 0.133333rem;
@@ -724,11 +708,9 @@ a:hover {
   margin-right: 0.2rem;
   color: #a9a9a9;
   line-height: 1;
-  display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
-  -moz-box-align: center;
   -ms-flex-align: center;
   -webkit-box-align: center;
           align-items: center;
@@ -751,11 +733,9 @@ a:hover {
   line-height: 0.4rem;
   color: #232323;
   width: 4.266667rem;
-  display: -moz-inline-box;
   display: -ms-inline-flexbox;
   display: -webkit-inline-box;
   display: inline-flex;
-  -moz-box-align: center;
   -ms-flex-align: center;
   -webkit-box-align: center;
           align-items: center;
@@ -806,19 +786,15 @@ a:hover {
 .wrap .lists-wrap .list .a-wrap {
   margin-right: 0.333333rem;
   display: -ms-flexbox;
-  display: -moz-box;
   display: -webkit-box;
   display: flex;
   -ms-flex-direction: column;
-  -moz-box-orient: vertical;
-  -moz-box-direction: normal;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
   -ms-flex-preferred-size: 1.6rem;
   flex-basis: 1.6rem;
   -ms-flex-pack: justify;
-  -moz-box-pack: justify;
   -webkit-box-pack: justify;
           justify-content: space-between;
   text-align: center;
@@ -908,7 +884,6 @@ a:hover {
 
 .wrap .lists-wrap .list.sj .head .medal {
   background: url(../images/sj.png) no-repeat;
-  -moz-background-size: cover;
   background-size: cover;
   width: 0.44rem;
   height: 0.44rem;
@@ -955,15 +930,11 @@ a:hover {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 6.4rem;
   min-height: 1.6rem;
   padding: 0.266667rem;
-  -moz-border-radius: 0.266667rem;
-  -webkit-border-radius: 0.266667rem;
-          border-radius: 0.266667rem;
+  border-radius: 0.266667rem;
   border: 0.013333rem solid #e0e0e1;
   z-index: 100;
   display: none;
@@ -1002,15 +973,12 @@ a:hover {
 
 .dialog .modal-c {
   display: -ms-flexbox;
-  display: -moz-box;
   display: -webkit-box;
   display: flex;
   -ms-flex-align: center;
-  -moz-box-align: center;
   -webkit-box-align: center;
           align-items: center;
   -ms-flex-pack: center;
-  -moz-box-pack: center;
   -webkit-box-pack: center;
           justify-content: center;
   color: #3e3e3e;
@@ -1038,9 +1006,7 @@ a:hover {
   background: #4487c2;
   display: block;
   margin: 0 auto;
-  -moz-border-radius: 0.133333rem;
-  -webkit-border-radius: 0.133333rem;
-          border-radius: 0.133333rem;
+  border-radius: 0.133333rem;
   margin-bottom: 0.133333rem;
 }
 
@@ -1077,16 +1043,6 @@ a:hover {
   }
 }
 
-@-moz-keyframes up {
-  0% {
-    bottom: -8.253333rem;
-  }
-
-  100% {
-    bottom: 0;
-  }
-}
-
 @keyframes up {
   0% {
     bottom: -8.253333rem;
@@ -1098,16 +1054,6 @@ a:hover {
 }
 
 @-webkit-keyframes down {
-  0% {
-    bottom: 0;
-  }
-
-  100% {
-    bottom: -8.253333rem;
-  }
-}
-
-@-moz-keyframes down {
   0% {
     bottom: 0;
   }
@@ -1139,13 +1085,11 @@ a:hover {
 
 .dialog1.up {
   -webkit-animation: up 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) 1 forwards;
-  -moz-animation: up 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) 1 forwards;
   animation: up 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) 1 forwards;
 }
 
 .dialog1.down {
   -webkit-animation: down 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) 1 forwards;
-  -moz-animation: down 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) 1 forwards;
   animation: down 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) 1 forwards;
 }
 
@@ -1199,7 +1143,6 @@ a:hover {
 .dialog1 .cal-wrap .row-wrap {
   height: 0.533333rem;
   line-height: 0.533333rem;
-  display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -1216,11 +1159,9 @@ a:hover {
   margin-right: 0.2rem;
   color: #999;
   line-height: 1;
-  display: -moz-inline-box;
   display: -ms-inline-flexbox;
   display: -webkit-inline-box;
   display: inline-flex;
-  -moz-box-align: center;
   -ms-flex-align: center;
   -webkit-box-align: center;
           align-items: center;
@@ -1240,7 +1181,6 @@ a:hover {
 
 .dialog1 .cal-wrap .row-wrap span i {
   background: url("../images/medal.png") no-repeat;
-  -moz-background-size: cover;
   background-size: cover;
   width: 0.293333rem;
   height: 0.44rem;
@@ -1248,15 +1188,12 @@ a:hover {
 }
 
 .dialog1 .cal-wrap .row-wrap .a-wrap {
-  display: -moz-inline-box;
   display: -ms-inline-flexbox;
   display: -webkit-inline-box;
   display: inline-flex;
-  -moz-box-align: center;
   -ms-flex-align: center;
   -webkit-box-align: center;
           align-items: center;
-  -moz-box-pack: justify;
   -ms-flex-pack: justify;
   -webkit-box-pack: justify;
           justify-content: space-between;
@@ -1302,7 +1239,6 @@ a:hover {
   width: 0.44rem;
   height: 0.44rem;
   background: url("../images/sel.png") no-repeat;
-  -moz-background-size: cover;
   background-size: cover;
 }
 
@@ -1321,7 +1257,6 @@ a:hover {
   width: 0.44rem;
   height: 0.44rem;
   background: url("../images/lock.png") no-repeat;
-  -moz-background-size: cover;
   background-size: cover;
 }
 
@@ -1385,7 +1320,6 @@ a:hover {
   left: 0;
   bottom: 0;
   width: 100%;
-  display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -1446,21 +1380,16 @@ a:hover {
   right: 0;
   bottom: 0;
   z-index: 0;
-  display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
-  -moz-box-orient: vertical;
-  -moz-box-direction: normal;
   -ms-flex-direction: column;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
-  -moz-box-align: center;
   -ms-flex-align: center;
   -webkit-box-align: center;
           align-items: center;
-  -moz-box-pack: center;
   -ms-flex-pack: center;
   -webkit-box-pack: center;
           justify-content: center;

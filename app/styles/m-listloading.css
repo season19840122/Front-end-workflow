@@ -89,7 +89,6 @@ div[data-class=clickDownId] > span.inlineblock-span > i::before {
 div[data-class=pullUpId] > span.inlineblock-span > i.icon-up::before,
 div[data-class=pullDownId] > span.inlineblock-span > i.icon-up::before {
   -webkit-animation: refreshRotateUp 0.3s forwards linear;
-  -moz-animation: refreshRotateUp 0.3s forwards linear;
   animation: refreshRotateUp 0.3s forwards linear;
   content: '\e674';
 }
@@ -119,46 +118,20 @@ div[data-class=pullDownId] > span.inlineblock-span > i.icon-up::before {
 @keyframes refreshRotateUp {
   0% {
     -webkit-transform: rotate(-180deg);
-       -moz-transform: rotate(-180deg);
             transform: rotate(-180deg);
     -webkit-transform: -webkit-rotate(-180deg);
             transform: -webkit-rotate(-180deg);
-    -moz-transform: -moz-rotate(-180deg);
-         transform: -moz-rotate(-180deg);
+    transform: -moz-rotate(-180deg);
     transform: -o-rotate(-180deg);
     transform: -ms-rotate(-180deg);
   }
 
   100% {
     -webkit-transform: rotate(0);
-       -moz-transform: rotate(0);
             transform: rotate(0);
     -webkit-transform: -webkit-rotate(0);
             transform: -webkit-rotate(0);
-    -moz-transform: -moz-rotate(0);
-         transform: -moz-rotate(0);
-    transform: -o-rotate(0);
-    transform: -ms-rotate(0);
-  }
-}
-
-@-moz-keyframes refreshRotateUp {
-  0% {
-    -moz-transform: rotate(-180deg);
-         transform: rotate(-180deg);
-    transform: -webkit-rotate(-180deg);
-    -moz-transform: -moz-rotate(-180deg);
-         transform: -moz-rotate(-180deg);
-    transform: -o-rotate(-180deg);
-    transform: -ms-rotate(-180deg);
-  }
-
-  100% {
-    -moz-transform: rotate(0);
-         transform: rotate(0);
-    transform: -webkit-rotate(0);
-    -moz-transform: -moz-rotate(0);
-         transform: -moz-rotate(0);
+    transform: -moz-rotate(0);
     transform: -o-rotate(0);
     transform: -ms-rotate(0);
   }
@@ -167,7 +140,6 @@ div[data-class=pullDownId] > span.inlineblock-span > i.icon-up::before {
 div[data-class=pullUpId] > span.inlineblock-span > i.icon-down::before,
 div[data-class=pullDownId] > span.inlineblock-span > i.icon-down::before {
   -webkit-animation: refreshRotateDown 0.3s forwards linear;
-  -moz-animation: refreshRotateDown 0.3s forwards linear;
   animation: refreshRotateDown 0.3s forwards linear;
 }
 
@@ -193,49 +165,23 @@ div[data-class=pullDownId] > span.inlineblock-span > i.icon-down::before {
   }
 }
 
-@-moz-keyframes refreshRotateDown {
-  0% {
-    -moz-transform: rotate(0);
-         transform: rotate(0);
-    transform: -webkit-rotate(0);
-    -moz-transform: -moz-rotate(0);
-         transform: -moz-rotate(0);
-    transform: -o-rotate(0);
-    transform: -ms-rotate(0);
-  }
-
-  100% {
-    -moz-transform: rotate(-180deg);
-         transform: rotate(-180deg);
-    transform: -webkit-rotate(-180deg);
-    -moz-transform: -moz-rotate(-180deg);
-         transform: -moz-rotate(-180deg);
-    transform: -o-rotate(-180deg);
-    transform: -ms-rotate(-180deg);
-  }
-}
-
 @keyframes refreshRotateDown {
   0% {
     -webkit-transform: rotate(0);
-       -moz-transform: rotate(0);
             transform: rotate(0);
     -webkit-transform: -webkit-rotate(0);
             transform: -webkit-rotate(0);
-    -moz-transform: -moz-rotate(0);
-         transform: -moz-rotate(0);
+    transform: -moz-rotate(0);
     transform: -o-rotate(0);
     transform: -ms-rotate(0);
   }
 
   100% {
     -webkit-transform: rotate(-180deg);
-       -moz-transform: rotate(-180deg);
             transform: rotate(-180deg);
     -webkit-transform: -webkit-rotate(-180deg);
             transform: -webkit-rotate(-180deg);
-    -moz-transform: -moz-rotate(-180deg);
-         transform: -moz-rotate(-180deg);
+    transform: -moz-rotate(-180deg);
     transform: -o-rotate(-180deg);
     transform: -ms-rotate(-180deg);
   }
@@ -245,7 +191,6 @@ div[data-class=pullUpId] > span.inlineblock-span > i.icon-loading::before,
 div[data-class=pullDownId] > span.inlineblock-span > i.icon-loading::before {
   top: 0.026667rem;
   -webkit-animation: loadingInfinite infinite 1s;
-  -moz-animation: loadingInfinite infinite 1s;
   animation: loadingInfinite infinite 1s;
   content: '\e669';
 }
@@ -276,49 +221,23 @@ div[data-class=pullDownId] > span.inlineblock-span > i.icon-loading::before {
   }
 }
 
-@-moz-keyframes loadingInfinite {
-  0% {
-    -moz-transform: rotate(0);
-         transform: rotate(0);
-    transform: -webkit-rotate(0);
-    -moz-transform: -moz-rotate(0);
-         transform: -moz-rotate(0);
-    transform: -o-rotate(0);
-    transform: -ms-rotate(0);
-  }
-
-  100% {
-    -moz-transform: rotate(360deg);
-         transform: rotate(360deg);
-    transform: -webkit-rotate(360deg);
-    -moz-transform: -moz-rotate(360deg);
-         transform: -moz-rotate(360deg);
-    transform: -o-rotate(360deg);
-    transform: -ms-rotate(360deg);
-  }
-}
-
 @keyframes loadingInfinite {
   0% {
     -webkit-transform: rotate(0);
-       -moz-transform: rotate(0);
             transform: rotate(0);
     -webkit-transform: -webkit-rotate(0);
             transform: -webkit-rotate(0);
-    -moz-transform: -moz-rotate(0);
-         transform: -moz-rotate(0);
+    transform: -moz-rotate(0);
     transform: -o-rotate(0);
     transform: -ms-rotate(0);
   }
 
   100% {
     -webkit-transform: rotate(360deg);
-       -moz-transform: rotate(360deg);
             transform: rotate(360deg);
     -webkit-transform: -webkit-rotate(360deg);
             transform: -webkit-rotate(360deg);
-    -moz-transform: -moz-rotate(360deg);
-         transform: -moz-rotate(360deg);
+    transform: -moz-rotate(360deg);
     transform: -o-rotate(360deg);
     transform: -ms-rotate(360deg);
   }

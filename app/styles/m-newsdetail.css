@@ -120,7 +120,6 @@ figure {
 }
 
 hr {
-  -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
   height: 0;
@@ -183,7 +182,6 @@ input {
 input[type=checkbox],
 input[type=radio] {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
 }
@@ -195,7 +193,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 input[type=search] {
   -webkit-appearance: textfield;
-  -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
@@ -236,6 +233,17 @@ th {
 
 li {
   list-style: none;
+}
+
+*:focus,
+*:active,
+a:active,
+a:focus,
+input:focus,
+input:active {
+  -moz-outline-style: none;
+  outline: none;
+  outline: 0;
 }
 
 /*-- 文字排版 --*/
@@ -370,7 +378,6 @@ li {
 
 * {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 
@@ -383,7 +390,7 @@ a {
 }
 
 a:hover {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 p {
@@ -414,8 +421,6 @@ h6 {
   border: 0;
   background: #c49f58;
   background: -webkit-gradient(linear, left top, left bottom, from(#c49f58), to(#c49f58));
-  background: -webkit-linear-gradient(#c49f58, #c49f58);
-  background: -moz-linear-gradient(#c49f58, #c49f58);
   background: linear-gradient(#c49f58, #c49f58);
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorStr=$startColor, endColorStr=$endColor);
 }
@@ -424,8 +429,6 @@ h6 {
   color: #271708;
   background: #c49f58;
   background: -webkit-gradient(linear, left top, left bottom, from(#c49f58), to(#c49f58));
-  background: -webkit-linear-gradient(#c49f58, #c49f58);
-  background: -moz-linear-gradient(#c49f58, #c49f58);
   background: linear-gradient(#c49f58, #c49f58);
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorStr=$startColor, endColorStr=$endColor);
 }
@@ -471,21 +474,18 @@ h6 {
 .mainScroll::-webkit-scrollbar {
   width: 0.133333rem;
   height: 0.133333rem;
-  -webkit-border-radius: 0.066667rem;
-          border-radius: 0.066667rem;
+  border-radius: 0.066667rem;
 }
 
 .mainScroll::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 0.066667rem rgba(0, 0, 0, 0.1);
-  -webkit-border-radius: 0.066667rem;
-          border-radius: 0.066667rem;
+  border-radius: 0.066667rem;
   background: #000;
 }
 
 .mainScroll::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 0.066667rem #2d3a48;
-  -webkit-border-radius: 0.066667rem;
-          border-radius: 0.066667rem;
+  border-radius: 0.066667rem;
   background: #33383e;
 }
 
@@ -503,14 +503,12 @@ h6 {
 }
 
 .smallScroll::-webkit-scrollbar-track {
-  -webkit-border-radius: 0.04rem;
-          border-radius: 0.04rem;
+  border-radius: 0.04rem;
   background: #0f1114;
 }
 
 .smallScroll::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 0.04rem;
-          border-radius: 0.04rem;
+  border-radius: 0.04rem;
   background: #2e3740;
 }
 
@@ -677,15 +675,12 @@ button {
   color: #f4f4f4;
   font-size: 0.426667rem;
   border: 0.04rem solid  #00a3e7;
-  -moz-border-radius: 0.466667rem;
-  -webkit-border-radius: 0.466667rem;
-          border-radius: 0.466667rem;
+  border-radius: 0.466667rem;
 }
 
 .wrap .article-main .article-actions .btn-wrap .btn-zan i {
   display: inline-block;
   background: url(../images/btn-zan.png) no-repeat;
-  -moz-background-size: cover;
   background-size: cover;
   width: 0.413333rem;
   height: 0.426667rem;
@@ -700,7 +695,6 @@ button {
 
 .wrap .article-main .article-actions .btn-wrap .btn-zan.sel i {
   background: url(../images/btn-unzan.png) no-repeat;
-  -moz-background-size: cover;
   background-size: cover;
 }
 
@@ -735,17 +729,13 @@ button {
 .load {
   margin-top: 4.533333rem;
   text-align: center;
-  display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
-  -moz-box-orient: vertical;
-  -moz-box-direction: normal;
   -ms-flex-direction: column;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
-  -moz-box-align: center;
   -ms-flex-align: center;
   -webkit-box-align: center;
           align-items: center;
@@ -755,7 +745,6 @@ button {
 
 .load i {
   background: url(../images/loading.gif) no-repeat;
-  -moz-background-size: cover;
   background-size: cover;
   width: 0.8rem;
   height: 0.8rem;
@@ -769,9 +758,7 @@ button {
   font-size: 0.426667rem;
   color: #767676;
   border: 0.013333rem solid  #a0a0a0;
-  -moz-border-radius: 0.133333rem;
-  -webkit-border-radius: 0.133333rem;
-          border-radius: 0.133333rem;
+  border-radius: 0.133333rem;
   width: 5rem;
   height: 1.106667rem;
   line-height: 1.08rem;
